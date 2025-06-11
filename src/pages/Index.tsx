@@ -8,7 +8,7 @@ const Index = () => {
     <SidebarProvider>
       <div className="min-h-screen flex w-full bg-background">
         <AppSidebar />
-        <main className="flex-1 p-6 space-y-6">
+        <main className="flex-1 p-8 space-y-6 bg-muted/30">
           <ExpenseDashboard />
         </main>
       </div>

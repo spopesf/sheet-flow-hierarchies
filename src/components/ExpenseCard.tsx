@@ -24,21 +24,21 @@ export function ExpenseCard({ title, data, variant }: ExpenseCardProps) {
   const isTotal = variant === "total";
   
   const cardVariants = {
-    internal: "border-blue-200 bg-blue-50/50",
-    consumer: "border-green-200 bg-green-50/50", 
-    total: "border-orange-200 bg-orange-50/50 shadow-lg"
+    internal: "border-border bg-card hover:shadow-sm",
+    consumer: "border-border bg-card hover:shadow-sm", 
+    total: "border-border bg-card shadow-md border-2"
   };
 
   const titleVariants = {
-    internal: "text-blue-900",
-    consumer: "text-green-900",
-    total: "text-orange-900 text-xl font-bold"
+    internal: "text-foreground font-semibold",
+    consumer: "text-foreground font-semibold",
+    total: "text-foreground font-bold text-xl"
   };
 
   return (
-    <Card className={cn("overflow-hidden transition-all hover:shadow-md", cardVariants[variant])}>
-      <CardHeader className={cn("pb-4", isTotal && "bg-orange-100/50")}>
-        <CardTitle className={cn("text-lg", titleVariants[variant])}>
+    <Card className={cn("overflow-hidden transition-all duration-200", cardVariants[variant])}>
+      <CardHeader className={cn("pb-6", isTotal && "bg-muted/30")}>
+        <CardTitle className={cn("text-lg tracking-tight", titleVariants[variant])}>
           {title}
         </CardTitle>
       </CardHeader>
@@ -46,29 +46,29 @@ export function ExpenseCard({ title, data, variant }: ExpenseCardProps) {
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="bg-muted/50 border-b">
-                <th className="text-left py-3 px-4 font-medium text-sm text-muted-foreground">Invoiced</th>
-                <th className="text-left py-3 px-4 font-medium text-sm text-muted-foreground">Product Expense</th>
-                <th className="text-left py-3 px-4 font-medium text-sm text-muted-foreground">Freight to Store Expense</th>
-                <th className="text-left py-3 px-4 font-medium text-sm text-muted-foreground"># of Invoices</th>
-                <th className="text-left py-3 px-4 font-medium text-sm text-muted-foreground"># of Ordering Accounts</th>
-                <th className="text-left py-3 px-4 font-medium text-sm text-muted-foreground"># of Items Ordered</th>
-                <th className="text-left py-3 px-4 font-medium text-sm text-muted-foreground">Avg. Order Value</th>
-                <th className="text-left py-3 px-4 font-medium text-sm text-muted-foreground">Avg. Freight to Store Expense</th>
-                <th className="text-left py-3 px-4 font-medium text-sm text-muted-foreground">Avg. # of Items/Order</th>
+              <tr className="border-b border-border bg-muted/50">
+                <th className="text-left py-4 px-6 font-medium text-sm text-muted-foreground tracking-wide">Invoiced</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-muted-foreground tracking-wide">Product Expense</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-muted-foreground tracking-wide">Freight to Store Expense</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-muted-foreground tracking-wide"># of Invoices</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-muted-foreground tracking-wide"># of Ordering Accounts</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-muted-foreground tracking-wide"># of Items Ordered</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-muted-foreground tracking-wide">Avg. Order Value</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-muted-foreground tracking-wide">Avg. Freight to Store Expense</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-muted-foreground tracking-wide">Avg. # of Items/Order</th>
               </tr>
             </thead>
             <tbody>
-              <tr className={cn("border-b hover:bg-muted/25 transition-colors", isTotal && "bg-white font-semibold")}>
-                <td className="py-4 px-4 text-sm font-mono">{data.invoiced}</td>
-                <td className="py-4 px-4 text-sm font-mono">{data.productExpense}</td>
-                <td className="py-4 px-4 text-sm font-mono">{data.freightToStore}</td>
-                <td className="py-4 px-4 text-sm font-mono">{data.numInvoices}</td>
-                <td className="py-4 px-4 text-sm font-mono">{data.numOrderingAccounts}</td>
-                <td className="py-4 px-4 text-sm font-mono">{data.numItemsOrdered}</td>
-                <td className="py-4 px-4 text-sm font-mono">{data.avgOrderValue}</td>
-                <td className="py-4 px-4 text-sm font-mono">{data.avgFreightToStore}</td>
-                <td className="py-4 px-4 text-sm font-mono">{data.avgItemsPerOrder}</td>
+              <tr className={cn("border-b border-border hover:bg-muted/25 transition-colors", isTotal && "bg-background font-semibold")}>
+                <td className="py-5 px-6 text-sm font-mono tabular-nums text-foreground">{data.invoiced}</td>
+                <td className="py-5 px-6 text-sm font-mono tabular-nums text-foreground">{data.productExpense}</td>
+                <td className="py-5 px-6 text-sm font-mono tabular-nums text-foreground">{data.freightToStore}</td>
+                <td className="py-5 px-6 text-sm font-mono tabular-nums text-foreground">{data.numInvoices}</td>
+                <td className="py-5 px-6 text-sm font-mono tabular-nums text-foreground">{data.numOrderingAccounts}</td>
+                <td className="py-5 px-6 text-sm font-mono tabular-nums text-foreground">{data.numItemsOrdered}</td>
+                <td className="py-5 px-6 text-sm font-mono tabular-nums text-foreground">{data.avgOrderValue}</td>
+                <td className="py-5 px-6 text-sm font-mono tabular-nums text-foreground">{data.avgFreightToStore}</td>
+                <td className="py-5 px-6 text-sm font-mono tabular-nums text-foreground">{data.avgItemsPerOrder}</td>
               </tr>
             </tbody>
           </table>

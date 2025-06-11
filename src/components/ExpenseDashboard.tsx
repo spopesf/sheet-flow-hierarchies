@@ -42,21 +42,25 @@ const totalExpenseData = {
 
 export function ExpenseDashboard() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <SidebarTrigger className="text-muted-foreground" />
-          <h1 className="text-2xl font-bold text-foreground">Expenses</h1>
+      <div className="border-b border-border bg-background">
+        <div className="flex items-center justify-between py-6">
+          <div className="flex items-center gap-4">
+            <SidebarTrigger className="text-muted-foreground" />
+            <h1 className="text-3xl font-bold tracking-tight text-foreground">Expenses</h1>
+          </div>
+          <DateRangePicker />
         </div>
-        <DateRangePicker />
       </div>
 
       {/* Search and Filters */}
-      <SearchFilters />
+      <div className="px-1">
+        <SearchFilters />
+      </div>
 
       {/* Expense Cards */}
-      <div className="space-y-6">
+      <div className="space-y-8 px-1">
         <ExpenseCard
           title="All Internal Orders"
           data={internalOrdersData}

@@ -17,6 +17,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarFooter,
+  SidebarHeader,
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 
@@ -52,9 +53,17 @@ const menuItems = [
 export function AppSidebar() {
   return (
     <Sidebar className="border-r border-border">
+      <SidebarHeader className="p-6 border-b border-border">
+        <div className="font-bold text-lg tracking-tight text-foreground">
+          EXPENSES
+        </div>
+        <div className="text-xs text-muted-foreground tracking-wide uppercase">
+          Dashboard
+        </div>
+      </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel className="text-sm font-semibold text-muted-foreground mb-2">
+          <SidebarGroupLabel className="text-xs font-medium text-muted-foreground mb-3 tracking-wide uppercase">
             Navigation
           </SidebarGroupLabel>
           <SidebarGroupContent>
@@ -64,9 +73,12 @@ export function AppSidebar() {
                   <SidebarMenuButton 
                     asChild 
                     isActive={item.isActive}
-                    className={item.isActive ? "bg-accent text-accent-foreground" : ""}
+                    className={cn(
+                      "font-medium tracking-tight",
+                      item.isActive ? "bg-accent text-accent-foreground font-semibold" : "text-muted-foreground hover:text-foreground"
+                    )}
                   >
-                    <a href={item.url} className="flex items-center gap-2">
+                    <a href={item.url} className="flex items-center gap-3">
                       <item.icon className="h-4 w-4" />
                       <span>{item.title}</span>
                     </a>
@@ -77,8 +89,8 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter className="p-4">
-        <Button variant="outline" className="w-full justify-start" size="sm">
+      <SidebarFooter className="p-4 border-t border-border">
+        <Button variant="outline" className="w-full justify-start font-medium tracking-tight" size="sm">
           <LogOut className="h-4 w-4 mr-2" />
           LOG OUT
         </Button>
