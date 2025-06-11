@@ -1,4 +1,3 @@
-
 import { 
   BarChart3, 
   Home, 
@@ -20,6 +19,7 @@ import {
   SidebarHeader,
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const menuItems = [
   {
