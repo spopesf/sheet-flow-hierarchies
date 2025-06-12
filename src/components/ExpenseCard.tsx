@@ -96,7 +96,7 @@ export function ExpenseCard({ title, data, variant, selectedFilter }: ExpenseCar
         )}
       >
         <td className={cn(
-          "py-5 px-6 text-sm font-mono tabular-nums text-slate-800 align-bottom",
+          "py-5 pl-6 pr-0 text-sm font-mono tabular-nums text-slate-800 align-bottom",
           isTotalExpensesRow && "font-bold"
         )}>
           {rowData.label && (
@@ -193,7 +193,7 @@ export function ExpenseCard({ title, data, variant, selectedFilter }: ExpenseCar
           <table className="w-full">
             <thead>
               <tr className="border-b border-slate-100 bg-slate-50">
-                <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide align-bottom">Invoiced</th>
+                <th className="text-left py-4 pl-6 pr-0 font-medium text-sm text-slate-600 tracking-wide align-bottom">Invoiced</th>
                 <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide align-bottom">Product Expense</th>
                 <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide align-bottom">Freight to Store Expense</th>
                 <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide align-bottom"># of Invoices</th>
