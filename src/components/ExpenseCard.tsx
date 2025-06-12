@@ -118,7 +118,7 @@ export function ExpenseCard({ title, data, variant, selectedFilter }: ExpenseCar
                   </TooltipContent>
                 </Tooltip>
                 <span className={cn(
-                  "text-slate-700 font-sans font-medium text-xs", 
+                  "text-slate-700 font-sans font-medium text-xs whitespace-nowrap", 
                   showNoData && "text-slate-500",
                   isTotalExpensesRow && "font-bold"
                 )}>
