@@ -51,14 +51,16 @@ const getCategoryBorderColor = (label: string) => {
   return colorMap[label] || "border-l-gray-500";
 };
 
-const hasNoDataForRSCCorporate = (label?: string) => {
-  return label && (label.includes("Uniforms: Replenishment") || label.includes("Uniforms: Non-replenishment"));
+const shouldShowNoData = (label: string | undefined, selectedFilter: string | undefined) => {
+  // Only show no data when RSC Corporate is selected AND the label contains "Uniforms"
+  return selectedFilter === "rsc-corporate" && 
+         label && 
+         (label.includes("Uniforms: Replenishment") || label.includes("Uniforms: Non-replenishment"));
 };
 
 export function ExpenseCard({ title, data, variant, selectedFilter }: ExpenseCardProps) {
   const isTotal = variant === "total";
   const dataArray = Array.isArray(data) ? data : [data];
-  const isRSCCorporateSelected = selectedFilter === "rsc-corporate";
   
   const cardVariants = {
     internal: "border-slate-200 bg-white hover:shadow-md",
@@ -75,7 +77,7 @@ export function ExpenseCard({ title, data, variant, selectedFilter }: ExpenseCar
   const renderRow = (rowData: ExpenseData, index: number, isSubItem = false, parentIndex?: number) => {
     const icon = rowData.label ? getCategoryIcon(rowData.label) : null;
     const borderColor = rowData.label ? getCategoryBorderColor(rowData.label) : "";
-    const shouldShowNoData = isRSCCorporateSelected && hasNoDataForRSCCorporate(rowData.label);
+    const showNoData = shouldShowNoData(rowData.label, selectedFilter);
     
     return (
       <tr 
@@ -86,7 +88,7 @@ export function ExpenseCard({ title, data, variant, selectedFilter }: ExpenseCar
           index === 0 && Array.isArray(data) && !isSubItem && "font-medium",
           (index > 0 && Array.isArray(data) && !isSubItem) || isSubItem && "bg-slate-50/30",
           rowData.label && borderColor && `border-l-4 ${borderColor}`,
-          shouldShowNoData && "opacity-50 bg-slate-100/50"
+          showNoData && "opacity-50 bg-slate-100/50"
         )}
       >
         <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
@@ -99,7 +101,7 @@ export function ExpenseCard({ title, data, variant, selectedFilter }: ExpenseCar
                       "w-9 h-5 rounded-full flex items-center justify-center text-xs font-bold min-w-[36px] cursor-help hover:opacity-80 transition-opacity",
                       icon.bgColor,
                       icon.textColor,
-                      shouldShowNoData && "opacity-60"
+                      showNoData && "opacity-60"
                     )}>
                       {icon.text}
                     </div>
@@ -108,37 +110,37 @@ export function ExpenseCard({ title, data, variant, selectedFilter }: ExpenseCar
                     <p className="max-w-xs text-sm">{getTooltipContent(rowData.label)}</p>
                   </TooltipContent>
                 </Tooltip>
-                <span className={cn("text-slate-700 font-sans font-medium text-xs", shouldShowNoData && "text-slate-500")}>
+                <span className={cn("text-slate-700 font-sans font-medium text-xs", showNoData && "text-slate-500")}>
                   {rowData.label}
                 </span>
               </div>
             </TooltipProvider>
           )}
-          {shouldShowNoData ? "—" : rowData.invoiced}
+          {showNoData ? "—" : rowData.invoiced}
         </td>
         <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
-          {shouldShowNoData ? "—" : rowData.productExpense}
+          {showNoData ? "—" : rowData.productExpense}
         </td>
         <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
-          {shouldShowNoData ? "—" : rowData.freightToStore}
+          {showNoData ? "—" : rowData.freightToStore}
         </td>
         <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
-          {shouldShowNoData ? "—" : rowData.numInvoices}
+          {showNoData ? "—" : rowData.numInvoices}
         </td>
         <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
-          {shouldShowNoData ? "—" : rowData.numOrderingAccounts}
+          {showNoData ? "—" : rowData.numOrderingAccounts}
         </td>
         <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
-          {shouldShowNoData ? "—" : rowData.numItemsOrdered}
+          {showNoData ? "—" : rowData.numItemsOrdered}
         </td>
         <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
-          {shouldShowNoData ? "—" : rowData.avgOrderValue}
+          {showNoData ? "—" : rowData.avgOrderValue}
         </td>
         <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
-          {shouldShowNoData ? "—" : rowData.avgFreightToStore}
+          {showNoData ? "—" : rowData.avgFreightToStore}
         </td>
         <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
-          {shouldShowNoData ? "—" : rowData.avgItemsPerOrder}
+          {showNoData ? "—" : rowData.avgItemsPerOrder}
         </td>
       </tr>
     );
