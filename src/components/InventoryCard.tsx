@@ -1,5 +1,7 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Info } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface InventorySnapshotData {
@@ -178,7 +180,23 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
                     <th className="text-left py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Item</th>
                     <th className="text-center py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Count</th>
                     <th className="text-center py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Value</th>
-                    <th className="text-center py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Days on Hand*</th>
+                    <th className="text-center py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">
+                      <div className="flex items-center justify-center gap-1">
+                        Days on Hand
+                        <TooltipProvider>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <div className="w-4 h-4 rounded-full bg-slate-400 flex items-center justify-center cursor-help hover:bg-slate-500 transition-colors">
+                                <Info size={8} className="text-white" />
+                              </div>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p className="max-w-xs text-sm">The number of days current inventory will last based on average daily usage</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+                      </div>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -223,7 +241,23 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
                     <th className="text-left py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Item</th>
                     <th className="text-center py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Count</th>
                     <th className="text-center py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Value</th>
-                    <th className="text-center py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Days on Hand*</th>
+                    <th className="text-center py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">
+                      <div className="flex items-center justify-center gap-1">
+                        Days on Hand
+                        <TooltipProvider>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <div className="w-4 h-4 rounded-full bg-slate-400 flex items-center justify-center cursor-help hover:bg-slate-500 transition-colors">
+                                <Info size={8} className="text-white" />
+                              </div>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p className="max-w-xs text-sm">The number of days current inventory will last based on average daily usage</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
+                      </div>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
