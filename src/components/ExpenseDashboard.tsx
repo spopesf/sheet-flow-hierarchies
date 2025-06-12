@@ -1,8 +1,7 @@
-
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { ExpenseCard } from "./ExpenseCard";
-import { DateRangePicker } from "./DateRangePicker";
 import { SearchFilters } from "./SearchFilters";
+import { NavigationTabs } from "./NavigationTabs";
 
 const internalOrdersData = [
   {
@@ -69,6 +68,9 @@ const totalExpenseData = {
 export function ExpenseDashboard() {
   return (
     <div className="space-y-8">
+      {/* Navigation Tabs */}
+      <NavigationTabs />
+      
       {/* Header */}
       <div className="border-b border-slate-200 bg-white">
         <div className="flex items-center justify-between py-6">
@@ -76,7 +78,6 @@ export function ExpenseDashboard() {
             <SidebarTrigger className="text-slate-600" />
             <h1 className="text-3xl font-bold tracking-tight text-slate-900">Expenses</h1>
           </div>
-          <DateRangePicker />
         </div>
       </div>
 
