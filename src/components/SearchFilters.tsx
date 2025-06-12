@@ -16,6 +16,8 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
   const [searchMethod, setSearchMethod] = useState("search");
   const [searchInput, setSearchInput] = useState("");
   const [selectedDropdown, setSelectedDropdown] = useState("");
+  const [dateRangeMethod, setDateRangeMethod] = useState("manual");
+  const [selectedDateRange, setSelectedDateRange] = useState("");
 
   const handleSearchMethodChange = (value: string) => {
     setSearchMethod(value);
@@ -31,6 +33,17 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
   const handleDropdownChange = (value: string) => {
     setSelectedDropdown(value);
     onFilterChange?.(value);
+  };
+
+  const handleDateRangeMethodChange = (value: string) => {
+    setDateRangeMethod(value);
+    if (value === "manual") {
+      setSelectedDateRange("");
+    }
+  };
+
+  const handleDateRangeDropdownChange = (value: string) => {
+    setSelectedDateRange(value);
   };
 
   // Only show search methods for expenses tab
@@ -89,19 +102,66 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
           )}
         </div>
         
-        {/* Date Range - right column (always in same position) */}
+        {/* Date Range - right column */}
         <div className="space-y-1">
           <label className="text-sm font-medium text-muted-foreground">Date Range</label>
-          <div className="flex items-center justify-start gap-2 text-sm">
-            <CalendarDays className="h-4 w-4 text-muted-foreground" />
-            <Button variant="ghost" size="sm" className="font-medium text-foreground hover:bg-accent p-1 h-auto">
-              01/01/2025
-            </Button>
-            <ChevronRight className="h-3 w-3 text-muted-foreground" />
-            <Button variant="ghost" size="sm" className="font-medium text-foreground hover:bg-accent p-1 h-auto">
-              06/11/2025
-            </Button>
-          </div>
+          <RadioGroup value={dateRangeMethod} onValueChange={handleDateRangeMethodChange} className="space-y-1">
+            {/* Manual Date Range Option */}
+            <div className="flex items-center space-x-2 p-2 rounded-md border border-border bg-background/50">
+              <RadioGroupItem value="manual" id="manual-date" className="mt-0" />
+              <Label htmlFor="manual-date" className="flex items-center gap-2 flex-1 cursor-pointer">
+                <CalendarDays className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+                <div className="flex items-center gap-2 text-sm">
+                  <Button 
+                    variant="ghost" 
+                    size="sm" 
+                    className="font-medium text-foreground hover:bg-accent p-1 h-auto disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled={dateRangeMethod !== "manual"}
+                  >
+                    01/01/2025
+                  </Button>
+                  <ChevronRight className="h-3 w-3 text-muted-foreground" />
+                  <Button 
+                    variant="ghost" 
+                    size="sm" 
+                    className="font-medium text-foreground hover:bg-accent p-1 h-auto disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled={dateRangeMethod !== "manual"}
+                  >
+                    06/11/2025
+                  </Button>
+                </div>
+              </Label>
+            </div>
+            
+            {/* Predefined Date Range Option */}
+            <div className="flex items-center space-x-2 p-2 rounded-md border border-border bg-background/50">
+              <RadioGroupItem value="predefined" id="predefined-date" className="mt-0" />
+              <Label htmlFor="predefined-date" className="flex items-center flex-1 cursor-pointer">
+                <Select value={selectedDateRange} onValueChange={handleDateRangeDropdownChange} disabled={dateRangeMethod !== "predefined"}>
+                  <SelectTrigger className="w-full font-medium disabled:opacity-50 disabled:cursor-not-allowed border-0 shadow-none bg-transparent h-7">
+                    <SelectValue placeholder="Select date range" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="this-month">This Month</SelectItem>
+                    <SelectItem value="this-quarter">This Quarter</SelectItem>
+                    <SelectItem value="this-year">This Year</SelectItem>
+                    <SelectItem value="last-month">Last Month</SelectItem>
+                    <SelectItem value="last-quarter">Last Quarter</SelectItem>
+                    <SelectItem value="last-year">Last Year</SelectItem>
+                    <SelectItem value="month-to-date">Month to Date</SelectItem>
+                    <SelectItem value="quarter-to-date">Quarter to Date</SelectItem>
+                    <SelectItem value="year-to-date">Year to Date</SelectItem>
+                    <SelectItem value="last-7-days">Last 7 Days</SelectItem>
+                    <SelectItem value="last-14-days">Last 14 Days</SelectItem>
+                    <SelectItem value="last-30-days">Last 30 Days</SelectItem>
+                    <SelectItem value="last-60-days">Last 60 Days</SelectItem>
+                    <SelectItem value="last-90-days">Last 90 Days</SelectItem>
+                    <SelectItem value="last-12-months">Last 12 Months</SelectItem>
+                  </SelectContent>
+                </Select>
+              </Label>
+            </div>
+          </RadioGroup>
         </div>
       </div>
     </div>
