@@ -70,12 +70,15 @@ export function SearchFilters() {
               <Label htmlFor="filter" className="flex items-center flex-1 cursor-pointer">
                 <Select value={selectedDropdown} onValueChange={setSelectedDropdown} disabled={searchMethod !== "filter"}>
                   <SelectTrigger className="w-full font-medium disabled:opacity-50 disabled:cursor-not-allowed border-0 shadow-none bg-transparent h-8">
-                    <SelectValue placeholder="All Orders" />
+                    <SelectValue placeholder="All User Groups" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="all">All Orders</SelectItem>
-                    <SelectItem value="internal">Internal Orders</SelectItem>
-                    <SelectItem value="consumer">Consumer Orders</SelectItem>
+                    <SelectItem value="all-user-groups">All User Groups</SelectItem>
+                    <SelectItem value="rsc-corporate">RSC Corporate</SelectItem>
+                    <SelectItem value="admin">Admin</SelectItem>
+                    <SelectItem value="restaurants">Restaurants</SelectItem>
+                    <SelectItem value="ctm-and-r">CTM and R</SelectItem>
+                    <SelectItem value="facilities-nro-r-ops-leaders">Facilities, NRO, R Ops Leaders</SelectItem>
                   </SelectContent>
                 </Select>
               </Label>
