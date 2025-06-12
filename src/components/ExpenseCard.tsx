@@ -1,7 +1,6 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { Info } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ExpenseData {
@@ -86,24 +85,21 @@ export function ExpenseCard({ title, data, variant }: ExpenseCardProps) {
           {rowData.label && (
             <TooltipProvider>
               <div className="flex items-center gap-2 mb-1">
-                {icon && (
-                  <div className={cn(
-                    "w-9 h-5 rounded-full flex items-center justify-center text-xs font-bold min-w-[36px]",
-                    icon.bgColor,
-                    icon.textColor
-                  )}>
-                    {icon.text}
-                  </div>
-                )}
-                <span className="text-slate-700 font-sans font-medium text-xs">{rowData.label}</span>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Info className="h-4 w-4 text-slate-500 hover:text-slate-700 cursor-help" />
+                    <div className={cn(
+                      "w-9 h-5 rounded-full flex items-center justify-center text-xs font-bold min-w-[36px] cursor-help hover:opacity-80 transition-opacity",
+                      icon.bgColor,
+                      icon.textColor
+                    )}>
+                      {icon.text}
+                    </div>
                   </TooltipTrigger>
                   <TooltipContent>
                     <p className="max-w-xs text-sm">{getTooltipContent(rowData.label)}</p>
                   </TooltipContent>
                 </Tooltip>
+                <span className="text-slate-700 font-sans font-medium text-xs">{rowData.label}</span>
               </div>
             </TooltipProvider>
           )}
