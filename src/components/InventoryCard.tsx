@@ -121,9 +121,9 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
             <table className="w-full">
               <thead>
                 <tr className="border-b border-slate-100 bg-slate-50">
-                  <th className="text-left py-2 px-4 font-medium text-xs text-slate-600 tracking-wide min-w-[200px]"></th>
-                  <th className="text-left py-2 px-4 font-medium text-xs text-slate-600 tracking-wide min-w-[100px]">Count</th>
-                  <th className="text-left py-2 px-4 font-medium text-xs text-slate-600 tracking-wide min-w-[100px]">Value</th>
+                  <th className="text-right py-2 px-4 font-medium text-xs text-slate-600 tracking-wide min-w-[200px]"></th>
+                  <th className="text-right py-2 px-4 font-medium text-xs text-slate-600 tracking-wide min-w-[100px]">Count</th>
+                  <th className="text-right py-2 px-4 font-medium text-xs text-slate-600 tracking-wide min-w-[100px]">Value</th>
                 </tr>
               </thead>
               <tbody>
@@ -176,11 +176,11 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-slate-100 bg-slate-50">
-                    <th className="text-left py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Item</th>
-                    <th className="text-left py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Count</th>
-                    <th className="text-left py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Value</th>
-                    <th className="text-left py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">
-                      <div className="flex items-center gap-1">
+                    <th className="text-right py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Item</th>
+                    <th className="text-right py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Count</th>
+                    <th className="text-right py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Value</th>
+                    <th className="text-right py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">
+                      <div className="flex items-center gap-1 justify-end">
                         Days on Hand
                         <TooltipProvider>
                           <Tooltip>
@@ -237,11 +237,11 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-slate-100 bg-slate-50">
-                    <th className="text-left py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Item</th>
-                    <th className="text-left py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Count</th>
-                    <th className="text-left py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Value</th>
-                    <th className="text-left py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">
-                      <div className="flex items-center gap-1">
+                    <th className="text-right py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Item</th>
+                    <th className="text-right py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Count</th>
+                    <th className="text-right py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Value</th>
+                    <th className="text-right py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">
+                      <div className="flex items-center gap-1 justify-end">
                         Days on Hand
                         <TooltipProvider>
                           <Tooltip>
