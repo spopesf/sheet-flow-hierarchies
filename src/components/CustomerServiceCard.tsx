@@ -37,24 +37,24 @@ export function CustomerServiceCard({
       </CardHeader>
       <CardContent className="p-6">
         <div className="grid grid-cols-5 gap-6">
-          <div className="text-center">
-            <div className="text-xs font-medium text-slate-600 tracking-wide mb-2">Created Tickets</div>
+          <div className="text-center flex flex-col">
+            <div className="text-xs font-medium text-slate-600 tracking-wide mb-2 flex-1 flex items-start">Created Tickets</div>
             <div className="text-2xl font-bold text-slate-900">{data.ytdCreatedTickets}</div>
           </div>
-          <div className="text-center">
-            <div className="text-xs font-medium text-slate-600 tracking-wide mb-2">Solved Tickets</div>
+          <div className="text-center flex flex-col">
+            <div className="text-xs font-medium text-slate-600 tracking-wide mb-2 flex-1 flex items-start">Solved Tickets</div>
             <div className="text-2xl font-bold text-slate-900">{data.ytdSolvedTickets}</div>
           </div>
-          <div className="text-center">
-            <div className="text-xs font-medium text-slate-600 tracking-wide mb-2">Unsolved Tickets</div>
+          <div className="text-center flex flex-col">
+            <div className="text-xs font-medium text-slate-600 tracking-wide mb-2 flex-1 flex items-start">Unsolved Tickets</div>
             <div className="text-2xl font-bold text-slate-900">{data.ytdUnsolvedTickets}</div>
           </div>
-          <div className="text-center">
-            <div className="text-xs font-medium text-slate-600 tracking-wide mb-2">Resolution %</div>
+          <div className="text-center flex flex-col">
+            <div className="text-xs font-medium text-slate-600 tracking-wide mb-2 flex-1 flex items-start">Resolution %</div>
             <div className="text-2xl font-bold text-slate-900">{data.resolutionPercentage}</div>
           </div>
-          <div className="text-center">
-            <div className="text-xs font-medium text-slate-600 tracking-wide mb-2">Satisfaction Score</div>
+          <div className="text-center flex flex-col">
+            <div className="text-xs font-medium text-slate-600 tracking-wide mb-2 flex-1 flex items-start">Satisfaction Score</div>
             <div className="text-2xl font-bold text-slate-900">{data.satisfactionScore}</div>
           </div>
         </div>
