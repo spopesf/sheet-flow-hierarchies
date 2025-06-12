@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Info } from "lucide-react";
@@ -79,16 +78,16 @@ export function ExpenseCard({ title, data, variant }: ExpenseCardProps) {
           isTotal && "bg-white font-semibold",
           index === 0 && Array.isArray(data) && !isSubItem && "font-medium",
           (index > 0 && Array.isArray(data) && !isSubItem) || isSubItem && "bg-slate-50/30",
-          borderColor && `border-l-4 ${borderColor}`
+          rowData.label && borderColor && `border-l-4 ${borderColor}`
         )}
       >
         <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
-          {rowData.label && (index > 0 || isSubItem) && (
+          {rowData.label && (
             <TooltipProvider>
               <div className="flex items-center gap-2 mb-1">
                 {icon && (
                   <div className={cn(
-                    "w-7 h-5 rounded-xl flex items-center justify-center text-xs font-bold",
+                    "w-10 h-6 rounded-full flex items-center justify-center text-xs font-bold",
                     icon.bgColor,
                     icon.textColor
                   )}>
