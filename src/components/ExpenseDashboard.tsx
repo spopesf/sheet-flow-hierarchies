@@ -4,17 +4,43 @@ import { ExpenseCard } from "./ExpenseCard";
 import { DateRangePicker } from "./DateRangePicker";
 import { SearchFilters } from "./SearchFilters";
 
-const internalOrdersData = {
-  invoiced: "$5,051,172.45",
-  productExpense: "$4,447,750.29",
-  freightToStore: "$603,422.16",
-  numInvoices: "24870",
-  numOrderingAccounts: "24520",
-  numItemsOrdered: "543061",
-  avgOrderValue: "$206.02",
-  avgFreightToStore: "21.36",
-  avgItemsPerOrder: "21.75"
-};
+const internalOrdersData = [
+  {
+    invoiced: "$5,051,172.45",
+    productExpense: "$4,447,750.29",
+    freightToStore: "$603,422.16",
+    numInvoices: "24870",
+    numOrderingAccounts: "24520",
+    numItemsOrdered: "543061",
+    avgOrderValue: "$206.02",
+    avgFreightToStore: "21.36",
+    avgItemsPerOrder: "21.75"
+  },
+  {
+    invoiced: "$2,125,486.30",
+    productExpense: "$1,890,234.55",
+    freightToStore: "$235,251.75",
+    numInvoices: "10420",
+    numOrderingAccounts: "9850",
+    numItemsOrdered: "198432",
+    avgOrderValue: "$204.15",
+    avgFreightToStore: "22.56",
+    avgItemsPerOrder: "19.05",
+    label: "Region A"
+  },
+  {
+    invoiced: "$2,925,686.15",
+    productExpense: "$2,557,515.74",
+    freightToStore: "$368,170.41",
+    numInvoices: "14450",
+    numOrderingAccounts: "14670",
+    numItemsOrdered: "344629",
+    avgOrderValue: "$202.45",
+    avgFreightToStore: "25.48",
+    avgItemsPerOrder: "23.85",
+    label: "Region B"
+  }
+];
 
 const consumerOrdersData = {
   invoiced: "$21,196.30",
@@ -44,11 +70,11 @@ export function ExpenseDashboard() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="border-b border-border bg-background">
+      <div className="border-b border-slate-200 bg-white">
         <div className="flex items-center justify-between py-6">
           <div className="flex items-center gap-4">
-            <SidebarTrigger className="text-muted-foreground" />
-            <h1 className="text-3xl font-bold tracking-tight text-foreground">Expenses</h1>
+            <SidebarTrigger className="text-slate-600" />
+            <h1 className="text-3xl font-bold tracking-tight text-slate-900">Expenses</h1>
           </div>
           <DateRangePicker />
         </div>

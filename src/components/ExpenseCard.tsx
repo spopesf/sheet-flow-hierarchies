@@ -12,32 +12,34 @@ interface ExpenseData {
   avgOrderValue: string;
   avgFreightToStore: string;
   avgItemsPerOrder: string;
+  label?: string; // Optional label for sub-rows
 }
 
 interface ExpenseCardProps {
   title: string;
-  data: ExpenseData;
+  data: ExpenseData | ExpenseData[];
   variant: "internal" | "consumer" | "total";
 }
 
 export function ExpenseCard({ title, data, variant }: ExpenseCardProps) {
   const isTotal = variant === "total";
+  const dataArray = Array.isArray(data) ? data : [data];
   
   const cardVariants = {
-    internal: "border-border bg-card hover:shadow-sm",
-    consumer: "border-border bg-card hover:shadow-sm", 
-    total: "border-border bg-card shadow-md border-2"
+    internal: "border-slate-200 bg-white hover:shadow-md",
+    consumer: "border-slate-200 bg-white hover:shadow-md", 
+    total: "border-slate-300 bg-white shadow-lg border-2"
   };
 
   const titleVariants = {
-    internal: "text-foreground font-semibold",
-    consumer: "text-foreground font-semibold",
-    total: "text-foreground font-bold text-xl"
+    internal: "text-slate-900 font-semibold",
+    consumer: "text-slate-900 font-semibold",
+    total: "text-slate-900 font-bold text-xl"
   };
 
   return (
     <Card className={cn("overflow-hidden transition-all duration-200", cardVariants[variant])}>
-      <CardHeader className={cn("pb-6", isTotal && "bg-muted/30")}>
+      <CardHeader className={cn("pb-6 border-b border-slate-100", isTotal && "bg-slate-50/50")}>
         <CardTitle className={cn("text-lg tracking-tight", titleVariants[variant])}>
           {title}
         </CardTitle>
@@ -46,30 +48,45 @@ export function ExpenseCard({ title, data, variant }: ExpenseCardProps) {
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-border bg-muted/50">
-                <th className="text-left py-4 px-6 font-medium text-sm text-muted-foreground tracking-wide">Invoiced</th>
-                <th className="text-left py-4 px-6 font-medium text-sm text-muted-foreground tracking-wide">Product Expense</th>
-                <th className="text-left py-4 px-6 font-medium text-sm text-muted-foreground tracking-wide">Freight to Store Expense</th>
-                <th className="text-left py-4 px-6 font-medium text-sm text-muted-foreground tracking-wide"># of Invoices</th>
-                <th className="text-left py-4 px-6 font-medium text-sm text-muted-foreground tracking-wide"># of Ordering Accounts</th>
-                <th className="text-left py-4 px-6 font-medium text-sm text-muted-foreground tracking-wide"># of Items Ordered</th>
-                <th className="text-left py-4 px-6 font-medium text-sm text-muted-foreground tracking-wide">Avg. Order Value</th>
-                <th className="text-left py-4 px-6 font-medium text-sm text-muted-foreground tracking-wide">Avg. Freight to Store Expense</th>
-                <th className="text-left py-4 px-6 font-medium text-sm text-muted-foreground tracking-wide">Avg. # of Items/Order</th>
+              <tr className="border-b border-slate-100 bg-slate-50">
+                <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide">Invoiced</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide">Product Expense</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide">Freight to Store Expense</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide"># of Invoices</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide"># of Ordering Accounts</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide"># of Items Ordered</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide">Avg. Order Value</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide">Avg. Freight to Store Expense</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide">Avg. # of Items/Order</th>
               </tr>
             </thead>
             <tbody>
-              <tr className={cn("border-b border-border hover:bg-muted/25 transition-colors", isTotal && "bg-background font-semibold")}>
-                <td className="py-5 px-6 text-sm font-mono tabular-nums text-foreground">{data.invoiced}</td>
-                <td className="py-5 px-6 text-sm font-mono tabular-nums text-foreground">{data.productExpense}</td>
-                <td className="py-5 px-6 text-sm font-mono tabular-nums text-foreground">{data.freightToStore}</td>
-                <td className="py-5 px-6 text-sm font-mono tabular-nums text-foreground">{data.numInvoices}</td>
-                <td className="py-5 px-6 text-sm font-mono tabular-nums text-foreground">{data.numOrderingAccounts}</td>
-                <td className="py-5 px-6 text-sm font-mono tabular-nums text-foreground">{data.numItemsOrdered}</td>
-                <td className="py-5 px-6 text-sm font-mono tabular-nums text-foreground">{data.avgOrderValue}</td>
-                <td className="py-5 px-6 text-sm font-mono tabular-nums text-foreground">{data.avgFreightToStore}</td>
-                <td className="py-5 px-6 text-sm font-mono tabular-nums text-foreground">{data.avgItemsPerOrder}</td>
-              </tr>
+              {dataArray.map((rowData, index) => (
+                <tr 
+                  key={index}
+                  className={cn(
+                    "border-b border-slate-100 hover:bg-slate-50/50 transition-colors",
+                    isTotal && "bg-white font-semibold",
+                    index === 0 && Array.isArray(data) && "font-medium", // First row is slightly emphasized for parent
+                    index > 0 && Array.isArray(data) && "bg-slate-50/30" // Sub-rows have slight background
+                  )}
+                >
+                  <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
+                    {rowData.label && index > 0 && (
+                      <span className="text-slate-600 font-sans mr-2">↳</span>
+                    )}
+                    {rowData.invoiced}
+                  </td>
+                  <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.productExpense}</td>
+                  <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.freightToStore}</td>
+                  <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.numInvoices}</td>
+                  <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.numOrderingAccounts}</td>
+                  <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.numItemsOrdered}</td>
+                  <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.avgOrderValue}</td>
+                  <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.avgFreightToStore}</td>
+                  <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.avgItemsPerOrder}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
