@@ -98,13 +98,13 @@ export function CustomerServiceCard({
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
       {/* B2B Column */}
       <div className="space-y-8">
-        {renderSupportCaseCard("Support Case (B2B)", supportCaseDataB2B)}
+        {renderSupportCaseCard("Support Cases (B2B)", supportCaseDataB2B)}
         {renderTicketDistributionCard("Top 10 Ticket Distribution by Reason (B2B)", topTicketReasonsB2B)}
       </div>
 
       {/* B2C Column */}
       <div className="space-y-8">
-        {renderSupportCaseCard("Support Case (B2C)", supportCaseDataB2C)}
+        {renderSupportCaseCard("Support Cases (B2C)", supportCaseDataB2C)}
         {renderTicketDistributionCard("Top 10 Ticket Distribution by Reason (B2C)", topTicketReasonsB2C)}
       </div>
     </div>
