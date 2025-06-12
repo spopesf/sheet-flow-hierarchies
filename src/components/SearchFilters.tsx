@@ -114,7 +114,6 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
             // Single date picker for inventory tab
             <div className="p-2 rounded-md border border-border bg-background/50">
               <div className="relative flex items-center gap-2 text-sm">
-                <CalendarDays className="h-4 w-4 text-muted-foreground" />
                 <Button 
                   variant="ghost" 
                   size="sm" 
@@ -122,6 +121,7 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
                 >
                   06/11/2025
                 </Button>
+                <CalendarDays className="h-4 w-4 text-muted-foreground" />
               </div>
             </div>
           ) : (
