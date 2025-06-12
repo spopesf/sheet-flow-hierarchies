@@ -132,7 +132,31 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
         {/* Top 10 Items (Internal Orders) */}
         <Card className="border-slate-200 bg-white hover:shadow-md overflow-hidden transition-all duration-200">
           <CardHeader className="pb-4 border-b border-slate-100">
-            <CardTitle className="text-lg tracking-tight text-slate-900 font-semibold">
+            <CardTitle className="text-lg tracking-tight text-slate-900 font-semibold flex items-center gap-2">
+              <TooltipProvider>
+                <div className="flex items-center gap-1">
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <div className="w-9 h-5 rounded-full flex items-center justify-center text-xs font-bold min-w-[36px] cursor-help hover:opacity-80 transition-opacity bg-blue-500 text-white">
+                        UR
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p className="max-w-xs text-sm">Uniform replenishment items from internal orders</p>
+                    </TooltipContent>
+                  </Tooltip>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <div className="w-9 h-5 rounded-full flex items-center justify-center text-xs font-bold min-w-[36px] cursor-help hover:opacity-80 transition-opacity bg-green-500 text-white">
+                        UN
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p className="max-w-xs text-sm">Uniform non-replenishment items from internal orders</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </div>
+              </TooltipProvider>
               Top 10 Items (internal orders)
             </CardTitle>
           </CardHeader>
@@ -165,7 +189,19 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
         {/* Top 10 Items (Consumer Orders) */}
         <Card className="border-slate-200 bg-white hover:shadow-md overflow-hidden transition-all duration-200">
           <CardHeader className="pb-4 border-b border-slate-100">
-            <CardTitle className="text-lg tracking-tight text-slate-900 font-semibold">
+            <CardTitle className="text-lg tracking-tight text-slate-900 font-semibold flex items-center gap-2">
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <div className="w-9 h-5 rounded-full flex items-center justify-center text-xs font-bold min-w-[36px] cursor-help hover:opacity-80 transition-opacity bg-purple-500 text-white">
+                      MR
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p className="max-w-xs text-sm">Merchandise items from consumer orders</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
               Top 10 Items (consumer orders)
             </CardTitle>
           </CardHeader>
