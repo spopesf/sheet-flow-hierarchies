@@ -12,7 +12,6 @@ import {
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
@@ -54,10 +53,7 @@ export function AppSidebar() {
   return (
     <Sidebar className="border-r border-border">
       <SidebarContent>
-        <SidebarGroup>
-          <SidebarGroupLabel className="text-xs font-medium text-muted-foreground mb-3 tracking-wide uppercase">
-            Navigation
-          </SidebarGroupLabel>
+        <SidebarGroup className="pt-8">
           <SidebarGroupContent>
             <SidebarMenu>
               {menuItems.map((item) => (
