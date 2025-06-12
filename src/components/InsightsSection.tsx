@@ -59,7 +59,7 @@ export function InsightsSection() {
       <div>
         <h2 className="text-2xl font-bold text-slate-900 mb-6">Insights</h2>
         
-        <div className="space-y-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {/* Top 10 Items */}
           <Card className="border-slate-200 bg-white">
             <CardHeader className="pb-4">
@@ -88,17 +88,17 @@ export function InsightsSection() {
                 <table className="w-full">
                   <thead>
                     <tr className="border-b border-slate-100 bg-slate-50">
-                      <th className="text-left py-3 px-4 font-medium text-sm text-slate-600">Item</th>
-                      <th className="text-left py-3 px-4 font-medium text-sm text-slate-600"># Sold</th>
-                      <th className="text-left py-3 px-4 font-medium text-sm text-slate-600">MSRP</th>
+                      <th className="text-left py-2 px-3 font-medium text-xs text-slate-600">Item</th>
+                      <th className="text-left py-2 px-3 font-medium text-xs text-slate-600"># Sold</th>
+                      <th className="text-left py-2 px-3 font-medium text-xs text-slate-600">MSRP</th>
                     </tr>
                   </thead>
                   <tbody>
                     {topItemsData.map((item, index) => (
                       <tr key={index} className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors border-l-4 border-l-purple-500">
-                        <td className="py-3 px-4 text-sm text-slate-800">{item.item}</td>
-                        <td className="py-3 px-4 text-sm font-mono tabular-nums text-slate-800">{item.numberSold}</td>
-                        <td className="py-3 px-4 text-sm font-mono tabular-nums text-slate-800">{item.msrp}</td>
+                        <td className="py-2 px-3 text-xs text-slate-800">{item.item}</td>
+                        <td className="py-2 px-3 text-xs font-mono tabular-nums text-slate-800">{item.numberSold}</td>
+                        <td className="py-2 px-3 text-xs font-mono tabular-nums text-slate-800">{item.msrp}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -132,26 +132,26 @@ export function InsightsSection() {
             </CardHeader>
             <CardContent className="p-0">
               <div className="overflow-x-auto">
-                <table className="w-full">
+                <table className="w-full text-xs">
                   <thead>
                     <tr className="border-b border-slate-100 bg-slate-50">
-                      <th className="text-left py-3 px-4 font-medium text-sm text-slate-600">Item</th>
-                      <th className="text-left py-3 px-4 font-medium text-sm text-slate-600"># of Orders</th>
-                      <th className="text-left py-3 px-4 font-medium text-sm text-slate-600">% of Orders</th>
-                      <th className="text-left py-3 px-4 font-medium text-sm text-slate-600">Sales</th>
-                      <th className="text-left py-3 px-4 font-medium text-sm text-slate-600">% of Sales</th>
-                      <th className="text-left py-3 px-4 font-medium text-sm text-slate-600">Avg Order Value</th>
+                      <th className="text-left py-2 px-2 font-medium text-xs text-slate-600">Customer</th>
+                      <th className="text-left py-2 px-2 font-medium text-xs text-slate-600"># Orders</th>
+                      <th className="text-left py-2 px-2 font-medium text-xs text-slate-600">% Orders</th>
+                      <th className="text-left py-2 px-2 font-medium text-xs text-slate-600">Sales</th>
+                      <th className="text-left py-2 px-2 font-medium text-xs text-slate-600">% Sales</th>
+                      <th className="text-left py-2 px-2 font-medium text-xs text-slate-600">Avg Value</th>
                     </tr>
                   </thead>
                   <tbody>
                     {customerTypeData.map((customer, index) => (
                       <tr key={index} className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors border-l-4 border-l-purple-500">
-                        <td className="py-3 px-4 text-sm text-slate-800">{customer.type}</td>
-                        <td className="py-3 px-4 text-sm font-mono tabular-nums text-slate-800">{customer.numOrders}</td>
-                        <td className="py-3 px-4 text-sm font-mono tabular-nums text-slate-800">{customer.percentOrders}</td>
-                        <td className="py-3 px-4 text-sm font-mono tabular-nums text-slate-800">{customer.sales}</td>
-                        <td className="py-3 px-4 text-sm font-mono tabular-nums text-slate-800">{customer.percentSales}</td>
-                        <td className="py-3 px-4 text-sm font-mono tabular-nums text-slate-800">{customer.avgOrderValue}</td>
+                        <td className="py-2 px-2 text-xs text-slate-800">{customer.type}</td>
+                        <td className="py-2 px-2 text-xs font-mono tabular-nums text-slate-800">{customer.numOrders}</td>
+                        <td className="py-2 px-2 text-xs font-mono tabular-nums text-slate-800">{customer.percentOrders}</td>
+                        <td className="py-2 px-2 text-xs font-mono tabular-nums text-slate-800">{customer.sales}</td>
+                        <td className="py-2 px-2 text-xs font-mono tabular-nums text-slate-800">{customer.percentSales}</td>
+                        <td className="py-2 px-2 text-xs font-mono tabular-nums text-slate-800">{customer.avgOrderValue}</td>
                       </tr>
                     ))}
                   </tbody>
