@@ -1,5 +1,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 
 interface TopItemData {
   item: string;
@@ -49,6 +51,9 @@ const customerTypeData: CustomerTypeData[] = [
 ];
 
 export function InsightsSection() {
+  // Purple merchandise icon
+  const merchandiseIcon = { text: "MR", bgColor: "bg-purple-500", textColor: "text-white" };
+
   return (
     <div className="space-y-8">
       <div>
@@ -58,7 +63,23 @@ export function InsightsSection() {
           {/* Top 10 Items */}
           <Card className="border-slate-200 bg-white">
             <CardHeader className="pb-4">
-              <CardTitle className="text-lg font-semibold text-slate-900">
+              <CardTitle className="text-lg font-semibold text-slate-900 flex items-center gap-2">
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <div className={cn(
+                        "w-9 h-5 rounded-full flex items-center justify-center text-xs font-bold min-w-[36px] cursor-help hover:opacity-80 transition-opacity",
+                        merchandiseIcon.bgColor,
+                        merchandiseIcon.textColor
+                      )}>
+                        {merchandiseIcon.text}
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p className="max-w-xs text-sm">Top performing merchandise items from consumer orders</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
                 Top 10 Items (consumer orders)
               </CardTitle>
             </CardHeader>
@@ -74,7 +95,7 @@ export function InsightsSection() {
                   </thead>
                   <tbody>
                     {topItemsData.map((item, index) => (
-                      <tr key={index} className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors">
+                      <tr key={index} className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors border-l-4 border-l-purple-500">
                         <td className="py-3 px-4 text-sm text-slate-800">{item.item}</td>
                         <td className="py-3 px-4 text-sm font-mono tabular-nums text-slate-800">{item.numberSold}</td>
                         <td className="py-3 px-4 text-sm font-mono tabular-nums text-slate-800">{item.msrp}</td>
@@ -89,7 +110,23 @@ export function InsightsSection() {
           {/* First Time Customer vs. Repeat */}
           <Card className="border-slate-200 bg-white">
             <CardHeader className="pb-4">
-              <CardTitle className="text-lg font-semibold text-slate-900">
+              <CardTitle className="text-lg font-semibold text-slate-900 flex items-center gap-2">
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <div className={cn(
+                        "w-9 h-5 rounded-full flex items-center justify-center text-xs font-bold min-w-[36px] cursor-help hover:opacity-80 transition-opacity",
+                        merchandiseIcon.bgColor,
+                        merchandiseIcon.textColor
+                      )}>
+                        {merchandiseIcon.text}
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p className="max-w-xs text-sm">Customer segmentation analysis for merchandise sales</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
                 First Time Customer vs. Repeat
               </CardTitle>
             </CardHeader>
@@ -108,7 +145,7 @@ export function InsightsSection() {
                   </thead>
                   <tbody>
                     {customerTypeData.map((customer, index) => (
-                      <tr key={index} className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors">
+                      <tr key={index} className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors border-l-4 border-l-purple-500">
                         <td className="py-3 px-4 text-sm text-slate-800">{customer.type}</td>
                         <td className="py-3 px-4 text-sm font-mono tabular-nums text-slate-800">{customer.numOrders}</td>
                         <td className="py-3 px-4 text-sm font-mono tabular-nums text-slate-800">{customer.percentOrders}</td>

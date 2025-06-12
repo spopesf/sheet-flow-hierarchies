@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { ExpenseCard } from "./ExpenseCard";
 import { IncomeCard } from "./IncomeCard";
@@ -84,7 +85,7 @@ export function ExpenseDashboard() {
           <>
             {/* Search and Filters */}
             <div className="px-1">
-              <SearchFilters onFilterChange={setSelectedFilter} />
+              <SearchFilters onFilterChange={setSelectedFilter} activeTab={activeTab} />
             </div>
 
             {/* Expense Cards */}
@@ -110,7 +111,7 @@ export function ExpenseDashboard() {
           <>
             {/* Search and Filters */}
             <div className="px-1">
-              <SearchFilters onFilterChange={setSelectedFilter} />
+              <SearchFilters onFilterChange={setSelectedFilter} activeTab={activeTab} />
             </div>
 
             {/* Income Cards */}

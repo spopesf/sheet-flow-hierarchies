@@ -9,9 +9,10 @@ import { Search, CalendarDays, ChevronRight } from "lucide-react";
 
 interface SearchFiltersProps {
   onFilterChange?: (filter: string) => void;
+  activeTab?: string;
 }
 
-export function SearchFilters({ onFilterChange }: SearchFiltersProps) {
+export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps) {
   const [searchMethod, setSearchMethod] = useState("search");
   const [searchInput, setSearchInput] = useState("");
   const [selectedDropdown, setSelectedDropdown] = useState("");
@@ -32,9 +33,12 @@ export function SearchFilters({ onFilterChange }: SearchFiltersProps) {
     onFilterChange?.(value);
   };
 
+  // Only show search methods for expenses tab
+  const showSearchMethods = activeTab === "expenses";
+
   return (
     <div className="p-3 bg-card rounded-lg border border-border shadow-sm">
-      <div className="grid grid-cols-3 gap-4 items-start">
+      <div className={`grid ${showSearchMethods ? 'grid-cols-3' : 'grid-cols-2'} gap-4 items-start`}>
         {/* Section Title */}
         <div>
           <h2 className="text-lg font-semibold text-foreground">Choose your filters</h2>
@@ -55,46 +59,48 @@ export function SearchFilters({ onFilterChange }: SearchFiltersProps) {
           </div>
         </div>
         
-        {/* Search Method Selection */}
-        <div className="space-y-1">
-          <label className="text-sm font-medium text-muted-foreground">Search Method</label>
-          <RadioGroup value={searchMethod} onValueChange={handleSearchMethodChange} className="space-y-1">
-            {/* Search Input Option */}
-            <div className="flex items-center space-x-2 p-2 rounded-md border border-border bg-background/50">
-              <RadioGroupItem value="search" id="search" className="mt-0" />
-              <Label htmlFor="search" className="flex items-center gap-2 flex-1 cursor-pointer">
-                <Search className="h-4 w-4 text-muted-foreground flex-shrink-0" />
-                <Input 
-                  placeholder="Store# or Employee#" 
-                  value={searchInput}
-                  onChange={(e) => setSearchInput(e.target.value)}
-                  disabled={searchMethod !== "search"}
-                  className="border-0 shadow-none focus-visible:ring-0 font-medium placeholder:text-muted-foreground disabled:opacity-50 disabled:cursor-not-allowed bg-transparent h-7"
-                />
-              </Label>
-            </div>
-            
-            {/* Dropdown Option */}
-            <div className="flex items-center space-x-2 p-2 rounded-md border border-border bg-background/50">
-              <RadioGroupItem value="filter" id="filter" className="mt-0" />
-              <Label htmlFor="filter" className="flex items-center flex-1 cursor-pointer">
-                <Select value={selectedDropdown} onValueChange={handleDropdownChange} disabled={searchMethod !== "filter"}>
-                  <SelectTrigger className="w-full font-medium disabled:opacity-50 disabled:cursor-not-allowed border-0 shadow-none bg-transparent h-7">
-                    <SelectValue placeholder="All User Groups" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all-user-groups">All User Groups</SelectItem>
-                    <SelectItem value="rsc-corporate">RSC Corporate</SelectItem>
-                    <SelectItem value="admin">Admin</SelectItem>
-                    <SelectItem value="restaurants">Restaurants</SelectItem>
-                    <SelectItem value="ctm-and-r">CTM and R</SelectItem>
-                    <SelectItem value="facilities-nro-r-ops-leaders">Facilities, NRO, R Ops Leaders</SelectItem>
-                  </SelectContent>
-                </Select>
-              </Label>
-            </div>
-          </RadioGroup>
-        </div>
+        {/* Search Method Selection - only show for expenses */}
+        {showSearchMethods && (
+          <div className="space-y-1">
+            <label className="text-sm font-medium text-muted-foreground">Search Method</label>
+            <RadioGroup value={searchMethod} onValueChange={handleSearchMethodChange} className="space-y-1">
+              {/* Search Input Option */}
+              <div className="flex items-center space-x-2 p-2 rounded-md border border-border bg-background/50">
+                <RadioGroupItem value="search" id="search" className="mt-0" />
+                <Label htmlFor="search" className="flex items-center gap-2 flex-1 cursor-pointer">
+                  <Search className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+                  <Input 
+                    placeholder="Store# or Employee#" 
+                    value={searchInput}
+                    onChange={(e) => setSearchInput(e.target.value)}
+                    disabled={searchMethod !== "search"}
+                    className="border-0 shadow-none focus-visible:ring-0 font-medium placeholder:text-muted-foreground disabled:opacity-50 disabled:cursor-not-allowed bg-transparent h-7"
+                  />
+                </Label>
+              </div>
+              
+              {/* Dropdown Option */}
+              <div className="flex items-center space-x-2 p-2 rounded-md border border-border bg-background/50">
+                <RadioGroupItem value="filter" id="filter" className="mt-0" />
+                <Label htmlFor="filter" className="flex items-center flex-1 cursor-pointer">
+                  <Select value={selectedDropdown} onValueChange={handleDropdownChange} disabled={searchMethod !== "filter"}>
+                    <SelectTrigger className="w-full font-medium disabled:opacity-50 disabled:cursor-not-allowed border-0 shadow-none bg-transparent h-7">
+                      <SelectValue placeholder="All User Groups" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all-user-groups">All User Groups</SelectItem>
+                      <SelectItem value="rsc-corporate">RSC Corporate</SelectItem>
+                      <SelectItem value="admin">Admin</SelectItem>
+                      <SelectItem value="restaurants">Restaurants</SelectItem>
+                      <SelectItem value="ctm-and-r">CTM and R</SelectItem>
+                      <SelectItem value="facilities-nro-r-ops-leaders">Facilities, NRO, R Ops Leaders</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </Label>
+              </div>
+            </RadioGroup>
+          </div>
+        )}
       </div>
     </div>
   );

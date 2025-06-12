@@ -29,25 +29,44 @@ interface IncomeCardProps {
 }
 
 export function IncomeCard({ title, data, variant, selectedFilter, showTooltip = false }: IncomeCardProps) {
+  // Purple merchandise icon
+  const merchandiseIcon = { text: "MR", bgColor: "bg-purple-500", textColor: "text-white" };
+
   return (
     <Card className="border-slate-200 bg-white hover:shadow-md overflow-hidden transition-all duration-200">
       <CardHeader className="pb-6 border-b border-slate-100">
         <CardTitle className="text-lg tracking-tight text-slate-900 font-semibold flex items-center gap-2">
-          {title}
-          {showTooltip && (
-            <TooltipProvider>
+          <TooltipProvider>
+            <div className="flex items-center gap-2">
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <div className="cursor-help">
-                    <Info className="h-4 w-4 text-slate-500" />
+                  <div className={cn(
+                    "w-9 h-5 rounded-full flex items-center justify-center text-xs font-bold min-w-[36px] cursor-help hover:opacity-80 transition-opacity",
+                    merchandiseIcon.bgColor,
+                    merchandiseIcon.textColor
+                  )}>
+                    {merchandiseIcon.text}
                   </div>
                 </TooltipTrigger>
                 <TooltipContent>
                   <p className="max-w-xs text-sm">Consumer merchandise sales data from B2C site operations</p>
                 </TooltipContent>
               </Tooltip>
-            </TooltipProvider>
-          )}
+              {title}
+              {showTooltip && (
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <div className="cursor-help">
+                      <Info className="h-4 w-4 text-slate-500" />
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p className="max-w-xs text-sm">Consumer merchandise sales data from B2C site operations</p>
+                  </TooltipContent>
+                </Tooltip>
+              )}
+            </div>
+          </TooltipProvider>
         </CardTitle>
       </CardHeader>
       <CardContent className="p-0">
@@ -70,7 +89,7 @@ export function IncomeCard({ title, data, variant, selectedFilter, showTooltip =
               </tr>
             </thead>
             <tbody>
-              <tr className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors bg-white font-semibold">
+              <tr className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors bg-white font-semibold border-l-4 border-l-purple-500">
                 <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{data.grossIncome}</td>
                 <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{data.freightToCustomerExpense}</td>
                 <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{data.salesTax}</td>
