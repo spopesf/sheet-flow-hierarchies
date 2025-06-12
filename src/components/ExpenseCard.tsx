@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Info } from "lucide-react";
@@ -87,7 +88,7 @@ export function ExpenseCard({ title, data, variant }: ExpenseCardProps) {
               <div className="flex items-center gap-2 mb-1">
                 {icon && (
                   <div className={cn(
-                    "w-7 h-5 rounded-full flex items-center justify-center text-xs font-bold",
+                    "w-7 h-5 rounded-xl flex items-center justify-center text-xs font-bold",
                     icon.bgColor,
                     icon.textColor
                   )}>
