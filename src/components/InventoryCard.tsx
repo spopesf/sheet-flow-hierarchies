@@ -1,5 +1,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 
 interface InventorySnapshotData {
   allInventory: { count: string; value: string };
@@ -22,6 +24,77 @@ interface InventoryCardProps {
   consumerOrdersItems: InventoryItem[];
 }
 
+const getCategoryIcon = (label: string) => {
+  const iconMap: Record<string, { text: string; bgColor: string; textColor: string }> = {
+    "Uniforms: Replenishment": { text: "UR", bgColor: "bg-blue-500", textColor: "text-white" },
+    "Uniforms: Non-replenishment": { text: "UN", bgColor: "bg-green-500", textColor: "text-white" },
+    "Merchandise (B2B)": { text: "MR", bgColor: "bg-purple-500", textColor: "text-white" },
+    "Merchandise (B2C)": { text: "MR", bgColor: "bg-purple-500", textColor: "text-white" }
+  };
+  return iconMap[label] || null;
+};
+
+const getCategoryBorderColor = (label: string) => {
+  const colorMap: Record<string, string> = {
+    "Uniforms: Replenishment": "border-l-blue-500",
+    "Uniforms: Non-replenishment": "border-l-green-500",
+    "Merchandise (B2B)": "border-l-purple-500",
+    "Merchandise (B2C)": "border-l-purple-500"
+  };
+  return colorMap[label] || "";
+};
+
+const getTooltipContent = (label: string) => {
+  const definitions: Record<string, string> = {
+    "Uniforms: Replenishment": "Regular uniform inventory restocking orders to maintain optimal stock levels across all store locations.",
+    "Uniforms: Non-replenishment": "Special uniform orders and promotional items distributed to stores for specific campaigns and new employee onboarding.",
+    "Merchandise (B2B)": "Business-to-business merchandise inventory for wholesale and corporate sales.",
+    "Merchandise (B2C)": "Business-to-consumer merchandise inventory for direct retail sales."
+  };
+  return definitions[label] || `Information about ${label}`;
+};
+
+const renderInventoryRow = (label: string, data: { count: string; value: string }) => {
+  const icon = getCategoryIcon(label);
+  const borderColor = getCategoryBorderColor(label);
+  
+  return (
+    <tr key={label} className={cn(
+      "border-b border-slate-100 hover:bg-slate-50/50 transition-colors",
+      borderColor && `border-l-4 ${borderColor}`
+    )}>
+      <td className="py-3 px-4 text-sm font-medium text-slate-800">
+        {icon && (
+          <TooltipProvider>
+            <div className="flex items-center gap-2 mb-1">
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <div className={cn(
+                    "w-9 h-5 rounded-full flex items-center justify-center text-xs font-bold min-w-[36px] cursor-help hover:opacity-80 transition-opacity",
+                    icon.bgColor,
+                    icon.textColor
+                  )}>
+                    {icon.text}
+                  </div>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p className="max-w-xs text-sm">{getTooltipContent(label)}</p>
+                </TooltipContent>
+              </Tooltip>
+              <span className="text-slate-700 font-sans font-medium text-xs">
+                {label}
+              </span>
+            </div>
+          </TooltipProvider>
+        )}
+        {!icon && label}
+      </td>
+      <td className="py-3 px-4 text-sm font-mono tabular-nums text-center text-slate-800">{data.count}</td>
+      <td className="py-3 px-4 text-sm font-mono tabular-nums text-center text-slate-800">{data.value}</td>
+    </tr>
+  );
+};
+
 export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrdersItems }: InventoryCardProps) {
   return (
     <div className="space-y-8">
@@ -43,31 +116,11 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors">
-                  <td className="py-3 px-4 text-sm font-medium text-slate-800">All Inventory</td>
-                  <td className="py-3 px-4 text-sm font-mono tabular-nums text-center text-slate-800">{snapshotData.allInventory.count}</td>
-                  <td className="py-3 px-4 text-sm font-mono tabular-nums text-center text-slate-800">{snapshotData.allInventory.value}</td>
-                </tr>
-                <tr className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors">
-                  <td className="py-3 px-4 text-sm font-medium text-slate-800">Replenishment</td>
-                  <td className="py-3 px-4 text-sm font-mono tabular-nums text-center text-slate-800">{snapshotData.replenishment.count}</td>
-                  <td className="py-3 px-4 text-sm font-mono tabular-nums text-center text-slate-800">{snapshotData.replenishment.value}</td>
-                </tr>
-                <tr className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors">
-                  <td className="py-3 px-4 text-sm font-medium text-slate-800">Promotional</td>
-                  <td className="py-3 px-4 text-sm font-mono tabular-nums text-center text-slate-800">{snapshotData.promotional.count}</td>
-                  <td className="py-3 px-4 text-sm font-mono tabular-nums text-center text-slate-800">{snapshotData.promotional.value}</td>
-                </tr>
-                <tr className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors">
-                  <td className="py-3 px-4 text-sm font-medium text-slate-800">Merchandise (B2B)</td>
-                  <td className="py-3 px-4 text-sm font-mono tabular-nums text-center text-slate-800">{snapshotData.merchandiseB2B.count}</td>
-                  <td className="py-3 px-4 text-sm font-mono tabular-nums text-center text-slate-800">{snapshotData.merchandiseB2B.value}</td>
-                </tr>
-                <tr className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors">
-                  <td className="py-3 px-4 text-sm font-medium text-slate-800">Merchandise (B2C)</td>
-                  <td className="py-3 px-4 text-sm font-mono tabular-nums text-center text-slate-800">{snapshotData.merchandiseB2C.count}</td>
-                  <td className="py-3 px-4 text-sm font-mono tabular-nums text-center text-slate-800">{snapshotData.merchandiseB2C.value}</td>
-                </tr>
+                {renderInventoryRow("All Inventory", snapshotData.allInventory)}
+                {renderInventoryRow("Uniforms: Replenishment", snapshotData.replenishment)}
+                {renderInventoryRow("Uniforms: Non-replenishment", snapshotData.promotional)}
+                {renderInventoryRow("Merchandise (B2B)", snapshotData.merchandiseB2B)}
+                {renderInventoryRow("Merchandise (B2C)", snapshotData.merchandiseB2C)}
               </tbody>
             </table>
           </div>
