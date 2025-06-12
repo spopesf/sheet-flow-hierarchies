@@ -86,15 +86,17 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
                 {/* Search Input Option - now second */}
                 <div className="flex items-center space-x-2 p-2 rounded-md border border-border bg-background/50">
                   <RadioGroupItem value="search" id="search" className="mt-0" />
-                  <Label htmlFor="search" className="flex items-center gap-2 flex-1 cursor-pointer">
-                    <Search className="h-4 w-4 text-muted-foreground flex-shrink-0" />
-                    <Input 
-                      placeholder="Store# or Employee#" 
-                      value={searchInput}
-                      onChange={(e) => setSearchInput(e.target.value)}
-                      disabled={searchMethod !== "search"}
-                      className="border-0 shadow-none focus-visible:ring-0 font-medium placeholder:text-muted-foreground disabled:opacity-50 disabled:cursor-not-allowed bg-transparent h-7"
-                    />
+                  <Label htmlFor="search" className="flex items-center flex-1 cursor-pointer">
+                    <div className="relative flex-1">
+                      <Input 
+                        placeholder="Store# or Employee#" 
+                        value={searchInput}
+                        onChange={(e) => setSearchInput(e.target.value)}
+                        disabled={searchMethod !== "search"}
+                        className="border-0 shadow-none focus-visible:ring-0 font-medium placeholder:text-muted-foreground disabled:opacity-50 disabled:cursor-not-allowed bg-transparent h-7 pr-8"
+                      />
+                      <Search className="h-4 w-4 text-muted-foreground absolute right-2 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+                    </div>
                   </Label>
                 </div>
               </RadioGroup>
@@ -142,26 +144,28 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
             {/* Manual Date Range Option - now second */}
             <div className="flex items-center space-x-2 p-2 rounded-md border border-border bg-background/50">
               <RadioGroupItem value="manual" id="manual-date" className="mt-0" />
-              <Label htmlFor="manual-date" className="flex items-center gap-2 flex-1 cursor-pointer">
-                <CalendarDays className="h-4 w-4 text-muted-foreground flex-shrink-0" />
-                <div className="flex items-center gap-2 text-sm">
-                  <Button 
-                    variant="ghost" 
-                    size="sm" 
-                    className="font-medium text-foreground hover:bg-accent p-1 h-auto disabled:opacity-50 disabled:cursor-not-allowed"
-                    disabled={dateRangeMethod !== "manual"}
-                  >
-                    01/01/2025
-                  </Button>
-                  <ChevronRight className="h-3 w-3 text-muted-foreground" />
-                  <Button 
-                    variant="ghost" 
-                    size="sm" 
-                    className="font-medium text-foreground hover:bg-accent p-1 h-auto disabled:opacity-50 disabled:cursor-not-allowed"
-                    disabled={dateRangeMethod !== "manual"}
-                  >
-                    06/11/2025
-                  </Button>
+              <Label htmlFor="manual-date" className="flex items-center flex-1 cursor-pointer">
+                <div className="relative flex items-center gap-2 text-sm flex-1">
+                  <CalendarDays className="h-4 w-4 text-muted-foreground absolute right-2 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+                  <div className="flex items-center gap-2">
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="font-medium text-foreground hover:bg-accent p-1 h-auto disabled:opacity-50 disabled:cursor-not-allowed"
+                      disabled={dateRangeMethod !== "manual"}
+                    >
+                      01/01/2025
+                    </Button>
+                    <ChevronRight className="h-3 w-3 text-muted-foreground" />
+                    <Button 
+                      variant="ghost" 
+                      size="sm" 
+                      className="font-medium text-foreground hover:bg-accent p-1 h-auto disabled:opacity-50 disabled:cursor-not-allowed"
+                      disabled={dateRangeMethod !== "manual"}
+                    >
+                      06/11/2025
+                    </Button>
+                  </div>
                 </div>
               </Label>
             </div>
