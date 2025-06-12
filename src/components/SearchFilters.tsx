@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, SelectSeparator } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Search, CalendarDays, ChevronRight } from "lucide-react";
@@ -145,17 +145,21 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
                     <SelectItem value="this-month">This Month</SelectItem>
                     <SelectItem value="this-quarter">This Quarter</SelectItem>
                     <SelectItem value="this-year">This Year</SelectItem>
+                    <SelectSeparator />
                     <SelectItem value="last-month">Last Month</SelectItem>
                     <SelectItem value="last-quarter">Last Quarter</SelectItem>
                     <SelectItem value="last-year">Last Year</SelectItem>
+                    <SelectSeparator />
                     <SelectItem value="month-to-date">Month to Date</SelectItem>
                     <SelectItem value="quarter-to-date">Quarter to Date</SelectItem>
                     <SelectItem value="year-to-date">Year to Date</SelectItem>
+                    <SelectSeparator />
                     <SelectItem value="last-7-days">Last 7 Days</SelectItem>
                     <SelectItem value="last-14-days">Last 14 Days</SelectItem>
                     <SelectItem value="last-30-days">Last 30 Days</SelectItem>
                     <SelectItem value="last-60-days">Last 60 Days</SelectItem>
                     <SelectItem value="last-90-days">Last 90 Days</SelectItem>
+                    <SelectSeparator />
                     <SelectItem value="last-12-months">Last 12 Months</SelectItem>
                   </SelectContent>
                 </Select>
