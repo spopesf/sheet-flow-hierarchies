@@ -39,12 +39,7 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
   return (
     <div className="p-3 bg-card rounded-lg border border-border shadow-sm">
       <div className={`grid ${showSearchMethods ? 'grid-cols-3' : 'grid-cols-2'} gap-4 items-start`}>
-        {/* Section Title */}
-        <div>
-          <h2 className="text-lg font-semibold text-foreground">Choose your filters</h2>
-        </div>
-        
-        {/* Date Range */}
+        {/* Date Range - always first */}
         <div className="space-y-1">
           <label className="text-sm font-medium text-muted-foreground">Date Range</label>
           <div className="flex items-center justify-start gap-2 text-sm">
@@ -59,7 +54,12 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
           </div>
         </div>
         
-        {/* Search Method Selection - only show for expenses */}
+        {/* Section Title - second position */}
+        <div>
+          <h2 className="text-lg font-semibold text-foreground">Choose your filters</h2>
+        </div>
+        
+        {/* Search Method Selection - only show for expenses, third position */}
         {showSearchMethods && (
           <div className="space-y-1">
             <label className="text-sm font-medium text-muted-foreground">Search Method</label>
