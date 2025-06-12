@@ -39,27 +39,12 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
   return (
     <div className="p-3 bg-card rounded-lg border border-border shadow-sm">
       <div className={`grid ${showSearchMethods ? 'grid-cols-3' : 'grid-cols-2'} gap-4 items-start`}>
-        {/* Date Range - always first */}
-        <div className="space-y-1">
-          <label className="text-sm font-medium text-muted-foreground">Date Range</label>
-          <div className="flex items-center justify-start gap-2 text-sm">
-            <CalendarDays className="h-4 w-4 text-muted-foreground" />
-            <Button variant="ghost" size="sm" className="font-medium text-foreground hover:bg-accent p-1 h-auto">
-              01/01/2025
-            </Button>
-            <ChevronRight className="h-3 w-3 text-muted-foreground" />
-            <Button variant="ghost" size="sm" className="font-medium text-foreground hover:bg-accent p-1 h-auto">
-              06/11/2025
-            </Button>
-          </div>
-        </div>
-        
-        {/* Section Title - second position */}
+        {/* Section Title - left aligned */}
         <div>
-          <h2 className="text-lg font-semibold text-foreground">Choose your filters</h2>
+          <h2 className="text-lg font-semibold text-foreground">Choose your filter</h2>
         </div>
         
-        {/* Search Method Selection - only show for expenses, third position */}
+        {/* Search Method Selection - middle aligned, only show for expenses */}
         {showSearchMethods && (
           <div className="space-y-1">
             <label className="text-sm font-medium text-muted-foreground">Search Method</label>
@@ -101,6 +86,21 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
             </RadioGroup>
           </div>
         )}
+        
+        {/* Date Range - right aligned */}
+        <div className="space-y-1">
+          <label className="text-sm font-medium text-muted-foreground">Date Range</label>
+          <div className="flex items-center justify-start gap-2 text-sm">
+            <CalendarDays className="h-4 w-4 text-muted-foreground" />
+            <Button variant="ghost" size="sm" className="font-medium text-foreground hover:bg-accent p-1 h-auto">
+              01/01/2025
+            </Button>
+            <ChevronRight className="h-3 w-3 text-muted-foreground" />
+            <Button variant="ghost" size="sm" className="font-medium text-foreground hover:bg-accent p-1 h-auto">
+              06/11/2025
+            </Button>
+          </div>
+        </div>
       </div>
     </div>
   );
