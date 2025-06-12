@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface SupportCaseData {
@@ -44,23 +43,23 @@ export function CustomerServiceCard({
         <div className="grid grid-cols-5 gap-6">
           <div className="text-center flex flex-col">
             <div className="text-xs font-medium text-slate-600 tracking-wide mb-2 flex-1 flex items-start">Created Tickets</div>
-            <div className="text-2xl font-bold text-slate-900">{data.ytdCreatedTickets}</div>
+            <div className="text-xs font-bold text-slate-900">{data.ytdCreatedTickets}</div>
           </div>
           <div className="text-center flex flex-col">
             <div className="text-xs font-medium text-slate-600 tracking-wide mb-2 flex-1 flex items-start">Solved Tickets</div>
-            <div className="text-2xl font-bold text-slate-900">{data.ytdSolvedTickets}</div>
+            <div className="text-xs font-bold text-slate-900">{data.ytdSolvedTickets}</div>
           </div>
           <div className="text-center flex flex-col">
             <div className="text-xs font-medium text-slate-600 tracking-wide mb-2 flex-1 flex items-start">Unsolved Tickets</div>
-            <div className="text-2xl font-bold text-slate-900">{data.ytdUnsolvedTickets}</div>
+            <div className="text-xs font-bold text-slate-900">{data.ytdUnsolvedTickets}</div>
           </div>
           <div className="text-center flex flex-col">
             <div className="text-xs font-medium text-slate-600 tracking-wide mb-2 flex-1 flex items-start">Resolution %</div>
-            <div className="text-2xl font-bold text-slate-900">{formatPercentage(data.resolutionPercentage)}</div>
+            <div className="text-xs font-bold text-slate-900">{formatPercentage(data.resolutionPercentage)}</div>
           </div>
           <div className="text-center flex flex-col">
             <div className="text-xs font-medium text-slate-600 tracking-wide mb-2 flex-1 flex items-start">Satisfaction Score</div>
-            <div className="text-2xl font-bold text-slate-900">{formatPercentage(data.satisfactionScore)}</div>
+            <div className="text-xs font-bold text-slate-900">{formatPercentage(data.satisfactionScore)}</div>
           </div>
         </div>
       </CardContent>
