@@ -59,9 +59,9 @@ export function InsightsSection() {
       <div>
         <h2 className="text-2xl font-bold text-slate-900 mb-6">Insights</h2>
         
-        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+        <div className="space-y-6">
           {/* Top 10 Items */}
-          <Card className="border-slate-200 bg-white min-w-0">
+          <Card className="border-slate-200 bg-white">
             <CardHeader className="pb-4">
               <CardTitle className="text-lg font-semibold text-slate-900 flex items-center gap-2">
                 <TooltipProvider>
@@ -85,7 +85,7 @@ export function InsightsSection() {
             </CardHeader>
             <CardContent className="p-0">
               <div className="overflow-x-auto">
-                <table className="w-full min-w-[300px]">
+                <table className="w-full">
                   <thead>
                     <tr className="border-b border-slate-100 bg-slate-50">
                       <th className="text-left py-3 px-4 font-medium text-sm text-slate-600">Item</th>
@@ -108,7 +108,7 @@ export function InsightsSection() {
           </Card>
 
           {/* First Time Customer vs. Repeat */}
-          <Card className="border-slate-200 bg-white min-w-0">
+          <Card className="border-slate-200 bg-white">
             <CardHeader className="pb-4">
               <CardTitle className="text-lg font-semibold text-slate-900 flex items-center gap-2">
                 <TooltipProvider>
@@ -132,26 +132,26 @@ export function InsightsSection() {
             </CardHeader>
             <CardContent className="p-0">
               <div className="overflow-x-auto">
-                <table className="w-full min-w-[600px]">
+                <table className="w-full">
                   <thead>
                     <tr className="border-b border-slate-100 bg-slate-50">
-                      <th className="text-left py-3 px-3 font-medium text-xs text-slate-600">Item</th>
-                      <th className="text-left py-3 px-3 font-medium text-xs text-slate-600"># of Orders</th>
-                      <th className="text-left py-3 px-3 font-medium text-xs text-slate-600">% of Orders</th>
-                      <th className="text-left py-3 px-3 font-medium text-xs text-slate-600">Sales</th>
-                      <th className="text-left py-3 px-3 font-medium text-xs text-slate-600">% of Sales</th>
-                      <th className="text-left py-3 px-3 font-medium text-xs text-slate-600">Avg Order Value</th>
+                      <th className="text-left py-3 px-4 font-medium text-sm text-slate-600">Item</th>
+                      <th className="text-left py-3 px-4 font-medium text-sm text-slate-600"># of Orders</th>
+                      <th className="text-left py-3 px-4 font-medium text-sm text-slate-600">% of Orders</th>
+                      <th className="text-left py-3 px-4 font-medium text-sm text-slate-600">Sales</th>
+                      <th className="text-left py-3 px-4 font-medium text-sm text-slate-600">% of Sales</th>
+                      <th className="text-left py-3 px-4 font-medium text-sm text-slate-600">Avg Order Value</th>
                     </tr>
                   </thead>
                   <tbody>
                     {customerTypeData.map((customer, index) => (
                       <tr key={index} className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors border-l-4 border-l-purple-500">
-                        <td className="py-3 px-3 text-xs text-slate-800">{customer.type}</td>
-                        <td className="py-3 px-3 text-xs font-mono tabular-nums text-slate-800">{customer.numOrders}</td>
-                        <td className="py-3 px-3 text-xs font-mono tabular-nums text-slate-800">{customer.percentOrders}</td>
-                        <td className="py-3 px-3 text-xs font-mono tabular-nums text-slate-800">{customer.sales}</td>
-                        <td className="py-3 px-3 text-xs font-mono tabular-nums text-slate-800">{customer.percentSales}</td>
-                        <td className="py-3 px-3 text-xs font-mono tabular-nums text-slate-800">{customer.avgOrderValue}</td>
+                        <td className="py-3 px-4 text-sm text-slate-800">{customer.type}</td>
+                        <td className="py-3 px-4 text-sm font-mono tabular-nums text-slate-800">{customer.numOrders}</td>
+                        <td className="py-3 px-4 text-sm font-mono tabular-nums text-slate-800">{customer.percentOrders}</td>
+                        <td className="py-3 px-4 text-sm font-mono tabular-nums text-slate-800">{customer.sales}</td>
+                        <td className="py-3 px-4 text-sm font-mono tabular-nums text-slate-800">{customer.percentSales}</td>
+                        <td className="py-3 px-4 text-sm font-mono tabular-nums text-slate-800">{customer.avgOrderValue}</td>
                       </tr>
                     ))}
                   </tbody>
