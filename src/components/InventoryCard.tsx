@@ -95,11 +95,11 @@ const renderInventoryRow = (label: string, data: { count: string; value: string 
         {!icon && label}
       </td>
       <td className={cn(
-        "py-3 px-4 text-sm font-mono tabular-nums text-center text-slate-800",
+        "py-3 px-4 text-sm font-mono tabular-nums text-right text-slate-800",
         isAllInventory && "font-bold"
       )}>{data.count}</td>
       <td className={cn(
-        "py-3 px-4 text-sm font-mono tabular-nums text-center text-slate-800",
+        "py-3 px-4 text-sm font-mono tabular-nums text-right text-slate-800",
         isAllInventory && "font-bold"
       )}>{data.value}</td>
     </tr>
@@ -122,8 +122,8 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
               <thead>
                 <tr className="border-b border-slate-100 bg-slate-50">
                   <th className="text-left py-2 px-4 font-medium text-xs text-slate-600 tracking-wide min-w-[200px]"></th>
-                  <th className="text-center py-2 px-4 font-medium text-xs text-slate-600 tracking-wide min-w-[100px]">Count</th>
-                  <th className="text-center py-2 px-4 font-medium text-xs text-slate-600 tracking-wide min-w-[100px]">Value</th>
+                  <th className="text-left py-2 px-4 font-medium text-xs text-slate-600 tracking-wide min-w-[100px]">Count</th>
+                  <th className="text-left py-2 px-4 font-medium text-xs text-slate-600 tracking-wide min-w-[100px]">Value</th>
                 </tr>
               </thead>
               <tbody>
@@ -177,10 +177,10 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
                 <thead>
                   <tr className="border-b border-slate-100 bg-slate-50">
                     <th className="text-left py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Item</th>
-                    <th className="text-center py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Count</th>
-                    <th className="text-center py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Value</th>
-                    <th className="text-center py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">
-                      <div className="flex items-center justify-center gap-1">
+                    <th className="text-left py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Count</th>
+                    <th className="text-left py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Value</th>
+                    <th className="text-left py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">
+                      <div className="flex items-center gap-1">
                         Days on Hand
                         <TooltipProvider>
                           <Tooltip>
@@ -201,10 +201,10 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
                 <tbody>
                   {internalOrdersItems.map((item, index) => (
                     <tr key={index} className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors">
-                      <td className="py-2 px-3 text-xs font-medium text-slate-800">{item.item}</td>
-                      <td className="py-2 px-3 text-xs font-mono tabular-nums text-center text-slate-800">{item.count}</td>
-                      <td className="py-2 px-3 text-xs font-mono tabular-nums text-center text-slate-800">{item.value}</td>
-                      <td className="py-2 px-3 text-xs font-mono tabular-nums text-center text-slate-800">{item.daysOnHand}</td>
+                      <td className="py-2 px-3 text-xs font-medium text-slate-800 text-right">{item.item}</td>
+                      <td className="py-2 px-3 text-xs font-mono tabular-nums text-right text-slate-800">{item.count}</td>
+                      <td className="py-2 px-3 text-xs font-mono tabular-nums text-right text-slate-800">{item.value}</td>
+                      <td className="py-2 px-3 text-xs font-mono tabular-nums text-right text-slate-800">{item.daysOnHand}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -238,10 +238,10 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
                 <thead>
                   <tr className="border-b border-slate-100 bg-slate-50">
                     <th className="text-left py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Item</th>
-                    <th className="text-center py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Count</th>
-                    <th className="text-center py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Value</th>
-                    <th className="text-center py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">
-                      <div className="flex items-center justify-center gap-1">
+                    <th className="text-left py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Count</th>
+                    <th className="text-left py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Value</th>
+                    <th className="text-left py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">
+                      <div className="flex items-center gap-1">
                         Days on Hand
                         <TooltipProvider>
                           <Tooltip>
@@ -262,10 +262,10 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
                 <tbody>
                   {consumerOrdersItems.map((item, index) => (
                     <tr key={index} className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors">
-                      <td className="py-2 px-3 text-xs font-medium text-slate-800">{item.item}</td>
-                      <td className="py-2 px-3 text-xs font-mono tabular-nums text-center text-slate-800">{item.count}</td>
-                      <td className="py-2 px-3 text-xs font-mono tabular-nums text-center text-slate-800">{item.value}</td>
-                      <td className="py-2 px-3 text-xs font-mono tabular-nums text-center text-slate-800">{item.daysOnHand}</td>
+                      <td className="py-2 px-3 text-xs font-medium text-slate-800 text-right">{item.item}</td>
+                      <td className="py-2 px-3 text-xs font-mono tabular-nums text-right text-slate-800">{item.count}</td>
+                      <td className="py-2 px-3 text-xs font-mono tabular-nums text-right text-slate-800">{item.value}</td>
+                      <td className="py-2 px-3 text-xs font-mono tabular-nums text-right text-slate-800">{item.daysOnHand}</td>
                     </tr>
                   ))}
                 </tbody>
