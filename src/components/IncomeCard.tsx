@@ -51,7 +51,7 @@ export function IncomeCard({ title, data, variant, selectedFilter, showTooltip =
                   <p className="max-w-xs text-sm">Consumer merchandise sales data from B2C site operations</p>
                 </TooltipContent>
               </Tooltip>
-              {title}
+              Income
             </div>
           </TooltipProvider>
         </CardTitle>
