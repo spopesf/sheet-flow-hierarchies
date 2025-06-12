@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
@@ -179,7 +178,7 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
                     <th className="text-right py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Item</th>
                     <th className="text-right py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Count</th>
                     <th className="text-right py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Value</th>
-                    <th className="text-right py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">
+                    <th className="text-right py-2 px-3 pr-6 font-medium text-xs text-slate-600 tracking-wide">
                       <div className="flex items-center gap-1 justify-end">
                         Days on Hand
                         <TooltipProvider>
@@ -204,7 +203,7 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
                       <td className="py-2 px-3 text-xs font-medium text-slate-800 text-right">{item.item}</td>
                       <td className="py-2 px-3 text-xs font-mono tabular-nums text-right text-slate-800">{item.count}</td>
                       <td className="py-2 px-3 text-xs font-mono tabular-nums text-right text-slate-800">{item.value}</td>
-                      <td className="py-2 px-3 text-xs font-mono tabular-nums text-right text-slate-800">{item.daysOnHand}</td>
+                      <td className="py-2 px-3 pr-6 text-xs font-mono tabular-nums text-right text-slate-800">{item.daysOnHand}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -240,7 +239,7 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
                     <th className="text-right py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Item</th>
                     <th className="text-right py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Count</th>
                     <th className="text-right py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Value</th>
-                    <th className="text-right py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">
+                    <th className="text-right py-2 px-3 pr-6 font-medium text-xs text-slate-600 tracking-wide">
                       <div className="flex items-center gap-1 justify-end">
                         Days on Hand
                         <TooltipProvider>
@@ -265,7 +264,7 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
                       <td className="py-2 px-3 text-xs font-medium text-slate-800 text-right">{item.item}</td>
                       <td className="py-2 px-3 text-xs font-mono tabular-nums text-right text-slate-800">{item.count}</td>
                       <td className="py-2 px-3 text-xs font-mono tabular-nums text-right text-slate-800">{item.value}</td>
-                      <td className="py-2 px-3 text-xs font-mono tabular-nums text-right text-slate-800">{item.daysOnHand}</td>
+                      <td className="py-2 px-3 pr-6 text-xs font-mono tabular-nums text-right text-slate-800">{item.daysOnHand}</td>
                     </tr>
                   ))}
                 </tbody>
