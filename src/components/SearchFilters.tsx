@@ -108,7 +108,9 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
         
         {/* Date Range - right column */}
         <div className="space-y-1">
-          <label className="text-sm font-medium text-muted-foreground">Date Range</label>
+          <label className="text-sm font-medium text-muted-foreground">
+            {isInventoryTab ? "On Date" : "Date Range"}
+          </label>
           
           {isInventoryTab ? (
             // Single date picker for inventory tab
