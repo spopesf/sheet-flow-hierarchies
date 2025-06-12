@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
@@ -185,7 +186,7 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
                           <Tooltip>
                             <TooltipTrigger asChild>
                               <div className="w-4 h-4 rounded-full bg-slate-400 flex items-center justify-center cursor-help hover:bg-slate-500 transition-colors">
-                                <span className="text-white text-xs font-bold">I</span>
+                                <span className="text-white text-xs font-bold">?</span>
                               </div>
                             </TooltipTrigger>
                             <TooltipContent>
@@ -246,7 +247,7 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
                           <Tooltip>
                             <TooltipTrigger asChild>
                               <div className="w-4 h-4 rounded-full bg-slate-400 flex items-center justify-center cursor-help hover:bg-slate-500 transition-colors">
-                                <span className="text-white text-xs font-bold">I</span>
+                                <span className="text-white text-xs font-bold">?</span>
                               </div>
                             </TooltipTrigger>
                             <TooltipContent>
