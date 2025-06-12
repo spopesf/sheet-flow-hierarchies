@@ -53,7 +53,7 @@ export function AppSidebar() {
   return (
     <Sidebar className="border-r border-border">
       <SidebarContent>
-        <SidebarGroup className="pt-8">
+        <SidebarGroup className="pt-32">
           <SidebarGroupContent>
             <SidebarMenu>
               {menuItems.map((item) => (
