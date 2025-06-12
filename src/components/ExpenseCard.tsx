@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { Info } from "lucide-react";
@@ -79,7 +78,7 @@ export function ExpenseCard({ title, data, variant }: ExpenseCardProps) {
           isTotal && "bg-white font-semibold",
           index === 0 && Array.isArray(data) && !isSubItem && "font-medium",
           (index > 0 && Array.isArray(data) && !isSubItem) || isSubItem && "bg-slate-50/30",
-          isSubItem && borderColor && `border-l-4 ${borderColor}`
+          borderColor && `border-l-4 ${borderColor}`
         )}
       >
         <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
