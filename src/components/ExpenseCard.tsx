@@ -193,15 +193,15 @@ export function ExpenseCard({ title, data, variant, selectedFilter }: ExpenseCar
           <table className="w-full">
             <thead>
               <tr className="border-b border-slate-100 bg-slate-50">
-                <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide">Invoiced</th>
-                <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide">Product Expense</th>
-                <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide">Freight to Store Expense</th>
-                <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide"># of Invoices</th>
-                <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide"># of Ordering Accounts</th>
-                <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide"># of Items Ordered</th>
-                <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide">Avg. Order Value</th>
-                <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide">Avg. Freight to Store Expense</th>
-                <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide">Avg. # of Items/Order</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide align-bottom">Invoiced</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide align-bottom">Product Expense</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide align-bottom">Freight to Store Expense</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide align-bottom"># of Invoices</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide align-bottom"># of Ordering Accounts</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide align-bottom"># of Items Ordered</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide align-bottom">Avg. Order Value</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide align-bottom">Avg. Freight to Store Expense</th>
+                <th className="text-left py-4 px-6 font-medium text-sm text-slate-600 tracking-wide align-bottom">Avg. # of Items/Order</th>
               </tr>
             </thead>
             <tbody>
