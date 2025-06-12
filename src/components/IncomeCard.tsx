@@ -1,8 +1,6 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
-import { Info } from "lucide-react";
 
 interface IncomeData {
   grossIncome: string;
@@ -53,18 +51,6 @@ export function IncomeCard({ title, data, variant, selectedFilter, showTooltip =
                 </TooltipContent>
               </Tooltip>
               {title}
-              {showTooltip && (
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <div className="cursor-help">
-                      <Info className="h-4 w-4 text-slate-500" />
-                    </div>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p className="max-w-xs text-sm">Consumer merchandise sales data from B2C site operations</p>
-                  </TooltipContent>
-                </Tooltip>
-              )}
             </div>
           </TooltipProvider>
         </CardTitle>
