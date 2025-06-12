@@ -33,6 +33,15 @@ const getTooltipContent = (label: string) => {
   return definitions[label] || `Information about ${label}`;
 };
 
+const getCategoryIcon = (label: string) => {
+  const iconMap: Record<string, { text: string; bgColor: string; textColor: string }> = {
+    "Uniforms: Replenishment": { text: "UR", bgColor: "bg-blue-500", textColor: "text-white" },
+    "Uniforms: Non-replenishment": { text: "UN", bgColor: "bg-green-500", textColor: "text-white" },
+    "Merchandise": { text: "MR", bgColor: "bg-purple-500", textColor: "text-white" }
+  };
+  return iconMap[label] || { text: "??", bgColor: "bg-gray-500", textColor: "text-white" };
+};
+
 export function ExpenseCard({ title, data, variant }: ExpenseCardProps) {
   const isTotal = variant === "total";
   const dataArray = Array.isArray(data) ? data : [data];
@@ -49,47 +58,57 @@ export function ExpenseCard({ title, data, variant }: ExpenseCardProps) {
     total: "text-slate-900 font-bold text-xl"
   };
 
-  const renderRow = (rowData: ExpenseData, index: number, isSubItem = false, parentIndex?: number) => (
-    <tr 
-      key={`${index}-${isSubItem ? 'sub' : 'main'}`}
-      className={cn(
-        "border-b border-slate-100 hover:bg-slate-50/50 transition-colors",
-        isTotal && "bg-white font-semibold",
-        index === 0 && Array.isArray(data) && !isSubItem && "font-medium",
-        (index > 0 && Array.isArray(data) && !isSubItem) || isSubItem && "bg-slate-50/30"
-      )}
-    >
-      <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
-        {rowData.label && (index > 0 || isSubItem) && (
-          <TooltipProvider>
-            <div className="flex items-center gap-2 mb-1">
-              <span className="text-slate-600 font-sans">
-                {isSubItem ? "  ↳" : "↳"}
-              </span>
-              <span className="text-slate-700 font-sans font-medium text-xs">{rowData.label}</span>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <Info className="h-3 w-3 text-slate-500 hover:text-slate-700 cursor-help" />
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p className="max-w-xs text-sm">{getTooltipContent(rowData.label)}</p>
-                </TooltipContent>
-              </Tooltip>
-            </div>
-          </TooltipProvider>
+  const renderRow = (rowData: ExpenseData, index: number, isSubItem = false, parentIndex?: number) => {
+    const icon = rowData.label ? getCategoryIcon(rowData.label) : null;
+    
+    return (
+      <tr 
+        key={`${index}-${isSubItem ? 'sub' : 'main'}`}
+        className={cn(
+          "border-b border-slate-100 hover:bg-slate-50/50 transition-colors",
+          isTotal && "bg-white font-semibold",
+          index === 0 && Array.isArray(data) && !isSubItem && "font-medium",
+          (index > 0 && Array.isArray(data) && !isSubItem) || isSubItem && "bg-slate-50/30"
         )}
-        {rowData.invoiced}
-      </td>
-      <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.productExpense}</td>
-      <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.freightToStore}</td>
-      <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.numInvoices}</td>
-      <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.numOrderingAccounts}</td>
-      <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.numItemsOrdered}</td>
-      <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.avgOrderValue}</td>
-      <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.avgFreightToStore}</td>
-      <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.avgItemsPerOrder}</td>
-    </tr>
-  );
+      >
+        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
+          {rowData.label && (index > 0 || isSubItem) && (
+            <TooltipProvider>
+              <div className="flex items-center gap-2 mb-1">
+                {icon && (
+                  <div className={cn(
+                    "w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold",
+                    icon.bgColor,
+                    icon.textColor
+                  )}>
+                    {icon.text}
+                  </div>
+                )}
+                <span className="text-slate-700 font-sans font-medium text-xs">{rowData.label}</span>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <Info className="h-3 w-3 text-slate-500 hover:text-slate-700 cursor-help" />
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p className="max-w-xs text-sm">{getTooltipContent(rowData.label)}</p>
+                  </TooltipContent>
+                </Tooltip>
+              </div>
+            </TooltipProvider>
+          )}
+          {rowData.invoiced}
+        </td>
+        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.productExpense}</td>
+        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.freightToStore}</td>
+        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.numInvoices}</td>
+        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.numOrderingAccounts}</td>
+        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.numItemsOrdered}</td>
+        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.avgOrderValue}</td>
+        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.avgFreightToStore}</td>
+        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.avgItemsPerOrder}</td>
+      </tr>
+    );
+  };
 
   return (
     <Card className={cn("overflow-hidden transition-all duration-200", cardVariants[variant])}>
