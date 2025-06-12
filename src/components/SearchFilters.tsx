@@ -38,7 +38,7 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
 
   return (
     <div className="p-3 bg-card rounded-lg border border-border shadow-sm">
-      <div className="grid grid-cols-3 gap-8 items-start">
+      <div className="grid grid-cols-3 gap-16 items-start">
         {/* Section Title - left column */}
         <div>
           <h2 className="text-lg font-semibold text-foreground">Choose your filter</h2>
