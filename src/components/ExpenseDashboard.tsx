@@ -7,7 +7,21 @@ import { CustomerServiceCard } from "./CustomerServiceCard";
 import { SearchFilters } from "./SearchFilters";
 import { NavigationTabs } from "./NavigationTabs";
 
+const totalExpenseData = {
+  invoiced: "$5,073,490.38",
+  productExpense: "$4,447,750.29",
+  freightToStore: "$625,740.09",
+  numInvoices: "25,965",
+  numOrderingAccounts: "24,520",
+  numItemsOrdered: "544,764",
+  avgOrderValue: "$206.02",
+  avgFreightToStore: "21.36",
+  avgItemsPerOrder: "21.75",
+  label: "Total Expenses"
+};
+
 const internalOrdersData = [
+  totalExpenseData,
   {
     invoiced: "$2,125,486.30",
     productExpense: "$1,890,234.55",
@@ -47,18 +61,6 @@ const internalOrdersData = [
     ]
   }
 ];
-
-const totalExpenseData = {
-  invoiced: "$5,073,490.38",
-  productExpense: "$4,447,750.29",
-  freightToStore: "$625,740.09",
-  numInvoices: "25,965",
-  numOrderingAccounts: "24,520",
-  numItemsOrdered: "544,764",
-  avgOrderValue: "$206.02",
-  avgFreightToStore: "21.36",
-  avgItemsPerOrder: "21.75"
-};
 
 const consumerMerchandiseData = {
   grossIncome: "$1,234,567.89",
@@ -167,13 +169,6 @@ export function ExpenseDashboard() {
 
             {/* Expense Cards */}
             <div className="space-y-8 px-1">
-              <ExpenseCard
-                title="Total Expense"
-                data={totalExpenseData}
-                variant="total"
-                selectedFilter={selectedFilter}
-              />
-              
               <ExpenseCard
                 title="All Internal Orders"
                 data={internalOrdersData}

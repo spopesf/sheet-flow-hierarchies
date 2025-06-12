@@ -35,6 +35,7 @@ const getTooltipContent = (label: string) => {
 
 const getCategoryIcon = (label: string) => {
   const iconMap: Record<string, { text: string; bgColor: string; textColor: string }> = {
+    "Total Expenses": { text: "TE", bgColor: "bg-yellow-500", textColor: "text-white" },
     "Uniforms: Replenishment": { text: "UR", bgColor: "bg-blue-500", textColor: "text-white" },
     "Uniforms: Non-replenishment": { text: "UN", bgColor: "bg-green-500", textColor: "text-white" },
     "Merchandise": { text: "MR", bgColor: "bg-purple-500", textColor: "text-white" }
@@ -44,6 +45,7 @@ const getCategoryIcon = (label: string) => {
 
 const getCategoryBorderColor = (label: string) => {
   const colorMap: Record<string, string> = {
+    "Total Expenses": "border-l-yellow-500",
     "Uniforms: Replenishment": "border-l-blue-500",
     "Uniforms: Non-replenishment": "border-l-green-500",
     "Merchandise": "border-l-purple-500"
@@ -78,6 +80,7 @@ export function ExpenseCard({ title, data, variant, selectedFilter }: ExpenseCar
     const icon = rowData.label ? getCategoryIcon(rowData.label) : null;
     const borderColor = rowData.label ? getCategoryBorderColor(rowData.label) : "";
     const showNoData = shouldShowNoData(rowData.label, selectedFilter);
+    const isTotalExpensesRow = rowData.label === "Total Expenses";
     
     return (
       <tr 
@@ -88,10 +91,14 @@ export function ExpenseCard({ title, data, variant, selectedFilter }: ExpenseCar
           index === 0 && Array.isArray(data) && !isSubItem && "font-medium",
           (index > 0 && Array.isArray(data) && !isSubItem) || isSubItem && "bg-slate-50/30",
           rowData.label && borderColor && `border-l-4 ${borderColor}`,
-          showNoData && "opacity-50 bg-slate-100/50"
+          showNoData && "opacity-50 bg-slate-100/50",
+          isTotalExpensesRow && "font-bold"
         )}
       >
-        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800 align-bottom">
+        <td className={cn(
+          "py-5 px-6 text-sm font-mono tabular-nums text-slate-800 align-bottom",
+          isTotalExpensesRow && "font-bold"
+        )}>
           {rowData.label && (
             <TooltipProvider>
               <div className="flex items-center gap-2 mb-1">
@@ -110,7 +117,11 @@ export function ExpenseCard({ title, data, variant, selectedFilter }: ExpenseCar
                     <p className="max-w-xs text-sm">{getTooltipContent(rowData.label)}</p>
                   </TooltipContent>
                 </Tooltip>
-                <span className={cn("text-slate-700 font-sans font-medium text-xs", showNoData && "text-slate-500")}>
+                <span className={cn(
+                  "text-slate-700 font-sans font-medium text-xs", 
+                  showNoData && "text-slate-500",
+                  isTotalExpensesRow && "font-bold"
+                )}>
                   {rowData.label}
                 </span>
               </div>
@@ -118,28 +129,52 @@ export function ExpenseCard({ title, data, variant, selectedFilter }: ExpenseCar
           )}
           {showNoData ? "—" : rowData.invoiced}
         </td>
-        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800 align-bottom">
+        <td className={cn(
+          "py-5 px-6 text-sm font-mono tabular-nums text-slate-800 align-bottom",
+          isTotalExpensesRow && "font-bold"
+        )}>
           {showNoData ? "—" : rowData.productExpense}
         </td>
-        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800 align-bottom">
+        <td className={cn(
+          "py-5 px-6 text-sm font-mono tabular-nums text-slate-800 align-bottom",
+          isTotalExpensesRow && "font-bold"
+        )}>
           {showNoData ? "—" : rowData.freightToStore}
         </td>
-        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800 align-bottom">
+        <td className={cn(
+          "py-5 px-6 text-sm font-mono tabular-nums text-slate-800 align-bottom",
+          isTotalExpensesRow && "font-bold"
+        )}>
           {showNoData ? "—" : rowData.numInvoices}
         </td>
-        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800 align-bottom">
+        <td className={cn(
+          "py-5 px-6 text-sm font-mono tabular-nums text-slate-800 align-bottom",
+          isTotalExpensesRow && "font-bold"
+        )}>
           {showNoData ? "—" : rowData.numOrderingAccounts}
         </td>
-        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800 align-bottom">
+        <td className={cn(
+          "py-5 px-6 text-sm font-mono tabular-nums text-slate-800 align-bottom",
+          isTotalExpensesRow && "font-bold"
+        )}>
           {showNoData ? "—" : rowData.numItemsOrdered}
         </td>
-        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800 align-bottom">
+        <td className={cn(
+          "py-5 px-6 text-sm font-mono tabular-nums text-slate-800 align-bottom",
+          isTotalExpensesRow && "font-bold"
+        )}>
           {showNoData ? "—" : rowData.avgOrderValue}
         </td>
-        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800 align-bottom">
+        <td className={cn(
+          "py-5 px-6 text-sm font-mono tabular-nums text-slate-800 align-bottom",
+          isTotalExpensesRow && "font-bold"
+        )}>
           {showNoData ? "—" : rowData.avgFreightToStore}
         </td>
-        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800 align-bottom">
+        <td className={cn(
+          "py-5 px-6 text-sm font-mono tabular-nums text-slate-800 align-bottom",
+          isTotalExpensesRow && "font-bold"
+        )}>
           {showNoData ? "—" : rowData.avgItemsPerOrder}
         </td>
       </tr>
