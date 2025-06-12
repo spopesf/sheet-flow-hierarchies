@@ -1,6 +1,7 @@
-
 import { useState } from "react";
 import { ExpenseCard } from "./ExpenseCard";
+import { IncomeCard } from "./IncomeCard";
+import { InsightsSection } from "./InsightsSection";
 import { SearchFilters } from "./SearchFilters";
 import { NavigationTabs } from "./NavigationTabs";
 
@@ -57,6 +58,21 @@ const totalExpenseData = {
   avgItemsPerOrder: "21.75"
 };
 
+const consumerMerchandiseData = {
+  grossIncome: "$1,234,567.89",
+  freightToCustomerExpense: "$98,765.43",
+  salesTax: "$123,456.78",
+  discounts: "$45,678.90",
+  netIncome: "$967,666.78",
+  numOrders: "12,345",
+  avgOrderValue: "$100.12",
+  numOrderingAccounts: "8,765",
+  numItemsOrdered: "45,678",
+  avgOrderValueAlt: "$110.23",
+  avgFreightToCustomerExpense: "$8.00",
+  avgNumItemsOrder: "3.7"
+};
+
 export function ExpenseDashboard() {
   const [activeTab, setActiveTab] = useState("expenses");
   const [selectedFilter, setSelectedFilter] = useState("");
@@ -91,11 +107,26 @@ export function ExpenseDashboard() {
         );
       case "income":
         return (
-          <div className="flex items-center justify-center py-20">
-            <div className="text-center">
-              <h2 className="text-2xl font-semibold text-muted-foreground">Income reports coming soon</h2>
+          <>
+            {/* Search and Filters */}
+            <div className="px-1">
+              <SearchFilters onFilterChange={setSelectedFilter} />
             </div>
-          </div>
+
+            {/* Income Cards */}
+            <div className="space-y-8 px-1">
+              <IncomeCard
+                title="Consumer Merchandise (if a B2C site exists)"
+                data={consumerMerchandiseData}
+                variant="consumer"
+                selectedFilter={selectedFilter}
+                showTooltip={true}
+              />
+              
+              {/* Insights Section */}
+              <InsightsSection />
+            </div>
+          </>
         );
       case "inventory":
         return (
