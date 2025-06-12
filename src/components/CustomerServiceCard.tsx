@@ -33,15 +33,15 @@ export function CustomerServiceCard({ supportCaseData, topTicketReasons }: Custo
         <CardContent className="p-6">
           <div className="grid grid-cols-5 gap-6">
             <div className="text-center">
-              <div className="text-xs font-medium text-slate-600 tracking-wide mb-2">YTD Created Tickets</div>
+              <div className="text-xs font-medium text-slate-600 tracking-wide mb-2">Created Tickets</div>
               <div className="text-2xl font-bold text-slate-900">{supportCaseData.ytdCreatedTickets}</div>
             </div>
             <div className="text-center">
-              <div className="text-xs font-medium text-slate-600 tracking-wide mb-2">YTD Solved Tickets</div>
+              <div className="text-xs font-medium text-slate-600 tracking-wide mb-2">Solved Tickets</div>
               <div className="text-2xl font-bold text-slate-900">{supportCaseData.ytdSolvedTickets}</div>
             </div>
             <div className="text-center">
-              <div className="text-xs font-medium text-slate-600 tracking-wide mb-2">YTD Unsolved Tickets</div>
+              <div className="text-xs font-medium text-slate-600 tracking-wide mb-2">Unsolved Tickets</div>
               <div className="text-2xl font-bold text-slate-900">{supportCaseData.ytdUnsolvedTickets}</div>
             </div>
             <div className="text-center">
@@ -60,7 +60,7 @@ export function CustomerServiceCard({ supportCaseData, topTicketReasons }: Custo
       <Card className="border-slate-200 bg-white hover:shadow-md overflow-hidden transition-all duration-200">
         <CardHeader className="pb-6 border-b border-slate-100">
           <CardTitle className="text-lg tracking-tight text-slate-900 font-semibold">
-            YTD Top 10 Ticket Distribution by Reason
+            Top 10 Ticket Distribution by Reason
           </CardTitle>
         </CardHeader>
         <CardContent className="p-0">
