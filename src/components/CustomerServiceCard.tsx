@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface SupportCaseData {
@@ -86,9 +87,9 @@ export function CustomerServiceCard({
             <tbody>
               {tickets.map((ticket, index) => (
                 <tr key={index} className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors">
-                  <td className="py-3 px-4 text-sm font-medium text-slate-800">{ticket.reason}</td>
-                  <td className="py-3 px-4 text-sm font-mono tabular-nums text-center text-slate-800">{ticket.createdTickets}</td>
-                  <td className="py-3 px-4 text-sm font-mono tabular-nums text-center text-slate-800">{ticket.percentageOfTotal}</td>
+                  <td className="py-3 px-4 text-xs font-medium text-slate-800">{ticket.reason}</td>
+                  <td className="py-3 px-4 text-xs font-mono tabular-nums text-center text-slate-800">{ticket.createdTickets}</td>
+                  <td className="py-3 px-4 text-xs font-mono tabular-nums text-center text-slate-800">{ticket.percentageOfTotal}</td>
                 </tr>
               ))}
             </tbody>
