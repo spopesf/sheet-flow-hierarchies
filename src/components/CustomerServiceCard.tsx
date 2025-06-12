@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface SupportCaseData {
@@ -28,6 +27,11 @@ export function CustomerServiceCard({
   supportCaseDataB2C,
   topTicketReasonsB2C 
 }: CustomerServiceCardProps) {
+  const formatPercentage = (value: string) => {
+    const numValue = parseFloat(value.replace('%', ''));
+    return `${numValue.toFixed(1)}%`;
+  };
+
   const renderSupportCaseCard = (title: string, data: SupportCaseData) => (
     <Card className="border-slate-200 bg-white hover:shadow-md overflow-hidden transition-all duration-200">
       <CardHeader className="pb-6 border-b border-slate-100">
@@ -51,11 +55,11 @@ export function CustomerServiceCard({
           </div>
           <div className="text-center flex flex-col">
             <div className="text-xs font-medium text-slate-600 tracking-wide mb-2 flex-1 flex items-start">Resolution %</div>
-            <div className="text-2xl font-bold text-slate-900">{data.resolutionPercentage}</div>
+            <div className="text-2xl font-bold text-slate-900">{formatPercentage(data.resolutionPercentage)}</div>
           </div>
           <div className="text-center flex flex-col">
             <div className="text-xs font-medium text-slate-600 tracking-wide mb-2 flex-1 flex items-start">Satisfaction Score</div>
-            <div className="text-2xl font-bold text-slate-900">{data.satisfactionScore}</div>
+            <div className="text-2xl font-bold text-slate-900">{formatPercentage(data.satisfactionScore)}</div>
           </div>
         </div>
       </CardContent>
