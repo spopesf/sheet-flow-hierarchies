@@ -1,5 +1,3 @@
-
-import { SidebarTrigger } from "@/components/ui/sidebar";
 import { ExpenseCard } from "./ExpenseCard";
 import { SearchFilters } from "./SearchFilters";
 import { NavigationTabs } from "./NavigationTabs";
@@ -78,7 +76,6 @@ export function ExpenseDashboard() {
       <div className="border-b border-slate-200 bg-white">
         <div className="flex items-center justify-between py-6">
           <div className="flex items-center gap-4">
-            <SidebarTrigger className="text-slate-600" />
             <h1 className="text-3xl font-bold tracking-tight text-slate-900">Expenses</h1>
           </div>
         </div>
