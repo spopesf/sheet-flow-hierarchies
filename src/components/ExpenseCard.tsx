@@ -96,7 +96,7 @@ export function ExpenseCard({ title, data, variant, selectedFilter }: ExpenseCar
         )}
       >
         <td className={cn(
-          "py-3 px-2 text-xs font-mono tabular-nums text-slate-800",
+          "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right",
           isTotalExpensesRow && "font-bold"
         )}>
           {rowData.label && (
@@ -130,49 +130,49 @@ export function ExpenseCard({ title, data, variant, selectedFilter }: ExpenseCar
           {showNoData ? "—" : rowData.invoiced}
         </td>
         <td className={cn(
-          "py-3 px-2 text-xs font-mono tabular-nums text-slate-800",
+          "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right",
           isTotalExpensesRow && "font-bold"
         )}>
           {showNoData ? "—" : rowData.productExpense}
         </td>
         <td className={cn(
-          "py-3 px-2 text-xs font-mono tabular-nums text-slate-800",
+          "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right",
           isTotalExpensesRow && "font-bold"
         )}>
           {showNoData ? "—" : rowData.freightToStore}
         </td>
         <td className={cn(
-          "py-3 px-2 text-xs font-mono tabular-nums text-slate-800",
+          "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right",
           isTotalExpensesRow && "font-bold"
         )}>
           {showNoData ? "—" : rowData.numInvoices}
         </td>
         <td className={cn(
-          "py-3 px-2 text-xs font-mono tabular-nums text-slate-800",
+          "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right",
           isTotalExpensesRow && "font-bold"
         )}>
           {showNoData ? "—" : rowData.numOrderingAccounts}
         </td>
         <td className={cn(
-          "py-3 px-2 text-xs font-mono tabular-nums text-slate-800",
+          "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right",
           isTotalExpensesRow && "font-bold"
         )}>
           {showNoData ? "—" : rowData.numItemsOrdered}
         </td>
         <td className={cn(
-          "py-3 px-2 text-xs font-mono tabular-nums text-slate-800",
+          "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right",
           isTotalExpensesRow && "font-bold"
         )}>
           {showNoData ? "—" : rowData.avgOrderValue}
         </td>
         <td className={cn(
-          "py-3 px-2 text-xs font-mono tabular-nums text-slate-800",
+          "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right",
           isTotalExpensesRow && "font-bold"
         )}>
           {showNoData ? "—" : rowData.avgFreightToStore}
         </td>
         <td className={cn(
-          "py-3 px-2 text-xs font-mono tabular-nums text-slate-800",
+          "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right",
           isTotalExpensesRow && "font-bold"
         )}>
           {showNoData ? "—" : rowData.avgItemsPerOrder}
