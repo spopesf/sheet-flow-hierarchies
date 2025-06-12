@@ -23,61 +23,65 @@ export function SearchFilters() {
   };
 
   return (
-    <div className="space-y-6 p-6 bg-card rounded-lg border border-border shadow-sm">
-      {/* Section Title */}
-      <h2 className="text-lg font-semibold text-foreground">Choose your filters</h2>
-      
-      {/* Date Range */}
-      <div className="space-y-2">
-        <label className="text-sm font-medium text-muted-foreground">Date Range</label>
-        <div className="flex items-center justify-start gap-3 text-sm">
-          <CalendarDays className="h-4 w-4 text-muted-foreground" />
-          <Button variant="ghost" size="sm" className="font-medium text-foreground hover:bg-accent">
-            01/01/2025
-          </Button>
-          <ChevronRight className="h-3 w-3 text-muted-foreground" />
-          <Button variant="ghost" size="sm" className="font-medium text-foreground hover:bg-accent">
-            06/11/2025
-          </Button>
+    <div className="p-4 bg-card rounded-lg border border-border shadow-sm">
+      <div className="grid grid-cols-3 gap-6 items-start">
+        {/* Section Title */}
+        <div>
+          <h2 className="text-lg font-semibold text-foreground">Choose your filters</h2>
         </div>
-      </div>
-      
-      {/* Search Method Selection */}
-      <div className="space-y-3">
-        <label className="text-sm font-medium text-muted-foreground">Search Method</label>
-        <RadioGroup value={searchMethod} onValueChange={handleSearchMethodChange} className="space-y-3">
-          {/* Search Input Option */}
-          <div className="flex items-center space-x-3 p-3 rounded-md border border-border bg-background/50">
-            <RadioGroupItem value="search" id="search" />
-            <Label htmlFor="search" className="flex items-center gap-3 flex-1 cursor-pointer">
-              <Search className="h-4 w-4 text-muted-foreground flex-shrink-0" />
-              <Input 
-                placeholder="Store# or Employee#" 
-                value={searchInput}
-                onChange={(e) => setSearchInput(e.target.value)}
-                disabled={searchMethod !== "search"}
-                className="border-0 shadow-none focus-visible:ring-0 font-medium placeholder:text-muted-foreground disabled:opacity-50 disabled:cursor-not-allowed bg-transparent"
-              />
-            </Label>
+        
+        {/* Date Range */}
+        <div className="space-y-2">
+          <label className="text-sm font-medium text-muted-foreground">Date Range</label>
+          <div className="flex items-center justify-start gap-2 text-sm">
+            <CalendarDays className="h-4 w-4 text-muted-foreground" />
+            <Button variant="ghost" size="sm" className="font-medium text-foreground hover:bg-accent p-1 h-auto">
+              01/01/2025
+            </Button>
+            <ChevronRight className="h-3 w-3 text-muted-foreground" />
+            <Button variant="ghost" size="sm" className="font-medium text-foreground hover:bg-accent p-1 h-auto">
+              06/11/2025
+            </Button>
           </div>
-          
-          {/* Dropdown Option */}
-          <div className="flex items-center space-x-3 p-3 rounded-md border border-border bg-background/50">
-            <RadioGroupItem value="filter" id="filter" />
-            <Label htmlFor="filter" className="flex items-center flex-1 cursor-pointer">
-              <Select value={selectedDropdown} onValueChange={setSelectedDropdown} disabled={searchMethod !== "filter"}>
-                <SelectTrigger className="w-full font-medium disabled:opacity-50 disabled:cursor-not-allowed border-0 shadow-none bg-transparent">
-                  <SelectValue placeholder="All Orders" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Orders</SelectItem>
-                  <SelectItem value="internal">Internal Orders</SelectItem>
-                  <SelectItem value="consumer">Consumer Orders</SelectItem>
-                </SelectContent>
-              </Select>
-            </Label>
-          </div>
-        </RadioGroup>
+        </div>
+        
+        {/* Search Method Selection */}
+        <div className="space-y-2">
+          <label className="text-sm font-medium text-muted-foreground">Search Method</label>
+          <RadioGroup value={searchMethod} onValueChange={handleSearchMethodChange} className="space-y-2">
+            {/* Search Input Option */}
+            <div className="flex items-center space-x-2 p-2 rounded-md border border-border bg-background/50">
+              <RadioGroupItem value="search" id="search" className="mt-0" />
+              <Label htmlFor="search" className="flex items-center gap-2 flex-1 cursor-pointer">
+                <Search className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+                <Input 
+                  placeholder="Store# or Employee#" 
+                  value={searchInput}
+                  onChange={(e) => setSearchInput(e.target.value)}
+                  disabled={searchMethod !== "search"}
+                  className="border-0 shadow-none focus-visible:ring-0 font-medium placeholder:text-muted-foreground disabled:opacity-50 disabled:cursor-not-allowed bg-transparent h-8"
+                />
+              </Label>
+            </div>
+            
+            {/* Dropdown Option */}
+            <div className="flex items-center space-x-2 p-2 rounded-md border border-border bg-background/50">
+              <RadioGroupItem value="filter" id="filter" className="mt-0" />
+              <Label htmlFor="filter" className="flex items-center flex-1 cursor-pointer">
+                <Select value={selectedDropdown} onValueChange={setSelectedDropdown} disabled={searchMethod !== "filter"}>
+                  <SelectTrigger className="w-full font-medium disabled:opacity-50 disabled:cursor-not-allowed border-0 shadow-none bg-transparent h-8">
+                    <SelectValue placeholder="All Orders" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">All Orders</SelectItem>
+                    <SelectItem value="internal">Internal Orders</SelectItem>
+                    <SelectItem value="consumer">Consumer Orders</SelectItem>
+                  </SelectContent>
+                </Select>
+              </Label>
+            </div>
+          </RadioGroup>
+        </div>
       </div>
     </div>
   );
