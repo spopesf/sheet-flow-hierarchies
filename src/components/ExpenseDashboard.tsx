@@ -1,3 +1,5 @@
+
+import { useState } from "react";
 import { ExpenseCard } from "./ExpenseCard";
 import { SearchFilters } from "./SearchFilters";
 import { NavigationTabs } from "./NavigationTabs";
@@ -67,39 +69,89 @@ const totalExpenseData = {
 };
 
 export function ExpenseDashboard() {
+  const [activeTab, setActiveTab] = useState("expenses");
+
+  const renderTabContent = () => {
+    switch (activeTab) {
+      case "expenses":
+        return (
+          <>
+            {/* Search and Filters */}
+            <div className="px-1">
+              <SearchFilters />
+            </div>
+
+            {/* Expense Cards */}
+            <div className="space-y-8 px-1">
+              <ExpenseCard
+                title="All Internal Orders"
+                data={internalOrdersData}
+                variant="internal"
+              />
+              
+              <ExpenseCard
+                title="Total Expense"
+                data={totalExpenseData}
+                variant="total"
+              />
+            </div>
+          </>
+        );
+      case "income":
+        return (
+          <div className="flex items-center justify-center py-20">
+            <div className="text-center">
+              <h2 className="text-2xl font-semibold text-muted-foreground">Income reports coming soon</h2>
+            </div>
+          </div>
+        );
+      case "inventory":
+        return (
+          <div className="flex items-center justify-center py-20">
+            <div className="text-center">
+              <h2 className="text-2xl font-semibold text-muted-foreground">Inventory reports coming soon</h2>
+            </div>
+          </div>
+        );
+      case "customer-service":
+        return (
+          <div className="flex items-center justify-center py-20">
+            <div className="text-center">
+              <h2 className="text-2xl font-semibold text-muted-foreground">Customer Service reports coming soon</h2>
+            </div>
+          </div>
+        );
+      case "sustainability":
+        return (
+          <div className="flex items-center justify-center py-20">
+            <div className="text-center">
+              <h2 className="text-2xl font-semibold text-muted-foreground">Sustainability reports coming soon</h2>
+            </div>
+          </div>
+        );
+      default:
+        return null;
+    }
+  };
+
   return (
     <div className="space-y-8">
       {/* Navigation Tabs */}
-      <NavigationTabs />
+      <NavigationTabs activeTab={activeTab} onTabChange={setActiveTab} />
       
       {/* Header */}
       <div className="border-b border-slate-200 bg-white">
         <div className="flex items-center justify-between py-6">
           <div className="flex items-center gap-4">
-            <h1 className="text-3xl font-bold tracking-tight text-slate-900">Expenses</h1>
+            <h1 className="text-3xl font-bold tracking-tight text-slate-900">
+              {activeTab.charAt(0).toUpperCase() + activeTab.slice(1).replace('-', ' ')}
+            </h1>
           </div>
         </div>
       </div>
 
-      {/* Search and Filters */}
-      <div className="px-1">
-        <SearchFilters />
-      </div>
-
-      {/* Expense Cards */}
-      <div className="space-y-8 px-1">
-        <ExpenseCard
-          title="All Internal Orders"
-          data={internalOrdersData}
-          variant="internal"
-        />
-        
-        <ExpenseCard
-          title="Total Expense"
-          data={totalExpenseData}
-          variant="total"
-        />
-      </div>
+      {/* Tab Content */}
+      {renderTabContent()}
     </div>
   );
 }

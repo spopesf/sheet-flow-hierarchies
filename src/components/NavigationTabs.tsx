@@ -1,11 +1,16 @@
 
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-export function NavigationTabs() {
+interface NavigationTabsProps {
+  activeTab: string;
+  onTabChange: (tab: string) => void;
+}
+
+export function NavigationTabs({ activeTab, onTabChange }: NavigationTabsProps) {
   return (
     <div className="border-b border-slate-200 bg-white">
       <div className="px-8">
-        <Tabs defaultValue="expenses" className="w-full">
+        <Tabs value={activeTab} onValueChange={onTabChange} className="w-full">
           <TabsList className="h-12 bg-transparent p-0 border-0">
             <TabsTrigger 
               value="expenses" 
