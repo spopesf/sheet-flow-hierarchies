@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
@@ -36,6 +35,7 @@ const getCategoryIcon = (label: string) => {
 
 const getCategoryBorderColor = (label: string) => {
   const colorMap: Record<string, string> = {
+    "All Inventory": "border-l-yellow-500",
     "Uniforms: Replenishment": "border-l-blue-500",
     "Uniforms: Non-replenishment": "border-l-green-500",
     "Merchandise (B2B)": "border-l-purple-500",
@@ -57,13 +57,17 @@ const getTooltipContent = (label: string) => {
 const renderInventoryRow = (label: string, data: { count: string; value: string }) => {
   const icon = getCategoryIcon(label);
   const borderColor = getCategoryBorderColor(label);
+  const isAllInventory = label === "All Inventory";
   
   return (
     <tr key={label} className={cn(
       "border-b border-slate-100 hover:bg-slate-50/50 transition-colors",
       borderColor && `border-l-4 ${borderColor}`
     )}>
-      <td className="py-3 px-4 text-sm font-medium text-slate-800">
+      <td className={cn(
+        "py-3 px-4 text-sm text-slate-800",
+        isAllInventory ? "font-bold" : "font-medium"
+      )}>
         {icon && (
           <TooltipProvider>
             <div className="flex items-center gap-2 mb-1">
@@ -89,8 +93,14 @@ const renderInventoryRow = (label: string, data: { count: string; value: string 
         )}
         {!icon && label}
       </td>
-      <td className="py-3 px-4 text-sm font-mono tabular-nums text-center text-slate-800">{data.count}</td>
-      <td className="py-3 px-4 text-sm font-mono tabular-nums text-center text-slate-800">{data.value}</td>
+      <td className={cn(
+        "py-3 px-4 text-sm font-mono tabular-nums text-center text-slate-800",
+        isAllInventory && "font-bold"
+      )}>{data.count}</td>
+      <td className={cn(
+        "py-3 px-4 text-sm font-mono tabular-nums text-center text-slate-800",
+        isAllInventory && "font-bold"
+      )}>{data.value}</td>
     </tr>
   );
 };
