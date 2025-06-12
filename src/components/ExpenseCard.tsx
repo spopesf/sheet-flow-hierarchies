@@ -73,7 +73,10 @@ export function ExpenseCard({ title, data, variant }: ExpenseCardProps) {
                 >
                   <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
                     {rowData.label && index > 0 && (
-                      <span className="text-slate-600 font-sans mr-2">↳</span>
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="text-slate-600 font-sans">↳</span>
+                        <span className="text-slate-700 font-sans font-medium text-xs">{rowData.label}</span>
+                      </div>
                     )}
                     {rowData.invoiced}
                   </td>

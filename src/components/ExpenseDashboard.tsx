@@ -26,7 +26,7 @@ const internalOrdersData = [
     avgOrderValue: "$204.15",
     avgFreightToStore: "22.56",
     avgItemsPerOrder: "19.05",
-    label: "Region A"
+    label: "Promotional Items"
   },
   {
     invoiced: "$2,925,686.15",
@@ -38,7 +38,7 @@ const internalOrdersData = [
     avgOrderValue: "$202.45",
     avgFreightToStore: "25.48",
     avgItemsPerOrder: "23.85",
-    label: "Region B"
+    label: "Replenishment"
   }
 ];
 
