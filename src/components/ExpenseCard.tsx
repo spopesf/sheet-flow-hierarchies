@@ -26,8 +26,8 @@ interface ExpenseCardProps {
 
 const getTooltipContent = (label: string) => {
   const definitions: Record<string, string> = {
-    "Promotional Items": "Special offers and promotional products distributed to stores for marketing campaigns and customer acquisition.",
-    "Replenishment": "Regular inventory restocking orders to maintain optimal stock levels across all store locations.",
+    "Uniforms: Replenishment": "Regular uniform inventory restocking orders to maintain optimal stock levels across all store locations.",
+    "Uniforms: Non-replenishment": "Special uniform orders and promotional items distributed to stores for specific campaigns and new employee onboarding.",
     "Merchandise": "Core product inventory including retail merchandise and goods for direct customer sales."
   };
   return definitions[label] || `Information about ${label}`;

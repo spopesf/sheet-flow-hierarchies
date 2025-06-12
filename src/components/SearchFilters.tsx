@@ -23,15 +23,15 @@ export function SearchFilters() {
   };
 
   return (
-    <div className="p-4 bg-card rounded-lg border border-border shadow-sm">
-      <div className="grid grid-cols-3 gap-6 items-start">
+    <div className="p-3 bg-card rounded-lg border border-border shadow-sm">
+      <div className="grid grid-cols-3 gap-4 items-start">
         {/* Section Title */}
         <div>
           <h2 className="text-lg font-semibold text-foreground">Choose your filters</h2>
         </div>
         
         {/* Date Range */}
-        <div className="space-y-2">
+        <div className="space-y-1">
           <label className="text-sm font-medium text-muted-foreground">Date Range</label>
           <div className="flex items-center justify-start gap-2 text-sm">
             <CalendarDays className="h-4 w-4 text-muted-foreground" />
@@ -46,9 +46,9 @@ export function SearchFilters() {
         </div>
         
         {/* Search Method Selection */}
-        <div className="space-y-2">
+        <div className="space-y-1">
           <label className="text-sm font-medium text-muted-foreground">Search Method</label>
-          <RadioGroup value={searchMethod} onValueChange={handleSearchMethodChange} className="space-y-2">
+          <RadioGroup value={searchMethod} onValueChange={handleSearchMethodChange} className="space-y-1">
             {/* Search Input Option */}
             <div className="flex items-center space-x-2 p-2 rounded-md border border-border bg-background/50">
               <RadioGroupItem value="search" id="search" className="mt-0" />
@@ -59,7 +59,7 @@ export function SearchFilters() {
                   value={searchInput}
                   onChange={(e) => setSearchInput(e.target.value)}
                   disabled={searchMethod !== "search"}
-                  className="border-0 shadow-none focus-visible:ring-0 font-medium placeholder:text-muted-foreground disabled:opacity-50 disabled:cursor-not-allowed bg-transparent h-8"
+                  className="border-0 shadow-none focus-visible:ring-0 font-medium placeholder:text-muted-foreground disabled:opacity-50 disabled:cursor-not-allowed bg-transparent h-7"
                 />
               </Label>
             </div>
@@ -69,7 +69,7 @@ export function SearchFilters() {
               <RadioGroupItem value="filter" id="filter" className="mt-0" />
               <Label htmlFor="filter" className="flex items-center flex-1 cursor-pointer">
                 <Select value={selectedDropdown} onValueChange={setSelectedDropdown} disabled={searchMethod !== "filter"}>
-                  <SelectTrigger className="w-full font-medium disabled:opacity-50 disabled:cursor-not-allowed border-0 shadow-none bg-transparent h-8">
+                  <SelectTrigger className="w-full font-medium disabled:opacity-50 disabled:cursor-not-allowed border-0 shadow-none bg-transparent h-7">
                     <SelectValue placeholder="All User Groups" />
                   </SelectTrigger>
                   <SelectContent>

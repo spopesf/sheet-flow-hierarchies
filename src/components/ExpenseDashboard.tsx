@@ -26,7 +26,7 @@ const internalOrdersData = [
     avgOrderValue: "$204.15",
     avgFreightToStore: "22.56",
     avgItemsPerOrder: "19.05",
-    label: "Promotional Items"
+    label: "Uniforms: Replenishment"
   },
   {
     invoiced: "$2,925,686.15",
@@ -38,7 +38,7 @@ const internalOrdersData = [
     avgOrderValue: "$202.45",
     avgFreightToStore: "25.48",
     avgItemsPerOrder: "23.85",
-    label: "Replenishment",
+    label: "Uniforms: Non-replenishment",
     subItems: [
       {
         invoiced: "$1,462,843.08",
@@ -84,15 +84,15 @@ export function ExpenseDashboard() {
             {/* Expense Cards */}
             <div className="space-y-8 px-1">
               <ExpenseCard
-                title="All Internal Orders"
-                data={internalOrdersData}
-                variant="internal"
-              />
-              
-              <ExpenseCard
                 title="Total Expense"
                 data={totalExpenseData}
                 variant="total"
+              />
+              
+              <ExpenseCard
+                title="All Internal Orders"
+                data={internalOrdersData}
+                variant="internal"
               />
             </div>
           </>
