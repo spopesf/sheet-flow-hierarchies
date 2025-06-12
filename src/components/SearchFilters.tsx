@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -15,7 +16,7 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
   const [searchMethod, setSearchMethod] = useState("search");
   const [searchInput, setSearchInput] = useState("");
   const [selectedDropdown, setSelectedDropdown] = useState("");
-  const [dateRangeMethod, setDateRangeMethod] = useState("manual");
+  const [dateRangeMethod, setDateRangeMethod] = useState("predefined");
   const [selectedDateRange, setSelectedDateRange] = useState("year-to-date");
 
   const handleSearchMethodChange = (value: string) => {
@@ -105,34 +106,7 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
         <div className="space-y-1">
           <label className="text-sm font-medium text-muted-foreground">Date Range</label>
           <RadioGroup value={dateRangeMethod} onValueChange={handleDateRangeMethodChange} className="space-y-1">
-            {/* Manual Date Range Option */}
-            <div className="flex items-center space-x-2 p-2 rounded-md border border-border bg-background/50">
-              <RadioGroupItem value="manual" id="manual-date" className="mt-0" />
-              <Label htmlFor="manual-date" className="flex items-center gap-2 flex-1 cursor-pointer">
-                <CalendarDays className="h-4 w-4 text-muted-foreground flex-shrink-0" />
-                <div className="flex items-center gap-2 text-sm">
-                  <Button 
-                    variant="ghost" 
-                    size="sm" 
-                    className="font-medium text-foreground hover:bg-accent p-1 h-auto disabled:opacity-50 disabled:cursor-not-allowed"
-                    disabled={dateRangeMethod !== "manual"}
-                  >
-                    01/01/2025
-                  </Button>
-                  <ChevronRight className="h-3 w-3 text-muted-foreground" />
-                  <Button 
-                    variant="ghost" 
-                    size="sm" 
-                    className="font-medium text-foreground hover:bg-accent p-1 h-auto disabled:opacity-50 disabled:cursor-not-allowed"
-                    disabled={dateRangeMethod !== "manual"}
-                  >
-                    06/11/2025
-                  </Button>
-                </div>
-              </Label>
-            </div>
-            
-            {/* Predefined Date Range Option */}
+            {/* Predefined Date Range Option - now first */}
             <div className="flex items-center space-x-2 p-2 rounded-md border border-border bg-background/50">
               <RadioGroupItem value="predefined" id="predefined-date" className="mt-0" />
               <Label htmlFor="predefined-date" className="flex items-center flex-1 cursor-pointer">
@@ -162,6 +136,33 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
                     <SelectItem value="last-12-months">Last 12 Months</SelectItem>
                   </SelectContent>
                 </Select>
+              </Label>
+            </div>
+
+            {/* Manual Date Range Option - now second */}
+            <div className="flex items-center space-x-2 p-2 rounded-md border border-border bg-background/50">
+              <RadioGroupItem value="manual" id="manual-date" className="mt-0" />
+              <Label htmlFor="manual-date" className="flex items-center gap-2 flex-1 cursor-pointer">
+                <CalendarDays className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+                <div className="flex items-center gap-2 text-sm">
+                  <Button 
+                    variant="ghost" 
+                    size="sm" 
+                    className="font-medium text-foreground hover:bg-accent p-1 h-auto disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled={dateRangeMethod !== "manual"}
+                  >
+                    01/01/2025
+                  </Button>
+                  <ChevronRight className="h-3 w-3 text-muted-foreground" />
+                  <Button 
+                    variant="ghost" 
+                    size="sm" 
+                    className="font-medium text-foreground hover:bg-accent p-1 h-auto disabled:opacity-50 disabled:cursor-not-allowed"
+                    disabled={dateRangeMethod !== "manual"}
+                  >
+                    06/11/2025
+                  </Button>
+                </div>
               </Label>
             </div>
           </RadioGroup>
