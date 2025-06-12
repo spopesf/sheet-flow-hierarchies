@@ -1,5 +1,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Info } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ExpenseData {
@@ -12,7 +14,8 @@ interface ExpenseData {
   avgOrderValue: string;
   avgFreightToStore: string;
   avgItemsPerOrder: string;
-  label?: string; // Optional label for sub-rows
+  label?: string;
+  subItems?: ExpenseData[];
 }
 
 interface ExpenseCardProps {
@@ -20,6 +23,15 @@ interface ExpenseCardProps {
   data: ExpenseData | ExpenseData[];
   variant: "internal" | "consumer" | "total";
 }
+
+const getTooltipContent = (label: string) => {
+  const definitions: Record<string, string> = {
+    "Promotional Items": "Special offers and promotional products distributed to stores for marketing campaigns and customer acquisition.",
+    "Replenishment": "Regular inventory restocking orders to maintain optimal stock levels across all store locations.",
+    "Merchandise": "Core product inventory including retail merchandise and goods for direct customer sales."
+  };
+  return definitions[label] || `Information about ${label}`;
+};
 
 export function ExpenseCard({ title, data, variant }: ExpenseCardProps) {
   const isTotal = variant === "total";
@@ -36,6 +48,48 @@ export function ExpenseCard({ title, data, variant }: ExpenseCardProps) {
     consumer: "text-slate-900 font-semibold",
     total: "text-slate-900 font-bold text-xl"
   };
+
+  const renderRow = (rowData: ExpenseData, index: number, isSubItem = false, parentIndex?: number) => (
+    <tr 
+      key={`${index}-${isSubItem ? 'sub' : 'main'}`}
+      className={cn(
+        "border-b border-slate-100 hover:bg-slate-50/50 transition-colors",
+        isTotal && "bg-white font-semibold",
+        index === 0 && Array.isArray(data) && !isSubItem && "font-medium",
+        (index > 0 && Array.isArray(data) && !isSubItem) || isSubItem && "bg-slate-50/30"
+      )}
+    >
+      <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
+        {rowData.label && (index > 0 || isSubItem) && (
+          <TooltipProvider>
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-slate-600 font-sans">
+                {isSubItem ? "  ↳" : "↳"}
+              </span>
+              <span className="text-slate-700 font-sans font-medium text-xs">{rowData.label}</span>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Info className="h-3 w-3 text-slate-500 hover:text-slate-700 cursor-help" />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p className="max-w-xs text-sm">{getTooltipContent(rowData.label)}</p>
+                </TooltipContent>
+              </Tooltip>
+            </div>
+          </TooltipProvider>
+        )}
+        {rowData.invoiced}
+      </td>
+      <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.productExpense}</td>
+      <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.freightToStore}</td>
+      <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.numInvoices}</td>
+      <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.numOrderingAccounts}</td>
+      <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.numItemsOrdered}</td>
+      <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.avgOrderValue}</td>
+      <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.avgFreightToStore}</td>
+      <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.avgItemsPerOrder}</td>
+    </tr>
+  );
 
   return (
     <Card className={cn("overflow-hidden transition-all duration-200", cardVariants[variant])}>
@@ -62,33 +116,12 @@ export function ExpenseCard({ title, data, variant }: ExpenseCardProps) {
             </thead>
             <tbody>
               {dataArray.map((rowData, index) => (
-                <tr 
-                  key={index}
-                  className={cn(
-                    "border-b border-slate-100 hover:bg-slate-50/50 transition-colors",
-                    isTotal && "bg-white font-semibold",
-                    index === 0 && Array.isArray(data) && "font-medium", // First row is slightly emphasized for parent
-                    index > 0 && Array.isArray(data) && "bg-slate-50/30" // Sub-rows have slight background
+                <>
+                  {renderRow(rowData, index)}
+                  {rowData.subItems?.map((subItem, subIndex) => 
+                    renderRow(subItem, subIndex, true, index)
                   )}
-                >
-                  <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
-                    {rowData.label && index > 0 && (
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className="text-slate-600 font-sans">↳</span>
-                        <span className="text-slate-700 font-sans font-medium text-xs">{rowData.label}</span>
-                      </div>
-                    )}
-                    {rowData.invoiced}
-                  </td>
-                  <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.productExpense}</td>
-                  <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.freightToStore}</td>
-                  <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.numInvoices}</td>
-                  <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.numOrderingAccounts}</td>
-                  <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.numItemsOrdered}</td>
-                  <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.avgOrderValue}</td>
-                  <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.avgFreightToStore}</td>
-                  <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.avgItemsPerOrder}</td>
-                </tr>
+                </>
               ))}
             </tbody>
           </table>

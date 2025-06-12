@@ -1,3 +1,4 @@
+
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { ExpenseCard } from "./ExpenseCard";
 import { SearchFilters } from "./SearchFilters";
@@ -37,21 +38,23 @@ const internalOrdersData = [
     avgOrderValue: "$202.45",
     avgFreightToStore: "25.48",
     avgItemsPerOrder: "23.85",
-    label: "Replenishment"
+    label: "Replenishment",
+    subItems: [
+      {
+        invoiced: "$1,462,843.08",
+        productExpense: "$1,278,757.87",
+        freightToStore: "$184,085.21",
+        numInvoices: "7225",
+        numOrderingAccounts: "7335",
+        numItemsOrdered: "172314",
+        avgOrderValue: "$202.45",
+        avgFreightToStore: "25.48",
+        avgItemsPerOrder: "23.85",
+        label: "Merchandise"
+      }
+    ]
   }
 ];
-
-const consumerOrdersData = {
-  invoiced: "$21,196.30",
-  productExpense: "$0.00",
-  freightToStore: "$21,196.30",
-  numInvoices: "897",
-  numOrderingAccounts: "0",
-  numItemsOrdered: "1350",
-  avgOrderValue: "$0.00",
-  avgFreightToStore: "0.00",
-  avgItemsPerOrder: "0.00"
-};
 
 const totalExpenseData = {
   invoiced: "$5,073,490.38",
@@ -92,12 +95,6 @@ export function ExpenseDashboard() {
           title="All Internal Orders"
           data={internalOrdersData}
           variant="internal"
-        />
-        
-        <ExpenseCard
-          title="All Consumer Orders"
-          data={consumerOrdersData}
-          variant="consumer"
         />
         
         <ExpenseCard
