@@ -1,7 +1,5 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { Info } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface InventorySnapshotData {
@@ -187,7 +185,7 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
                           <Tooltip>
                             <TooltipTrigger asChild>
                               <div className="w-4 h-4 rounded-full bg-slate-400 flex items-center justify-center cursor-help hover:bg-slate-500 transition-colors">
-                                <Info size={8} className="text-white" />
+                                <span className="text-white text-xs font-bold">I</span>
                               </div>
                             </TooltipTrigger>
                             <TooltipContent>
@@ -248,7 +246,7 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
                           <Tooltip>
                             <TooltipTrigger asChild>
                               <div className="w-4 h-4 rounded-full bg-slate-400 flex items-center justify-center cursor-help hover:bg-slate-500 transition-colors">
-                                <Info size={8} className="text-white" />
+                                <span className="text-white text-xs font-bold">I</span>
                               </div>
                             </TooltipTrigger>
                             <TooltipContent>
