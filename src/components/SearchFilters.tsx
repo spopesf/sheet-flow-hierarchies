@@ -7,7 +7,11 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Search, CalendarDays, ChevronRight } from "lucide-react";
 
-export function SearchFilters() {
+interface SearchFiltersProps {
+  onFilterChange?: (filter: string) => void;
+}
+
+export function SearchFilters({ onFilterChange }: SearchFiltersProps) {
   const [searchMethod, setSearchMethod] = useState("search");
   const [searchInput, setSearchInput] = useState("");
   const [selectedDropdown, setSelectedDropdown] = useState("");
@@ -17,9 +21,15 @@ export function SearchFilters() {
     // Clear the other input when switching methods
     if (value === "search") {
       setSelectedDropdown("");
+      onFilterChange?.("");
     } else {
       setSearchInput("");
     }
+  };
+
+  const handleDropdownChange = (value: string) => {
+    setSelectedDropdown(value);
+    onFilterChange?.(value);
   };
 
   return (
@@ -68,7 +78,7 @@ export function SearchFilters() {
             <div className="flex items-center space-x-2 p-2 rounded-md border border-border bg-background/50">
               <RadioGroupItem value="filter" id="filter" className="mt-0" />
               <Label htmlFor="filter" className="flex items-center flex-1 cursor-pointer">
-                <Select value={selectedDropdown} onValueChange={setSelectedDropdown} disabled={searchMethod !== "filter"}>
+                <Select value={selectedDropdown} onValueChange={handleDropdownChange} disabled={searchMethod !== "filter"}>
                   <SelectTrigger className="w-full font-medium disabled:opacity-50 disabled:cursor-not-allowed border-0 shadow-none bg-transparent h-7">
                     <SelectValue placeholder="All User Groups" />
                   </SelectTrigger>

@@ -21,6 +21,7 @@ interface ExpenseCardProps {
   title: string;
   data: ExpenseData | ExpenseData[];
   variant: "internal" | "consumer" | "total";
+  selectedFilter?: string;
 }
 
 const getTooltipContent = (label: string) => {
@@ -50,9 +51,14 @@ const getCategoryBorderColor = (label: string) => {
   return colorMap[label] || "border-l-gray-500";
 };
 
-export function ExpenseCard({ title, data, variant }: ExpenseCardProps) {
+const hasNoDataForRSCCorporate = (label?: string) => {
+  return label && (label.includes("Uniforms: Replenishment") || label.includes("Uniforms: Non-replenishment"));
+};
+
+export function ExpenseCard({ title, data, variant, selectedFilter }: ExpenseCardProps) {
   const isTotal = variant === "total";
   const dataArray = Array.isArray(data) ? data : [data];
+  const isRSCCorporateSelected = selectedFilter === "rsc-corporate";
   
   const cardVariants = {
     internal: "border-slate-200 bg-white hover:shadow-md",
@@ -69,6 +75,7 @@ export function ExpenseCard({ title, data, variant }: ExpenseCardProps) {
   const renderRow = (rowData: ExpenseData, index: number, isSubItem = false, parentIndex?: number) => {
     const icon = rowData.label ? getCategoryIcon(rowData.label) : null;
     const borderColor = rowData.label ? getCategoryBorderColor(rowData.label) : "";
+    const shouldShowNoData = isRSCCorporateSelected && hasNoDataForRSCCorporate(rowData.label);
     
     return (
       <tr 
@@ -78,7 +85,8 @@ export function ExpenseCard({ title, data, variant }: ExpenseCardProps) {
           isTotal && "bg-white font-semibold",
           index === 0 && Array.isArray(data) && !isSubItem && "font-medium",
           (index > 0 && Array.isArray(data) && !isSubItem) || isSubItem && "bg-slate-50/30",
-          rowData.label && borderColor && `border-l-4 ${borderColor}`
+          rowData.label && borderColor && `border-l-4 ${borderColor}`,
+          shouldShowNoData && "opacity-50 bg-slate-100/50"
         )}
       >
         <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
@@ -90,7 +98,8 @@ export function ExpenseCard({ title, data, variant }: ExpenseCardProps) {
                     <div className={cn(
                       "w-9 h-5 rounded-full flex items-center justify-center text-xs font-bold min-w-[36px] cursor-help hover:opacity-80 transition-opacity",
                       icon.bgColor,
-                      icon.textColor
+                      icon.textColor,
+                      shouldShowNoData && "opacity-60"
                     )}>
                       {icon.text}
                     </div>
@@ -99,20 +108,38 @@ export function ExpenseCard({ title, data, variant }: ExpenseCardProps) {
                     <p className="max-w-xs text-sm">{getTooltipContent(rowData.label)}</p>
                   </TooltipContent>
                 </Tooltip>
-                <span className="text-slate-700 font-sans font-medium text-xs">{rowData.label}</span>
+                <span className={cn("text-slate-700 font-sans font-medium text-xs", shouldShowNoData && "text-slate-500")}>
+                  {rowData.label}
+                </span>
               </div>
             </TooltipProvider>
           )}
-          {rowData.invoiced}
+          {shouldShowNoData ? "—" : rowData.invoiced}
         </td>
-        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.productExpense}</td>
-        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.freightToStore}</td>
-        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.numInvoices}</td>
-        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.numOrderingAccounts}</td>
-        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.numItemsOrdered}</td>
-        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.avgOrderValue}</td>
-        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.avgFreightToStore}</td>
-        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">{rowData.avgItemsPerOrder}</td>
+        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
+          {shouldShowNoData ? "—" : rowData.productExpense}
+        </td>
+        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
+          {shouldShowNoData ? "—" : rowData.freightToStore}
+        </td>
+        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
+          {shouldShowNoData ? "—" : rowData.numInvoices}
+        </td>
+        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
+          {shouldShowNoData ? "—" : rowData.numOrderingAccounts}
+        </td>
+        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
+          {shouldShowNoData ? "—" : rowData.numItemsOrdered}
+        </td>
+        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
+          {shouldShowNoData ? "—" : rowData.avgOrderValue}
+        </td>
+        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
+          {shouldShowNoData ? "—" : rowData.avgFreightToStore}
+        </td>
+        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
+          {shouldShowNoData ? "—" : rowData.avgItemsPerOrder}
+        </td>
       </tr>
     );
   };

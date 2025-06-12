@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { ExpenseCard } from "./ExpenseCard";
 import { SearchFilters } from "./SearchFilters";
@@ -58,6 +59,7 @@ const totalExpenseData = {
 
 export function ExpenseDashboard() {
   const [activeTab, setActiveTab] = useState("expenses");
+  const [selectedFilter, setSelectedFilter] = useState("");
 
   const renderTabContent = () => {
     switch (activeTab) {
@@ -66,7 +68,7 @@ export function ExpenseDashboard() {
           <>
             {/* Search and Filters */}
             <div className="px-1">
-              <SearchFilters />
+              <SearchFilters onFilterChange={setSelectedFilter} />
             </div>
 
             {/* Expense Cards */}
@@ -75,12 +77,14 @@ export function ExpenseDashboard() {
                 title="Total Expense"
                 data={totalExpenseData}
                 variant="total"
+                selectedFilter={selectedFilter}
               />
               
               <ExpenseCard
                 title="All Internal Orders"
                 data={internalOrdersData}
                 variant="internal"
+                selectedFilter={selectedFilter}
               />
             </div>
           </>
