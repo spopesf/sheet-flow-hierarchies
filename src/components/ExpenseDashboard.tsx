@@ -1,21 +1,9 @@
-
 import { useState } from "react";
 import { ExpenseCard } from "./ExpenseCard";
 import { SearchFilters } from "./SearchFilters";
 import { NavigationTabs } from "./NavigationTabs";
 
 const internalOrdersData = [
-  {
-    invoiced: "$5,051,172.45",
-    productExpense: "$4,447,750.29",
-    freightToStore: "$603,422.16",
-    numInvoices: "24,870",
-    numOrderingAccounts: "24,520",
-    numItemsOrdered: "543,061",
-    avgOrderValue: "$206.02",
-    avgFreightToStore: "21.36",
-    avgItemsPerOrder: "21.75"
-  },
   {
     invoiced: "$2,125,486.30",
     productExpense: "$1,890,234.55",
