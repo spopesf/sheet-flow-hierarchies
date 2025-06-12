@@ -42,6 +42,15 @@ const getCategoryIcon = (label: string) => {
   return iconMap[label] || { text: "??", bgColor: "bg-gray-500", textColor: "text-white" };
 };
 
+const getCategoryBorderColor = (label: string) => {
+  const colorMap: Record<string, string> = {
+    "Uniforms: Replenishment": "border-l-blue-500",
+    "Uniforms: Non-replenishment": "border-l-green-500",
+    "Merchandise": "border-l-purple-500"
+  };
+  return colorMap[label] || "border-l-gray-500";
+};
+
 export function ExpenseCard({ title, data, variant }: ExpenseCardProps) {
   const isTotal = variant === "total";
   const dataArray = Array.isArray(data) ? data : [data];
@@ -60,6 +69,7 @@ export function ExpenseCard({ title, data, variant }: ExpenseCardProps) {
 
   const renderRow = (rowData: ExpenseData, index: number, isSubItem = false, parentIndex?: number) => {
     const icon = rowData.label ? getCategoryIcon(rowData.label) : null;
+    const borderColor = rowData.label ? getCategoryBorderColor(rowData.label) : "";
     
     return (
       <tr 
@@ -68,7 +78,8 @@ export function ExpenseCard({ title, data, variant }: ExpenseCardProps) {
           "border-b border-slate-100 hover:bg-slate-50/50 transition-colors",
           isTotal && "bg-white font-semibold",
           index === 0 && Array.isArray(data) && !isSubItem && "font-medium",
-          (index > 0 && Array.isArray(data) && !isSubItem) || isSubItem && "bg-slate-50/30"
+          (index > 0 && Array.isArray(data) && !isSubItem) || isSubItem && "bg-slate-50/30",
+          isSubItem && borderColor && `border-l-4 ${borderColor}`
         )}
       >
         <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
@@ -77,7 +88,7 @@ export function ExpenseCard({ title, data, variant }: ExpenseCardProps) {
               <div className="flex items-center gap-2 mb-1">
                 {icon && (
                   <div className={cn(
-                    "w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold",
+                    "w-7 h-5 rounded-full flex items-center justify-center text-xs font-bold",
                     icon.bgColor,
                     icon.textColor
                   )}>
