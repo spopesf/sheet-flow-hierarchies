@@ -17,18 +17,11 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarFooter,
-  SidebarHeader,
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const menuItems = [
-  {
-    title: "Dashboard",
-    url: "#",
-    icon: BarChart3,
-    isActive: true,
-  },
   {
     title: "My Account",
     url: "#",
@@ -49,19 +42,17 @@ const menuItems = [
     url: "#",
     icon: Headphones,
   },
+  {
+    title: "Dashboard",
+    url: "#",
+    icon: BarChart3,
+    isActive: true,
+  },
 ];
 
 export function AppSidebar() {
   return (
     <Sidebar className="border-r border-border">
-      <SidebarHeader className="p-6 border-b border-border">
-        <div className="font-bold text-lg tracking-tight text-foreground">
-          EXPENSES
-        </div>
-        <div className="text-xs text-muted-foreground tracking-wide uppercase">
-          Dashboard
-        </div>
-      </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className="text-xs font-medium text-muted-foreground mb-3 tracking-wide uppercase">
