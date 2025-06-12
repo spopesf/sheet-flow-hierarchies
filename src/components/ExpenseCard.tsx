@@ -98,7 +98,7 @@ export function ExpenseCard({ title, data, variant }: ExpenseCardProps) {
                 <span className="text-slate-700 font-sans font-medium text-xs">{rowData.label}</span>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <Info className="h-3 w-3 text-slate-500 hover:text-slate-700 cursor-help" />
+                    <Info className="h-4 w-4 text-slate-500 hover:text-slate-700 cursor-help" />
                   </TooltipTrigger>
                   <TooltipContent>
                     <p className="max-w-xs text-sm">{getTooltipContent(rowData.label)}</p>
