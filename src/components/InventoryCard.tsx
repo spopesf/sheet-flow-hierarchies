@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
@@ -65,7 +66,7 @@ const renderInventoryRow = (label: string, data: { count: string; value: string 
       borderColor && `border-l-4 ${borderColor}`
     )}>
       <td className={cn(
-        "py-3 px-4 text-sm text-slate-800",
+        "py-3 px-4 text-xs text-slate-800",
         isAllInventory ? "font-bold" : "font-medium"
       )}>
         {icon && (
@@ -94,11 +95,11 @@ const renderInventoryRow = (label: string, data: { count: string; value: string 
         {!icon && label}
       </td>
       <td className={cn(
-        "py-3 px-4 text-sm font-mono tabular-nums text-right text-slate-800",
+        "py-3 px-4 text-xs font-mono tabular-nums text-right text-slate-800",
         isAllInventory && "font-bold"
       )}>{data.count}</td>
       <td className={cn(
-        "py-3 px-4 text-sm font-mono tabular-nums text-right text-slate-800",
+        "py-3 px-4 text-xs font-mono tabular-nums text-right text-slate-800",
         isAllInventory && "font-bold"
       )}>{data.value}</td>
     </tr>
