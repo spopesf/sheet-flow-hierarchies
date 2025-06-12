@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
@@ -204,7 +203,7 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
                       <td className="py-2 px-3 text-xs font-medium text-slate-800 text-right">{item.item}</td>
                       <td className="py-2 px-3 text-xs font-mono tabular-nums text-right text-slate-800">{item.count}</td>
                       <td className="py-2 px-3 text-xs font-mono tabular-nums text-right text-slate-800">{item.value}</td>
-                      <td className="py-2 px-3 pr-10 text-xs font-mono tabular-nums text-right text-slate-800">{item.daysOnHand}</td>
+                      <td className="py-2 px-3 pr-20 text-xs font-mono tabular-nums text-right text-slate-800">{item.daysOnHand}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -265,7 +264,7 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
                       <td className="py-2 px-3 text-xs font-medium text-slate-800 text-right">{item.item}</td>
                       <td className="py-2 px-3 text-xs font-mono tabular-nums text-right text-slate-800">{item.count}</td>
                       <td className="py-2 px-3 text-xs font-mono tabular-nums text-right text-slate-800">{item.value}</td>
-                      <td className="py-2 px-3 pr-10 text-xs font-mono tabular-nums text-right text-slate-800">{item.daysOnHand}</td>
+                      <td className="py-2 px-3 pr-20 text-xs font-mono tabular-nums text-right text-slate-800">{item.daysOnHand}</td>
                     </tr>
                   ))}
                 </tbody>
