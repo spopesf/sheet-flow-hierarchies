@@ -91,7 +91,7 @@ export function ExpenseCard({ title, data, variant, selectedFilter }: ExpenseCar
           showNoData && "opacity-50 bg-slate-100/50"
         )}
       >
-        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
+        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800 align-bottom">
           {rowData.label && (
             <TooltipProvider>
               <div className="flex items-center gap-2 mb-1">
@@ -118,28 +118,28 @@ export function ExpenseCard({ title, data, variant, selectedFilter }: ExpenseCar
           )}
           {showNoData ? "—" : rowData.invoiced}
         </td>
-        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
+        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800 align-bottom">
           {showNoData ? "—" : rowData.productExpense}
         </td>
-        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
+        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800 align-bottom">
           {showNoData ? "—" : rowData.freightToStore}
         </td>
-        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
+        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800 align-bottom">
           {showNoData ? "—" : rowData.numInvoices}
         </td>
-        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
+        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800 align-bottom">
           {showNoData ? "—" : rowData.numOrderingAccounts}
         </td>
-        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
+        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800 align-bottom">
           {showNoData ? "—" : rowData.numItemsOrdered}
         </td>
-        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
+        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800 align-bottom">
           {showNoData ? "—" : rowData.avgOrderValue}
         </td>
-        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
+        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800 align-bottom">
           {showNoData ? "—" : rowData.avgFreightToStore}
         </td>
-        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800">
+        <td className="py-5 px-6 text-sm font-mono tabular-nums text-slate-800 align-bottom">
           {showNoData ? "—" : rowData.avgItemsPerOrder}
         </td>
       </tr>
