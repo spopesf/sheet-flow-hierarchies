@@ -87,7 +87,7 @@ export function ExpenseCard({ title, data, variant }: ExpenseCardProps) {
               <div className="flex items-center gap-2 mb-1">
                 {icon && (
                   <div className={cn(
-                    "w-10 h-6 rounded-full flex items-center justify-center text-xs font-bold",
+                    "w-12 h-6 rounded-full flex items-center justify-center text-xs font-bold min-w-[48px]",
                     icon.bgColor,
                     icon.textColor
                   )}>
