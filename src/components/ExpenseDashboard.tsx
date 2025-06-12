@@ -3,6 +3,7 @@ import { ExpenseCard } from "./ExpenseCard";
 import { IncomeCard } from "./IncomeCard";
 import { InsightsSection } from "./InsightsSection";
 import { InventoryCard } from "./InventoryCard";
+import { CustomerServiceCard } from "./CustomerServiceCard";
 import { SearchFilters } from "./SearchFilters";
 import { NavigationTabs } from "./NavigationTabs";
 
@@ -108,6 +109,27 @@ const consumerOrdersItems = [
   { item: "Merch 10", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" }
 ];
 
+const supportCaseData = {
+  ytdCreatedTickets: "2,076",
+  ytdSolvedTickets: "2,075",
+  ytdUnsolvedTickets: "1",
+  resolutionPercentage: "99.95%",
+  satisfactionScore: "80.88%"
+};
+
+const topTicketReasons = [
+  { reason: "Voicemail", createdTickets: "569", percentageOfTotal: "27%" },
+  { reason: "Wrong support channel", createdTickets: "277", percentageOfTotal: "13%" },
+  { reason: "Spam", createdTickets: "212", percentageOfTotal: "10%" },
+  { reason: "Chipotle customer wrong support chann...", createdTickets: "166", percentageOfTotal: "8%" },
+  { reason: "Customer order tracking request", createdTickets: "107", percentageOfTotal: "5%" },
+  { reason: "Shopify", createdTickets: "71", percentageOfTotal: "3%" },
+  { reason: "Charges", createdTickets: "36", percentageOfTotal: "2%" },
+  { reason: "Customer cancellation request", createdTickets: "35", percentageOfTotal: "2%" },
+  { reason: "B2b customer incorrect item sent reship...", createdTickets: "35", percentageOfTotal: "2%" },
+  { reason: "B2b customer return request", createdTickets: "33", percentageOfTotal: "2%" }
+];
+
 export function ExpenseDashboard() {
   const [activeTab, setActiveTab] = useState("expenses");
   const [selectedFilter, setSelectedFilter] = useState("");
@@ -183,11 +205,20 @@ export function ExpenseDashboard() {
         );
       case "customer-service":
         return (
-          <div className="flex items-center justify-center py-20">
-            <div className="text-center">
-              <h2 className="text-2xl font-semibold text-muted-foreground">Customer Service reports coming soon</h2>
+          <>
+            {/* Search and Filters */}
+            <div className="px-1">
+              <SearchFilters onFilterChange={setSelectedFilter} activeTab={activeTab} />
             </div>
-          </div>
+
+            {/* Customer Service Content */}
+            <div className="space-y-8 px-1">
+              <CustomerServiceCard
+                supportCaseData={supportCaseData}
+                topTicketReasons={topTicketReasons}
+              />
+            </div>
+          </>
         );
       case "sustainability":
         return (
