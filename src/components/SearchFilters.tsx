@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -17,7 +16,7 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
   const [searchInput, setSearchInput] = useState("");
   const [selectedDropdown, setSelectedDropdown] = useState("");
   const [dateRangeMethod, setDateRangeMethod] = useState("manual");
-  const [selectedDateRange, setSelectedDateRange] = useState("");
+  const [selectedDateRange, setSelectedDateRange] = useState("year-to-date");
 
   const handleSearchMethodChange = (value: string) => {
     setSearchMethod(value);
