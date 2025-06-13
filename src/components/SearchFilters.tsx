@@ -15,18 +15,25 @@ interface SearchFiltersProps {
 export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps) {
   const [searchMethod, setSearchMethod] = useState("filter");
   const [searchInput, setSearchInput] = useState("");
+  const [employeeInput, setEmployeeInput] = useState("");
   const [selectedDropdown, setSelectedDropdown] = useState("all-user-groups");
   const [dateRangeMethod, setDateRangeMethod] = useState("predefined");
   const [selectedDateRange, setSelectedDateRange] = useState("year-to-date");
 
   const handleSearchMethodChange = (value: string) => {
     setSearchMethod(value);
-    // Clear the other input when switching methods
-    if (value === "search") {
+    // Clear the other inputs when switching methods
+    if (value === "store") {
       setSelectedDropdown("");
+      setEmployeeInput("");
+      onFilterChange?.("");
+    } else if (value === "employee") {
+      setSelectedDropdown("");
+      setSearchInput("");
       onFilterChange?.("");
     } else {
       setSearchInput("");
+      setEmployeeInput("");
     }
   };
 
@@ -65,7 +72,7 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
             <>
               <label className="text-sm font-medium text-muted-foreground">Search Method</label>
               <RadioGroup value={searchMethod} onValueChange={handleSearchMethodChange} className="space-y-1">
-                {/* Dropdown Option - now first */}
+                {/* All User Groups Dropdown Option - first */}
                 <div className="flex items-center space-x-2 p-2 rounded-md border border-border bg-background/50">
                   <RadioGroupItem value="filter" id="filter" className="mt-0" />
                   <Label htmlFor="filter" className="flex items-center flex-1 cursor-pointer">
@@ -85,16 +92,33 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
                   </Label>
                 </div>
 
-                {/* Search Input Option - now second */}
+                {/* Store # Input Option - second */}
                 <div className="flex items-center space-x-2 p-2 rounded-md border border-border bg-background/50">
-                  <RadioGroupItem value="search" id="search" className="mt-0" />
-                  <Label htmlFor="search" className="flex items-center flex-1 cursor-pointer">
+                  <RadioGroupItem value="store" id="store" className="mt-0" />
+                  <Label htmlFor="store" className="flex items-center flex-1 cursor-pointer">
                     <div className="relative flex-1">
                       <Input 
-                        placeholder="Store# or Employee#" 
+                        placeholder="Store #" 
                         value={searchInput}
                         onChange={(e) => setSearchInput(e.target.value)}
-                        disabled={searchMethod !== "search"}
+                        disabled={searchMethod !== "store"}
+                        className="border-0 shadow-none focus-visible:ring-0 font-medium placeholder:text-muted-foreground disabled:opacity-50 disabled:cursor-not-allowed bg-transparent h-7 pr-8"
+                      />
+                      <Search className="h-4 w-4 text-muted-foreground absolute right-2 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+                    </div>
+                  </Label>
+                </div>
+
+                {/* Employee # Input Option - third */}
+                <div className="flex items-center space-x-2 p-2 rounded-md border border-border bg-background/50">
+                  <RadioGroupItem value="employee" id="employee" className="mt-0" />
+                  <Label htmlFor="employee" className="flex items-center flex-1 cursor-pointer">
+                    <div className="relative flex-1">
+                      <Input 
+                        placeholder="Employee #" 
+                        value={employeeInput}
+                        onChange={(e) => setEmployeeInput(e.target.value)}
+                        disabled={searchMethod !== "employee"}
                         className="border-0 shadow-none focus-visible:ring-0 font-medium placeholder:text-muted-foreground disabled:opacity-50 disabled:cursor-not-allowed bg-transparent h-7 pr-8"
                       />
                       <Search className="h-4 w-4 text-muted-foreground absolute right-2 top-1/2 transform -translate-y-1/2 pointer-events-none" />
