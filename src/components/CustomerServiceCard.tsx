@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface SupportCaseData {
@@ -21,6 +22,18 @@ interface CustomerServiceCardProps {
   topTicketReasonsB2C: TicketReason[];
 }
 
+const B2BIcon = () => (
+  <div className="inline-flex items-center justify-center w-8 h-6 bg-orange-500 text-white text-xs font-bold rounded mr-3">
+    B2B
+  </div>
+);
+
+const B2CIcon = () => (
+  <div className="inline-flex items-center justify-center w-8 h-6 bg-pink-500 text-white text-xs font-bold rounded mr-3">
+    B2C
+  </div>
+);
+
 export function CustomerServiceCard({ 
   supportCaseDataB2B, 
   topTicketReasonsB2B,
@@ -32,10 +45,11 @@ export function CustomerServiceCard({
     return `${numValue.toFixed(1)}%`;
   };
 
-  const renderSupportCaseCard = (title: string, data: SupportCaseData) => (
+  const renderSupportCaseCard = (title: string, data: SupportCaseData, IconComponent: React.ComponentType) => (
     <Card className="border-slate-200 bg-white hover:shadow-md overflow-hidden transition-all duration-200">
       <CardHeader className="pb-6 border-b border-slate-100">
-        <CardTitle className="text-lg tracking-tight text-slate-900 font-semibold">
+        <CardTitle className="text-lg tracking-tight text-slate-900 font-semibold flex items-center">
+          <IconComponent />
           {title}
         </CardTitle>
       </CardHeader>
@@ -66,10 +80,11 @@ export function CustomerServiceCard({
     </Card>
   );
 
-  const renderTicketDistributionCard = (title: string, tickets: TicketReason[]) => (
+  const renderTicketDistributionCard = (title: string, tickets: TicketReason[], IconComponent: React.ComponentType) => (
     <Card className="border-slate-200 bg-white hover:shadow-md overflow-hidden transition-all duration-200">
       <CardHeader className="pb-6 border-b border-slate-100">
-        <CardTitle className="text-lg tracking-tight text-slate-900 font-semibold">
+        <CardTitle className="text-lg tracking-tight text-slate-900 font-semibold flex items-center">
+          <IconComponent />
           {title}
         </CardTitle>
       </CardHeader>
@@ -102,14 +117,14 @@ export function CustomerServiceCard({
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
       {/* B2B Column */}
       <div className="space-y-8">
-        {renderSupportCaseCard("Support Cases (B2B)", supportCaseDataB2B)}
-        {renderTicketDistributionCard("Top 10 Ticket Distribution by Reason (B2B)", topTicketReasonsB2B)}
+        {renderSupportCaseCard("Support Cases", supportCaseDataB2B, B2BIcon)}
+        {renderTicketDistributionCard("Top 10 Ticket Distribution by Reason", topTicketReasonsB2B, B2BIcon)}
       </div>
 
       {/* B2C Column */}
       <div className="space-y-8">
-        {renderSupportCaseCard("Support Cases (B2C)", supportCaseDataB2C)}
-        {renderTicketDistributionCard("Top 10 Ticket Distribution by Reason (B2C)", topTicketReasonsB2C)}
+        {renderSupportCaseCard("Support Cases", supportCaseDataB2C, B2CIcon)}
+        {renderTicketDistributionCard("Top 10 Ticket Distribution by Reason", topTicketReasonsB2C, B2CIcon)}
       </div>
     </div>
   );
