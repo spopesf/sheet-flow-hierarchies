@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface SupportCaseData {
@@ -23,13 +22,13 @@ interface CustomerServiceCardProps {
 }
 
 const B2BIcon = () => (
-  <div className="inline-flex items-center justify-center w-8 h-6 bg-orange-500 text-white text-xs font-bold rounded mr-3">
+  <div className="inline-flex items-center justify-center w-8 h-6 bg-orange-500 text-white text-xs font-bold rounded-md mr-3">
     B2B
   </div>
 );
 
 const B2CIcon = () => (
-  <div className="inline-flex items-center justify-center w-8 h-6 bg-pink-500 text-white text-xs font-bold rounded mr-3">
+  <div className="inline-flex items-center justify-center w-8 h-6 bg-pink-500 text-white text-xs font-bold rounded-md mr-3">
     B2C
   </div>
 );
