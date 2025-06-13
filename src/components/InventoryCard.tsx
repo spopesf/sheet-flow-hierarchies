@@ -261,7 +261,7 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
                 </thead>
                 <tbody>
                   {consumerOrdersItems.map((item, index) => (
-                    <tr key={index} className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors">
+                    <tr key={index} className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors border-l-4 border-l-purple-500">
                       <td className="py-2 px-3 text-xs font-medium text-slate-800 text-right">{item.item}</td>
                       <td className="py-2 px-3 text-xs font-mono tabular-nums text-right text-slate-800">{item.count}</td>
                       <td className="py-2 px-3 text-xs font-mono tabular-nums text-right text-slate-800">{item.value}</td>
