@@ -55,6 +55,17 @@ const getTooltipContent = (label: string) => {
   return definitions[label] || `Information about ${label}`;
 };
 
+const getInternalOrderItemBorder = (itemName: string) => {
+  // Staff 1, 2, 4, 5, 7, 8, 9 get blue border (UR)
+  // Staff 3, 6, 10 get green border (UN)
+  if (itemName.includes("Staff 3") || itemName.includes("Staff 6") || itemName.includes("Staff 10")) {
+    return "border-l-4 border-l-green-500";
+  } else if (itemName.includes("Staff")) {
+    return "border-l-4 border-l-blue-500";
+  }
+  return "";
+};
+
 const renderInventoryRow = (label: string, data: { count: string; value: string }) => {
   const icon = getCategoryIcon(label);
   const borderColor = getCategoryBorderColor(label);
@@ -200,7 +211,10 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
                 </thead>
                 <tbody>
                   {internalOrdersItems.map((item, index) => (
-                    <tr key={index} className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors">
+                    <tr key={index} className={cn(
+                      "border-b border-slate-100 hover:bg-slate-50/50 transition-colors",
+                      getInternalOrderItemBorder(item.item)
+                    )}>
                       <td className="py-2 px-3 text-xs font-medium text-slate-800 text-right">{item.item}</td>
                       <td className="py-2 px-3 text-xs font-mono tabular-nums text-right text-slate-800">{item.count}</td>
                       <td className="py-2 px-3 text-xs font-mono tabular-nums text-right text-slate-800">{item.value}</td>
