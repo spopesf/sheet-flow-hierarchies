@@ -59,25 +59,25 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
   const isInventoryTab = activeTab === "inventory";
 
   return (
-    <div className="p-3 bg-card rounded-lg border border-border shadow-sm">
-      <div className="grid grid-cols-3 gap-16 items-start">
+    <div className="p-2 bg-card rounded-lg border border-border shadow-sm">
+      <div className="grid grid-cols-3 gap-12 items-start">
         {/* Section Title - left column */}
         <div>
-          <h2 className="text-lg font-semibold text-foreground">Choose your filter</h2>
+          <h2 className="text-base font-semibold text-foreground">Choose your filter</h2>
         </div>
         
         {/* Search Method Selection - middle column, only show for expenses */}
-        <div className="space-y-1">
+        <div className="space-y-0.5">
           {showSearchMethods && (
             <>
-              <label className="text-sm font-medium text-muted-foreground">Search Method</label>
-              <RadioGroup value={searchMethod} onValueChange={handleSearchMethodChange} className="space-y-1">
+              <label className="text-xs font-medium text-muted-foreground">Search Method</label>
+              <RadioGroup value={searchMethod} onValueChange={handleSearchMethodChange} className="space-y-0.5">
                 {/* All User Groups Dropdown Option - first */}
-                <div className="flex items-center space-x-2 p-2 rounded-md border border-border bg-background/50">
-                  <RadioGroupItem value="filter" id="filter" className="mt-0" />
+                <div className="flex items-center space-x-2 p-1.5 rounded border border-border bg-background/50">
+                  <RadioGroupItem value="filter" id="filter" className="mt-0 h-3 w-3" />
                   <Label htmlFor="filter" className="flex items-center flex-1 cursor-pointer">
                     <Select value={selectedDropdown} onValueChange={handleDropdownChange} disabled={searchMethod !== "filter"}>
-                      <SelectTrigger className="w-full font-medium disabled:opacity-50 disabled:cursor-not-allowed border-0 shadow-none bg-transparent h-7">
+                      <SelectTrigger className="w-full font-medium disabled:opacity-50 disabled:cursor-not-allowed border-0 shadow-none bg-transparent h-6 text-xs">
                         <SelectValue placeholder="All User Groups" />
                       </SelectTrigger>
                       <SelectContent>
@@ -93,8 +93,8 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
                 </div>
 
                 {/* Store # Input Option - second */}
-                <div className="flex items-center space-x-2 p-2 rounded-md border border-border bg-background/50">
-                  <RadioGroupItem value="store" id="store" className="mt-0" />
+                <div className="flex items-center space-x-2 p-1.5 rounded border border-border bg-background/50">
+                  <RadioGroupItem value="store" id="store" className="mt-0 h-3 w-3" />
                   <Label htmlFor="store" className="flex items-center flex-1 cursor-pointer">
                     <div className="relative flex-1">
                       <Input 
@@ -102,16 +102,16 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
                         value={searchInput}
                         onChange={(e) => setSearchInput(e.target.value)}
                         disabled={searchMethod !== "store"}
-                        className="border-0 shadow-none focus-visible:ring-0 font-medium placeholder:text-muted-foreground disabled:opacity-50 disabled:cursor-not-allowed bg-transparent h-7 pr-8"
+                        className="border-0 shadow-none focus-visible:ring-0 font-medium placeholder:text-muted-foreground disabled:opacity-50 disabled:cursor-not-allowed bg-transparent h-6 text-xs pr-6"
                       />
-                      <Search className="h-4 w-4 text-muted-foreground absolute right-2 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+                      <Search className="h-3 w-3 text-muted-foreground absolute right-1.5 top-1/2 transform -translate-y-1/2 pointer-events-none" />
                     </div>
                   </Label>
                 </div>
 
                 {/* Employee # Input Option - third */}
-                <div className="flex items-center space-x-2 p-2 rounded-md border border-border bg-background/50">
-                  <RadioGroupItem value="employee" id="employee" className="mt-0" />
+                <div className="flex items-center space-x-2 p-1.5 rounded border border-border bg-background/50">
+                  <RadioGroupItem value="employee" id="employee" className="mt-0 h-3 w-3" />
                   <Label htmlFor="employee" className="flex items-center flex-1 cursor-pointer">
                     <div className="relative flex-1">
                       <Input 
@@ -119,9 +119,9 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
                         value={employeeInput}
                         onChange={(e) => setEmployeeInput(e.target.value)}
                         disabled={searchMethod !== "employee"}
-                        className="border-0 shadow-none focus-visible:ring-0 font-medium placeholder:text-muted-foreground disabled:opacity-50 disabled:cursor-not-allowed bg-transparent h-7 pr-8"
+                        className="border-0 shadow-none focus-visible:ring-0 font-medium placeholder:text-muted-foreground disabled:opacity-50 disabled:cursor-not-allowed bg-transparent h-6 text-xs pr-6"
                       />
-                      <Search className="h-4 w-4 text-muted-foreground absolute right-2 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+                      <Search className="h-3 w-3 text-muted-foreground absolute right-1.5 top-1/2 transform -translate-y-1/2 pointer-events-none" />
                     </div>
                   </Label>
                 </div>
@@ -131,34 +131,34 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
         </div>
         
         {/* Date Range - right column */}
-        <div className="space-y-1">
-          <label className="text-sm font-medium text-muted-foreground">
+        <div className="space-y-0.5">
+          <label className="text-xs font-medium text-muted-foreground">
             {isInventoryTab ? "On Date" : "Date Range"}
           </label>
           
           {isInventoryTab ? (
             // Single date picker for inventory tab
-            <div className="p-2 rounded-md border border-border bg-background/50">
-              <div className="relative flex items-center gap-2 text-sm">
+            <div className="p-1.5 rounded border border-border bg-background/50">
+              <div className="relative flex items-center gap-1.5 text-xs">
                 <Button 
                   variant="ghost" 
                   size="sm" 
-                  className="font-medium text-foreground hover:bg-accent p-1 h-auto"
+                  className="font-medium text-foreground hover:bg-accent p-0.5 h-auto text-xs"
                 >
                   06/11/2025
                 </Button>
-                <CalendarDays className="h-4 w-4 text-muted-foreground" />
+                <CalendarDays className="h-3 w-3 text-muted-foreground" />
               </div>
             </div>
           ) : (
             // Original radio group for other tabs
-            <RadioGroup value={dateRangeMethod} onValueChange={handleDateRangeMethodChange} className="space-y-1">
+            <RadioGroup value={dateRangeMethod} onValueChange={handleDateRangeMethodChange} className="space-y-0.5">
               {/* Predefined Date Range Option - now first */}
-              <div className="flex items-center space-x-2 p-2 rounded-md border border-border bg-background/50">
-                <RadioGroupItem value="predefined" id="predefined-date" className="mt-0" />
+              <div className="flex items-center space-x-2 p-1.5 rounded border border-border bg-background/50">
+                <RadioGroupItem value="predefined" id="predefined-date" className="mt-0 h-3 w-3" />
                 <Label htmlFor="predefined-date" className="flex items-center flex-1 cursor-pointer">
                   <Select value={selectedDateRange} onValueChange={handleDateRangeDropdownChange} disabled={dateRangeMethod !== "predefined"}>
-                    <SelectTrigger className="w-full font-medium disabled:opacity-50 disabled:cursor-not-allowed border-0 shadow-none bg-transparent h-7">
+                    <SelectTrigger className="w-full font-medium disabled:opacity-50 disabled:cursor-not-allowed border-0 shadow-none bg-transparent h-6 text-xs">
                       <SelectValue placeholder="Select date range" />
                     </SelectTrigger>
                     <SelectContent>
@@ -187,25 +187,25 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
               </div>
 
               {/* Manual Date Range Option - now second */}
-              <div className="flex items-center space-x-2 p-2 rounded-md border border-border bg-background/50">
-                <RadioGroupItem value="manual" id="manual-date" className="mt-0" />
+              <div className="flex items-center space-x-2 p-1.5 rounded border border-border bg-background/50">
+                <RadioGroupItem value="manual" id="manual-date" className="mt-0 h-3 w-3" />
                 <Label htmlFor="manual-date" className="flex items-center flex-1 cursor-pointer">
-                  <div className="relative flex items-center gap-2 text-sm flex-1">
-                    <CalendarDays className="h-4 w-4 text-muted-foreground absolute right-2 top-1/2 transform -translate-y-1/2 pointer-events-none" />
-                    <div className="flex items-center gap-2">
+                  <div className="relative flex items-center gap-1.5 text-xs flex-1">
+                    <CalendarDays className="h-3 w-3 text-muted-foreground absolute right-1.5 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+                    <div className="flex items-center gap-1.5">
                       <Button 
                         variant="ghost" 
                         size="sm" 
-                        className="font-medium text-foreground hover:bg-accent p-1 h-auto disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="font-medium text-foreground hover:bg-accent p-0.5 h-auto disabled:opacity-50 disabled:cursor-not-allowed text-xs"
                         disabled={dateRangeMethod !== "manual"}
                       >
                         01/01/2025
                       </Button>
-                      <ChevronRight className="h-3 w-3 text-muted-foreground" />
+                      <ChevronRight className="h-2.5 w-2.5 text-muted-foreground" />
                       <Button 
                         variant="ghost" 
                         size="sm" 
-                        className="font-medium text-foreground hover:bg-accent p-1 h-auto disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="font-medium text-foreground hover:bg-accent p-0.5 h-auto disabled:opacity-50 disabled:cursor-not-allowed text-xs"
                         disabled={dateRangeMethod !== "manual"}
                       >
                         06/11/2025
