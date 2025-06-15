@@ -60,15 +60,15 @@ const internalOrdersData = [
         label: "Merchandise: Transfer ownership"
       },
       {
-        invoiced: "$1,462,843.08",
-        productExpense: "$1,278,757.87",
+        invoiced: "$184,085.21",
+        productExpense: "—",
         freightToStore: "$184,085.21",
-        numInvoices: "7,225",
-        numOrderingAccounts: "7,335",
-        numItemsOrdered: "172,314",
-        avgOrderValue: "$202.45",
-        avgFreightToStore: "25.48",
-        avgItemsPerOrder: "23.85",
+        numInvoices: "850",
+        numOrderingAccounts: "235",
+        numItemsOrdered: "72,545",
+        avgOrderValue: "—",
+        avgFreightToStore: "—",
+        avgItemsPerOrder: "14.5",
         label: "Merchandise"
       }
     ]
