@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -19,6 +18,8 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
   const [selectedDropdown, setSelectedDropdown] = useState("all-user-groups");
   const [dateRangeMethod, setDateRangeMethod] = useState("predefined");
   const [selectedDateRange, setSelectedDateRange] = useState("year-to-date");
+  const [selectedYear, setSelectedYear] = useState("2024");
+  const [selectedQuarter, setSelectedQuarter] = useState("Q4");
 
   const handleSearchMethodChange = (value: string) => {
     setSearchMethod(value);
@@ -57,6 +58,8 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
   const showSearchMethods = activeTab === "expenses";
   // Check if we're on inventory tab
   const isInventoryTab = activeTab === "inventory";
+  // Check if we're on sustainability tab
+  const isSustainabilityTab = activeTab === "sustainability";
 
   return (
     <div className="p-2 bg-card rounded-lg border border-border shadow-sm">
@@ -136,7 +139,37 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
             {isInventoryTab ? "On Date" : "Date Range"}
           </label>
           
-          {isInventoryTab ? (
+          {isSustainabilityTab ? (
+            // Year and Quarter dropdowns for sustainability tab
+            <div className="flex gap-2">
+              <div className="p-1.5 rounded border border-border bg-background/50 flex-1">
+                <Select value={selectedYear} onValueChange={setSelectedYear}>
+                  <SelectTrigger className="w-full font-medium border-0 shadow-none bg-transparent h-6 text-xs">
+                    <SelectValue placeholder="Year" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="2024">2024</SelectItem>
+                    <SelectItem value="2023">2023</SelectItem>
+                    <SelectItem value="2022">2022</SelectItem>
+                    <SelectItem value="2021">2021</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="p-1.5 rounded border border-border bg-background/50 flex-1">
+                <Select value={selectedQuarter} onValueChange={setSelectedQuarter}>
+                  <SelectTrigger className="w-full font-medium border-0 shadow-none bg-transparent h-6 text-xs">
+                    <SelectValue placeholder="Quarter" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Q4">Q4</SelectItem>
+                    <SelectItem value="Q3">Q3</SelectItem>
+                    <SelectItem value="Q2">Q2</SelectItem>
+                    <SelectItem value="Q1">Q1</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+          ) : isInventoryTab ? (
             // Single date picker for inventory tab
             <div className="p-1.5 rounded border border-border bg-background/50">
               <div className="relative flex items-center gap-1.5 text-xs">
