@@ -118,7 +118,7 @@ export function InsightsSection() {
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <div className={cn(
-                        "w-9 h-5 rounded-full flex items-center justify-center text-xs font-bold min-w-[36px] cursor-help hover:opacity-80 transition-opacity",
+                        "w-8 h-6 rounded-md flex items-center justify-center text-xs font-bold cursor-help hover:opacity-80 transition-opacity",
                         b2cIcon.bgColor,
                         b2cIcon.textColor
                       )}>
