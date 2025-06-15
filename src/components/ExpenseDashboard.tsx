@@ -47,6 +47,18 @@ const internalOrdersData = [
     label: "Uniforms: Non-replenishment",
     subItems: [
       {
+        invoiced: "—",
+        productExpense: "$1,278,757.87",
+        freightToStore: "$184,085.21",
+        numInvoices: "—",
+        numOrderingAccounts: "7,335",
+        numItemsOrdered: "172,314",
+        avgOrderValue: "$202.45",
+        avgFreightToStore: "—",
+        avgItemsPerOrder: "—",
+        label: "Merchandise: Transfer ownership"
+      },
+      {
         invoiced: "$1,462,843.08",
         productExpense: "$1,278,757.87",
         freightToStore: "$184,085.21",
