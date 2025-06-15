@@ -1,4 +1,3 @@
-
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
@@ -59,7 +58,9 @@ const getCategoryBorderColor = (label: string) => {
 const shouldShowNoData = (label: string | undefined, selectedFilter: string | undefined) => {
   return selectedFilter === "rsc-corporate" && 
          label && 
-         (label.includes("Uniforms: Replenishment") || label.includes("Uniforms: Non-replenishment"));
+         (label.includes("Uniforms: Replenishment") || 
+          label.includes("Uniforms: Non-replenishment") ||
+          label.includes("Merchandise: Transfer ownership"));
 };
 
 export function ExpenseTableRow({ 
