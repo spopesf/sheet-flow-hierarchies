@@ -83,7 +83,7 @@ export function InsightsSection() {
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
-                Top 10 Items (consumer orders)
+                Top 10 Items
               </CardTitle>
             </CardHeader>
             <CardContent className="p-0">
@@ -98,7 +98,12 @@ export function InsightsSection() {
                   </thead>
                   <tbody>
                     {topItemsData.map((item, index) => (
-                      <tr key={index} className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors border-l-4 border-l-purple-500">
+                      <tr key={index} className={cn(
+                        "border-b border-slate-100 hover:bg-slate-50/50 transition-colors border-l-4",
+                        (item.item === "Merch 5" || item.item === "Merch 6" || item.item === "Merch 10") 
+                          ? "border-l-pink-500" 
+                          : "border-l-purple-500"
+                      )}>
                         <td className="py-2 px-2 text-xs text-slate-800">{item.item}</td>
                         <td className="py-2 px-2 text-xs font-mono tabular-nums text-slate-800">{item.numberSold}</td>
                         <td className="py-2 px-2 text-xs font-mono tabular-nums text-slate-800">{item.msrp}</td>
