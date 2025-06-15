@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { ExpenseCard } from "./ExpenseCard";
 import { IncomeCard } from "./IncomeCard";
@@ -47,11 +48,11 @@ const internalOrdersData = [
     label: "Uniforms: Non-replenishment",
     subItems: [
       {
-        invoiced: "—",
+        invoiced: "$1,278,757.87",
         productExpense: "$1,278,757.87",
-        freightToStore: "$184,085.21",
+        freightToStore: "—",
         numInvoices: "—",
-        numOrderingAccounts: "7,335",
+        numOrderingAccounts: "—",
         numItemsOrdered: "172,314",
         avgOrderValue: "$202.45",
         avgFreightToStore: "—",
