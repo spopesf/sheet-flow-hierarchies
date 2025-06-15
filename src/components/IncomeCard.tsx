@@ -22,7 +22,7 @@ interface IncomeData {
 interface IncomeCardProps {
   title: string;
   data: IncomeData;
-  dataB2C?: IncomeData; // Second row data for B2C
+  dataB2C?: IncomeData;
   variant: "consumer";
   selectedFilter?: string;
   showTooltip?: boolean;
@@ -41,7 +41,6 @@ const B2CIcon = () => (
 );
 
 export function IncomeCard({ title, data, dataB2C, variant, selectedFilter, showTooltip = false }: IncomeCardProps) {
-  // Purple merchandise icon
   const merchandiseIcon = { text: "MR", bgColor: "bg-purple-500", textColor: "text-white" };
 
   return (
