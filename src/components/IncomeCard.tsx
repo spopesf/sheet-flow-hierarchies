@@ -42,6 +42,9 @@ const B2CIcon = () => (
 
 export function IncomeCard({ title, data, dataB2C, variant, selectedFilter, showTooltip = false }: IncomeCardProps) {
   const merchandiseIcon = { text: "MR", bgColor: "bg-purple-500", textColor: "text-white" };
+  
+  // Use provided dataB2C or fallback to data for the second row
+  const b2cData = dataB2C || data;
 
   return (
     <Card className="border-slate-200 bg-white hover:shadow-md overflow-hidden transition-all duration-200">
@@ -88,6 +91,7 @@ export function IncomeCard({ title, data, dataB2C, variant, selectedFilter, show
               </tr>
             </thead>
             <tbody>
+              {/* B2B Row */}
               <tr className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors bg-white font-semibold border-l-4 border-l-orange-500">
                 <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800 flex items-center">
                   <B2BIcon />
@@ -105,25 +109,24 @@ export function IncomeCard({ title, data, dataB2C, variant, selectedFilter, show
                 <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{data.avgFreightToCustomerExpense}</td>
                 <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{data.avgNumItemsOrder}</td>
               </tr>
-              {dataB2C && (
-                <tr className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors bg-white font-semibold border-l-4 border-l-pink-500">
-                  <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800 flex items-center">
-                    <B2CIcon />
-                    {dataB2C.grossIncome}
-                  </td>
-                  <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{dataB2C.freightToCustomerExpense}</td>
-                  <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{dataB2C.salesTax}</td>
-                  <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{dataB2C.discounts}</td>
-                  <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{dataB2C.netIncome}</td>
-                  <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{dataB2C.numOrders}</td>
-                  <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{dataB2C.avgOrderValue}</td>
-                  <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{dataB2C.numOrderingAccounts}</td>
-                  <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{dataB2C.numItemsOrdered}</td>
-                  <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{dataB2C.avgOrderValueAlt}</td>
-                  <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{dataB2C.avgFreightToCustomerExpense}</td>
-                  <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{dataB2C.avgNumItemsOrder}</td>
-                </tr>
-              )}
+              {/* B2C Row */}
+              <tr className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors bg-white font-semibold border-l-4 border-l-pink-500">
+                <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800 flex items-center">
+                  <B2CIcon />
+                  {b2cData.grossIncome}
+                </td>
+                <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{b2cData.freightToCustomerExpense}</td>
+                <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{b2cData.salesTax}</td>
+                <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{b2cData.discounts}</td>
+                <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{b2cData.netIncome}</td>
+                <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{b2cData.numOrders}</td>
+                <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{b2cData.avgOrderValue}</td>
+                <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{b2cData.numOrderingAccounts}</td>
+                <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{b2cData.numItemsOrdered}</td>
+                <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{b2cData.avgOrderValueAlt}</td>
+                <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{b2cData.avgFreightToCustomerExpense}</td>
+                <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{b2cData.avgNumItemsOrder}</td>
+              </tr>
             </tbody>
           </table>
         </div>
