@@ -145,7 +145,7 @@ export function InsightsSection() {
                   </thead>
                   <tbody>
                     {customerTypeData.map((customer, index) => (
-                      <tr key={index} className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors border-l-4 border-l-purple-500">
+                      <tr key={index} className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors border-l-4 border-l-pink-500">
                         <td className="py-2 px-1 text-xs text-slate-800">{customer.type}</td>
                         <td className="py-2 px-1 text-xs font-mono tabular-nums text-slate-800">{customer.numOrders}</td>
                         <td className="py-2 px-1 text-xs font-mono tabular-nums text-slate-800">{customer.percentOrders}</td>
