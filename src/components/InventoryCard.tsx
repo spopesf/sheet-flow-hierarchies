@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
@@ -179,7 +178,7 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
                   </Tooltip>
                 </div>
               </TooltipProvider>
-              Top 10 Items (internal orders)
+              Top 10 Items
             </CardTitle>
           </CardHeader>
           <CardContent className="p-0">
@@ -243,7 +242,7 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
-              Top 10 Items (consumer orders)
+              Top 10 Items
             </CardTitle>
           </CardHeader>
           <CardContent className="p-0">
