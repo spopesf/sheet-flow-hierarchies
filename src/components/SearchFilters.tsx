@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -180,7 +181,7 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
                 >
                   06/11/2025
                 </Button>
-                <CalendarDays className="h-3 w-3 text-muted-foreground" />
+                <CalendarDays className="h-3 w-3 text-muted-foreground absolute right-1.5 top-1/2 transform -translate-y-1/2 pointer-events-none" />
               </div>
             </div>
           ) : (
