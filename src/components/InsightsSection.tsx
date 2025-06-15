@@ -51,8 +51,11 @@ const customerTypeData: CustomerTypeData[] = [
 ];
 
 export function InsightsSection() {
-  // Purple merchandise icon
+  // Purple merchandise icon for top items
   const merchandiseIcon = { text: "MR", bgColor: "bg-purple-500", textColor: "text-white" };
+  
+  // Pink B2C icon for customer types
+  const b2cIcon = { text: "B2C", bgColor: "bg-pink-500", textColor: "text-white" };
 
   return (
     <div className="space-y-8 px-1">
@@ -116,10 +119,10 @@ export function InsightsSection() {
                     <TooltipTrigger asChild>
                       <div className={cn(
                         "w-9 h-5 rounded-full flex items-center justify-center text-xs font-bold min-w-[36px] cursor-help hover:opacity-80 transition-opacity",
-                        merchandiseIcon.bgColor,
-                        merchandiseIcon.textColor
+                        b2cIcon.bgColor,
+                        b2cIcon.textColor
                       )}>
-                        {merchandiseIcon.text}
+                        {b2cIcon.text}
                       </div>
                     </TooltipTrigger>
                     <TooltipContent>
