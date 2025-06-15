@@ -22,12 +22,25 @@ interface IncomeData {
 interface IncomeCardProps {
   title: string;
   data: IncomeData;
+  dataB2C?: IncomeData; // Second row data for B2C
   variant: "consumer";
   selectedFilter?: string;
   showTooltip?: boolean;
 }
 
-export function IncomeCard({ title, data, variant, selectedFilter, showTooltip = false }: IncomeCardProps) {
+const B2BIcon = () => (
+  <div className="inline-flex items-center justify-center w-8 h-6 bg-orange-500 text-white text-xs font-bold rounded-md mr-3">
+    B2B
+  </div>
+);
+
+const B2CIcon = () => (
+  <div className="inline-flex items-center justify-center w-8 h-6 bg-pink-500 text-white text-xs font-bold rounded-md mr-3">
+    B2C
+  </div>
+);
+
+export function IncomeCard({ title, data, dataB2C, variant, selectedFilter, showTooltip = false }: IncomeCardProps) {
   // Purple merchandise icon
   const merchandiseIcon = { text: "MR", bgColor: "bg-purple-500", textColor: "text-white" };
 
@@ -76,8 +89,11 @@ export function IncomeCard({ title, data, variant, selectedFilter, showTooltip =
               </tr>
             </thead>
             <tbody>
-              <tr className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors bg-white font-semibold border-l-4 border-l-purple-500">
-                <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{data.grossIncome}</td>
+              <tr className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors bg-white font-semibold border-l-4 border-l-orange-500">
+                <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800 flex items-center">
+                  <B2BIcon />
+                  {data.grossIncome}
+                </td>
                 <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{data.freightToCustomerExpense}</td>
                 <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{data.salesTax}</td>
                 <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{data.discounts}</td>
@@ -90,6 +106,25 @@ export function IncomeCard({ title, data, variant, selectedFilter, showTooltip =
                 <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{data.avgFreightToCustomerExpense}</td>
                 <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{data.avgNumItemsOrder}</td>
               </tr>
+              {dataB2C && (
+                <tr className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors bg-white font-semibold border-l-4 border-l-pink-500">
+                  <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800 flex items-center">
+                    <B2CIcon />
+                    {dataB2C.grossIncome}
+                  </td>
+                  <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{dataB2C.freightToCustomerExpense}</td>
+                  <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{dataB2C.salesTax}</td>
+                  <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{dataB2C.discounts}</td>
+                  <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{dataB2C.netIncome}</td>
+                  <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{dataB2C.numOrders}</td>
+                  <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{dataB2C.avgOrderValue}</td>
+                  <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{dataB2C.numOrderingAccounts}</td>
+                  <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{dataB2C.numItemsOrdered}</td>
+                  <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{dataB2C.avgOrderValueAlt}</td>
+                  <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{dataB2C.avgFreightToCustomerExpense}</td>
+                  <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-800">{dataB2C.avgNumItemsOrder}</td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
