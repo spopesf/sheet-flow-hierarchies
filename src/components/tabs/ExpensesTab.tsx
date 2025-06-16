@@ -17,7 +17,7 @@ export function ExpensesTab({ selectedFilter, onFilterChange }: ExpensesTabProps
 
       <div className="space-y-8 px-1">
         <ExpenseCard
-          title="All Internal Orders"
+          title="Expense Summary by Order Type"
           data={internalOrdersData}
           variant="internal"
           selectedFilter={selectedFilter}
