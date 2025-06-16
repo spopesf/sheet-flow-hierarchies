@@ -55,7 +55,7 @@ export function InsightsSection() {
   const merchandiseIcon = { text: "MR", bgColor: "bg-purple-500", textColor: "text-white" };
   
   // Pink B2C icon for customer types
-  const b2cIcon = { text: "B2C", bgColor: "bg-pink-500", textColor: "text-white" };
+  const b2cIcon = { text: "RTL", bgColor: "bg-pink-500", textColor: "text-white" };
 
   return (
     <div className="space-y-8 px-1">
