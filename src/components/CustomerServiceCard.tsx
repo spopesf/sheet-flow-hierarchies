@@ -23,13 +23,13 @@ interface CustomerServiceCardProps {
 
 const B2BIcon = () => (
   <div className="inline-flex items-center justify-center w-8 h-6 bg-orange-500 text-white text-xs font-bold rounded-md mr-3">
-    B2B
+    WSL
   </div>
 );
 
 const B2CIcon = () => (
   <div className="inline-flex items-center justify-center w-8 h-6 bg-pink-500 text-white text-xs font-bold rounded-md mr-3">
-    B2C
+    RTL
   </div>
 );
 
