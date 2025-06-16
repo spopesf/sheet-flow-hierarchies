@@ -66,7 +66,7 @@ export function IncomeCard({ title, data, dataB2C, variant, selectedFilter, show
                   <p className="max-w-xs text-sm">Merchandise sales data from B2C site operations</p>
                 </TooltipContent>
               </Tooltip>
-              Merchandise
+              Merchandise Summary by Sales Channel
             </div>
           </TooltipProvider>
         </CardTitle>
