@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
@@ -48,8 +49,8 @@ const getTooltipContent = (label: string) => {
   const definitions: Record<string, string> = {
     "Uniforms: Replenishment": "Regular uniform inventory restocking orders to maintain optimal stock levels across all store locations.",
     "Uniforms: Non-replenishment": "Special uniform orders and promotional items distributed to stores for specific campaigns and new employee onboarding.",
-    "Merchandise (B2B)": "Business-to-business merchandise inventory for wholesale and corporate sales.",
-    "Merchandise (B2C)": "Business-to-consumer merchandise inventory for direct retail sales."
+    "Merchandise (B2B)": "Merchandise (non-uniform) on any platform",
+    "Merchandise (B2C)": "Merchandise (non-uniform) on any platform"
   };
   return definitions[label] || `Information about ${label}`;
 };
@@ -238,7 +239,7 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
                     </div>
                   </TooltipTrigger>
                   <TooltipContent>
-                    <p className="max-w-xs text-sm">Merchandise items from consumer orders</p>
+                    <p className="max-w-xs text-sm">Merchandise (non-uniform) on any platform</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
