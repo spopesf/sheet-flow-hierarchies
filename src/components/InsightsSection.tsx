@@ -1,4 +1,5 @@
 
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
@@ -131,7 +132,7 @@ export function InsightsSection() {
                       </div>
                     </TooltipTrigger>
                     <TooltipContent>
-                      <p className="max-w-xs text-sm">Customer segmentation analysis for merchandise sales</p>
+                      <p>Retail Sales/B2C</p>
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
@@ -172,3 +173,4 @@ export function InsightsSection() {
     </div>
   );
 }
+
