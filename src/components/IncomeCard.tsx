@@ -1,3 +1,4 @@
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
@@ -28,15 +29,33 @@ interface IncomeCardProps {
 }
 
 const B2BIcon = () => (
-  <div className="inline-flex items-center justify-center w-8 h-6 bg-orange-500 text-white text-xs font-bold rounded-md mr-3">
-    WSL
-  </div>
+  <TooltipProvider>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <div className="inline-flex items-center justify-center w-8 h-6 bg-orange-500 text-white text-xs font-bold rounded-md mr-3 cursor-help">
+          WSL
+        </div>
+      </TooltipTrigger>
+      <TooltipContent>
+        <p>Wholesale Sales/B2B</p>
+      </TooltipContent>
+    </Tooltip>
+  </TooltipProvider>
 );
 
 const B2CIcon = () => (
-  <div className="inline-flex items-center justify-center w-8 h-6 bg-pink-500 text-white text-xs font-bold rounded-md mr-3">
-    RTL
-  </div>
+  <TooltipProvider>
+    <Tooltip>
+      <TooltipTrigger asChild>
+        <div className="inline-flex items-center justify-center w-8 h-6 bg-pink-500 text-white text-xs font-bold rounded-md mr-3 cursor-help">
+          RTL
+        </div>
+      </TooltipTrigger>
+      <TooltipContent>
+        <p>Retail Sales/B2C</p>
+      </TooltipContent>
+    </Tooltip>
+  </TooltipProvider>
 );
 
 export function IncomeCard({ title, data, dataB2C, variant, selectedFilter, showTooltip = false }: IncomeCardProps) {
