@@ -1,4 +1,5 @@
 
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
@@ -81,7 +82,7 @@ export function IncomeCard({ title, data, dataB2C, variant, selectedFilter, show
                   </div>
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p className="max-w-xs text-sm">Merchandise sales data from B2C site operations</p>
+                  <p className="max-w-xs text-sm">Merchandise (non-uniform) on any platform</p>
                 </TooltipContent>
               </Tooltip>
               Merchandise Summary by Sales Channel
@@ -153,3 +154,4 @@ export function IncomeCard({ title, data, dataB2C, variant, selectedFilter, show
     </Card>
   );
 }
+

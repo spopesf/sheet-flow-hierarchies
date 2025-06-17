@@ -80,7 +80,7 @@ export function InsightsSection() {
                       </div>
                     </TooltipTrigger>
                     <TooltipContent>
-                      <p className="max-w-xs text-sm">Top performing merchandise items from consumer orders</p>
+                      <p className="max-w-xs text-sm">Merchandise (non-uniform) on any platform</p>
                     </TooltipContent>
                   </Tooltip>
                 </TooltipProvider>
