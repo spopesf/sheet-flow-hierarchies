@@ -48,7 +48,7 @@ export const internalOrdersData = [
         avgOrderValue: "$202.45",
         avgFreightToStore: "—",
         avgItemsPerOrder: "—",
-        label: "Merchandise: Transfer ownership"
+        label: "Asset Transfer"
       },
       {
         invoiced: "$184,085.21",
@@ -60,7 +60,7 @@ export const internalOrdersData = [
         avgOrderValue: "—",
         avgFreightToStore: "—",
         avgItemsPerOrder: "14.5",
-        label: "Merchandise"
+        label: "Merchandise Freight Only"
       }
     ]
   }
