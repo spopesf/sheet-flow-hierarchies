@@ -1,4 +1,3 @@
-
 export const totalExpenseData = {
   invoiced: "$5,073,490.38",
   productExpense: "$4,447,750.29",
@@ -10,6 +9,19 @@ export const totalExpenseData = {
   avgFreightToStore: "21.36",
   avgItemsPerOrder: "21.75",
   label: "Total Expenses"
+};
+
+export const salesCreditData = {
+  invoiced: "-$125,000.00",
+  productExpense: "-$108,500.00",
+  freightToStore: "—",
+  numInvoices: "—",
+  numOrderingAccounts: "—",
+  numItemsOrdered: "—",
+  avgOrderValue: "—",
+  avgFreightToStore: "—",
+  avgItemsPerOrder: "—",
+  label: "Sales Credit"
 };
 
 export const uniformSubtotalData = {
@@ -40,6 +52,7 @@ export const merchandiseSubtotalData = {
 
 export const internalOrdersData = [
   totalExpenseData,
+  salesCreditData,
   {
     type: "sectionHeader",
     label: "Uniform Expenses"
