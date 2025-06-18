@@ -27,8 +27,8 @@ const getTooltipContent = (label: string) => {
   const definitions: Record<string, string> = {
     "Uniforms: Replenishment": "Regular uniform inventory restocking orders to maintain optimal stock levels across all store locations.",
     "Uniforms: Non-replenishment": "Special uniform orders and promotional items distributed to stores for specific campaigns and new employee onboarding.",
-    "Merchandise": "Core product inventory including retail merchandise and goods for direct customer sales.",
-    "Merchandise: Transfer ownership": "Merchandise inventory transferred between different ownership entities or departments."
+    "Merchandise Freight Only": "Core product inventory including retail merchandise and goods for direct customer sales.",
+    "Asset Transfer": "Merchandise inventory transferred between different ownership entities or departments."
   };
   return definitions[label] || `Information about ${label}`;
 };
@@ -38,8 +38,8 @@ const getCategoryIcon = (label: string) => {
     "Total Expenses": { text: "TE", bgColor: "bg-yellow-500", textColor: "text-white" },
     "Uniforms: Replenishment": { text: "UR", bgColor: "bg-blue-500", textColor: "text-white" },
     "Uniforms: Non-replenishment": { text: "UN", bgColor: "bg-green-500", textColor: "text-white" },
-    "Merchandise": { text: "MR", bgColor: "bg-purple-500", textColor: "text-white" },
-    "Merchandise: Transfer ownership": { text: "MT", bgColor: "bg-gray-500", textColor: "text-white" }
+    "Merchandise Freight Only": { text: "MR", bgColor: "bg-purple-500", textColor: "text-white" },
+    "Asset Transfer": { text: "AT", bgColor: "bg-gray-500", textColor: "text-white" }
   };
   return iconMap[label] || { text: "??", bgColor: "bg-gray-500", textColor: "text-white" };
 };
@@ -49,8 +49,8 @@ const getCategoryBorderColor = (label: string) => {
     "Total Expenses": "border-l-yellow-500",
     "Uniforms: Replenishment": "border-l-blue-500",
     "Uniforms: Non-replenishment": "border-l-green-500",
-    "Merchandise": "border-l-purple-500",
-    "Merchandise: Transfer ownership": "border-l-gray-500"
+    "Merchandise Freight Only": "border-l-purple-500",
+    "Asset Transfer": "border-l-gray-500"
   };
   return colorMap[label] || "border-l-gray-500";
 };
@@ -60,7 +60,7 @@ const shouldShowNoData = (label: string | undefined, selectedFilter: string | un
          label && 
          (label.includes("Uniforms: Replenishment") || 
           label.includes("Uniforms: Non-replenishment") ||
-          label.includes("Merchandise: Transfer ownership"));
+          label.includes("Asset Transfer"));
 };
 
 export function ExpenseTableRow({ 
