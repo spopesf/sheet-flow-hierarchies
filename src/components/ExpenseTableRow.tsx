@@ -102,8 +102,8 @@ export function ExpenseTableRow({
         (index > 0 && Array.isArray(dataArray) && !isSubItem) || isSubItem && "bg-slate-50/30",
         shouldShowBorder && rowData.label && borderColor && `border-l-4 ${borderColor}`,
         showNoData && "opacity-50 bg-slate-100/50",
-        isTotalExpensesRow && "font-bold bg-yellow-50",
-        isSubtotalRow && "font-semibold bg-yellow-100"
+        isTotalExpensesRow && "font-bold bg-yellow-200",
+        isSubtotalRow && "font-semibold bg-yellow-50"
       )}
     >
       <td className={cn(

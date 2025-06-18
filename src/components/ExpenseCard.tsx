@@ -5,16 +5,17 @@ import { ExpenseTableHeader } from "./ExpenseTableHeader";
 import { ExpenseTableBody } from "./ExpenseTableBody";
 
 interface ExpenseData {
-  invoiced: string;
-  productExpense: string;
-  freightToStore: string;
-  numInvoices: string;
-  numOrderingAccounts: string;
-  numItemsOrdered: string;
-  avgOrderValue: string;
-  avgFreightToStore: string;
-  avgItemsPerOrder: string;
+  invoiced?: string;
+  productExpense?: string;
+  freightToStore?: string;
+  numInvoices?: string;
+  numOrderingAccounts?: string;
+  numItemsOrdered?: string;
+  avgOrderValue?: string;
+  avgFreightToStore?: string;
+  avgItemsPerOrder?: string;
   label?: string;
+  type?: string;
   subItems?: ExpenseData[];
 }
 
