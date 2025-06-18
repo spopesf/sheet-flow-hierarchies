@@ -37,26 +37,20 @@ const getTooltipContent = (label: string) => {
 
 const getCategoryIcon = (label: string) => {
   const iconMap: Record<string, { text: string; bgColor: string; textColor: string }> = {
-    "Total Expenses": { text: "TE", bgColor: "bg-yellow-500", textColor: "text-white" },
     "Uniforms: Replenishment": { text: "UR", bgColor: "bg-blue-500", textColor: "text-white" },
     "Uniforms: Non-replenishment": { text: "UN", bgColor: "bg-green-500", textColor: "text-white" },
     "Merchandise Freight Only": { text: "MR", bgColor: "bg-purple-500", textColor: "text-white" },
-    "Asset Transfer": { text: "AT", bgColor: "bg-gray-500", textColor: "text-white" },
-    "Subtotal Uniforms": { text: "SU", bgColor: "bg-indigo-500", textColor: "text-white" },
-    "Subtotal Merchandise": { text: "SM", bgColor: "bg-orange-500", textColor: "text-white" }
+    "Asset Transfer": { text: "AT", bgColor: "bg-gray-500", textColor: "text-white" }
   };
   return iconMap[label] || { text: "??", bgColor: "bg-gray-500", textColor: "text-white" };
 };
 
 const getCategoryBorderColor = (label: string) => {
   const colorMap: Record<string, string> = {
-    "Total Expenses": "border-l-yellow-500",
     "Uniforms: Replenishment": "border-l-blue-500",
     "Uniforms: Non-replenishment": "border-l-green-500",
     "Merchandise Freight Only": "border-l-purple-500",
-    "Asset Transfer": "border-l-gray-500",
-    "Subtotal Uniforms": "border-l-indigo-500",
-    "Subtotal Merchandise": "border-l-orange-500"
+    "Asset Transfer": "border-l-gray-500"
   };
   return colorMap[label] || "border-l-gray-500";
 };
@@ -94,6 +88,10 @@ export function ExpenseTableRow({
   const isTotalExpensesRow = rowData.label === "Total Expenses";
   const isSubtotalRow = rowData.label?.startsWith("Subtotal");
   
+  // Special styling logic
+  const shouldShowIcon = !isTotalExpensesRow && !isSubtotalRow;
+  const shouldShowBorder = !isTotalExpensesRow && !isSubtotalRow;
+  
   return (
     <tr 
       key={`${index}-${isSubItem ? 'sub' : 'main'}`}
@@ -102,10 +100,10 @@ export function ExpenseTableRow({
         isTotal && "bg-white font-semibold",
         index === 0 && Array.isArray(dataArray) && !isSubItem && "font-medium",
         (index > 0 && Array.isArray(dataArray) && !isSubItem) || isSubItem && "bg-slate-50/30",
-        rowData.label && borderColor && `border-l-4 ${borderColor}`,
+        shouldShowBorder && rowData.label && borderColor && `border-l-4 ${borderColor}`,
         showNoData && "opacity-50 bg-slate-100/50",
         isTotalExpensesRow && "font-bold bg-yellow-50",
-        isSubtotalRow && "font-semibold bg-slate-100/70"
+        isSubtotalRow && "font-semibold bg-yellow-100"
       )}
     >
       <td className={cn(
@@ -116,21 +114,23 @@ export function ExpenseTableRow({
         {rowData.label && (
           <TooltipProvider>
             <div className="flex items-center gap-2 mb-1">
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <div className={cn(
-                    "w-9 h-5 rounded-full flex items-center justify-center text-xs font-bold min-w-[36px] cursor-help hover:opacity-80 transition-opacity",
-                    icon.bgColor,
-                    icon.textColor,
-                    showNoData && "opacity-60"
-                  )}>
-                    {icon.text}
-                  </div>
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p className="max-w-xs text-sm">{getTooltipContent(rowData.label)}</p>
-                </TooltipContent>
-              </Tooltip>
+              {shouldShowIcon && (
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <div className={cn(
+                      "w-9 h-5 rounded-full flex items-center justify-center text-xs font-bold min-w-[36px] cursor-help hover:opacity-80 transition-opacity",
+                      icon.bgColor,
+                      icon.textColor,
+                      showNoData && "opacity-60"
+                    )}>
+                      {icon.text}
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p className="max-w-xs text-sm">{getTooltipContent(rowData.label)}</p>
+                  </TooltipContent>
+                </Tooltip>
+              )}
               <span className={cn(
                 "text-slate-700 font-sans font-medium text-xs whitespace-nowrap", 
                 showNoData && "text-slate-500",
