@@ -1,3 +1,4 @@
+
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
@@ -102,7 +103,7 @@ export function ExpenseTableRow({
         shouldShowBorder && rowData.label && borderColor && `border-l-4 ${borderColor}`,
         showNoData && "opacity-50 bg-slate-100/50",
         isTotalExpensesRow && "font-bold bg-amber-100 border-l-4 border-l-amber-600",
-        isSubtotalRow && "font-semibold bg-orange-50 border-l-2 border-l-orange-400"
+        isSubtotalRow && "font-semibold bg-orange-50 border-l-4 border-l-orange-400"
       )}
     >
       <td className={cn(
