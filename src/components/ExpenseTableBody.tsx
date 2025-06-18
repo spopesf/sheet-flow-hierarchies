@@ -2,17 +2,17 @@
 import { ExpenseTableRow } from "./ExpenseTableRow";
 
 interface ExpenseData {
-  invoiced: string;
-  productExpense: string;
-  freightToStore: string;
-  numInvoices: string;
-  numOrderingAccounts: string;
-  numItemsOrdered: string;
-  avgOrderValue: string;
-  avgFreightToStore: string;
-  avgItemsPerOrder: string;
+  invoiced?: string;
+  productExpense?: string;
+  freightToStore?: string;
+  numInvoices?: string;
+  numOrderingAccounts?: string;
+  numItemsOrdered?: string;
+  avgOrderValue?: string;
+  avgFreightToStore?: string;
+  avgItemsPerOrder?: string;
   label?: string;
-  subItems?: ExpenseData[];
+  type?: string;
 }
 
 interface ExpenseTableBodyProps {
@@ -28,27 +28,14 @@ export function ExpenseTableBody({ data, variant, selectedFilter }: ExpenseTable
   return (
     <tbody>
       {dataArray.map((rowData, index) => (
-        <>
-          <ExpenseTableRow
-            key={index}
-            rowData={rowData}
-            index={index}
-            isTotal={isTotal}
-            selectedFilter={selectedFilter}
-            dataArray={dataArray}
-          />
-          {rowData.subItems?.map((subItem, subIndex) => 
-            <ExpenseTableRow
-              key={`${index}-sub-${subIndex}`}
-              rowData={subItem}
-              index={subIndex}
-              isSubItem={true}
-              isTotal={isTotal}
-              selectedFilter={selectedFilter}
-              dataArray={dataArray}
-            />
-          )}
-        </>
+        <ExpenseTableRow
+          key={index}
+          rowData={rowData}
+          index={index}
+          isTotal={isTotal}
+          selectedFilter={selectedFilter}
+          dataArray={dataArray}
+        />
       ))}
     </tbody>
   );

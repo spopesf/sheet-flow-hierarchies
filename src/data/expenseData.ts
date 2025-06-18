@@ -12,8 +12,38 @@ export const totalExpenseData = {
   label: "Total Expenses"
 };
 
+export const uniformSubtotalData = {
+  invoiced: "$5,051,172.45",
+  productExpense: "$4,447,750.29",
+  freightToStore: "$603,422.16",
+  numInvoices: "24,870",
+  numOrderingAccounts: "24,520",
+  numItemsOrdered: "543,061",
+  avgOrderValue: "$203.12",
+  avgFreightToStore: "24.26",
+  avgItemsPerOrder: "21.84",
+  label: "Subtotal Uniforms"
+};
+
+export const merchandiseSubtotalData = {
+  invoiced: "$1,462,843.08",
+  productExpense: "$1,278,757.87",
+  freightToStore: "$184,085.21",
+  numInvoices: "850",
+  numOrderingAccounts: "235",
+  numItemsOrdered: "244,859",
+  avgOrderValue: "$202.45",
+  avgFreightToStore: "—",
+  avgItemsPerOrder: "14.5",
+  label: "Subtotal Merchandise"
+};
+
 export const internalOrdersData = [
   totalExpenseData,
+  {
+    type: "sectionHeader",
+    label: "Uniform Expenses"
+  },
   {
     invoiced: "$2,125,486.30",
     productExpense: "$1,890,234.55",
@@ -36,32 +66,36 @@ export const internalOrdersData = [
     avgOrderValue: "$202.45",
     avgFreightToStore: "25.48",
     avgItemsPerOrder: "23.85",
-    label: "Uniforms: Non-replenishment",
-    subItems: [
-      {
-        invoiced: "$1,278,757.87",
-        productExpense: "$1,278,757.87",
-        freightToStore: "—",
-        numInvoices: "—",
-        numOrderingAccounts: "—",
-        numItemsOrdered: "172,314",
-        avgOrderValue: "$202.45",
-        avgFreightToStore: "—",
-        avgItemsPerOrder: "—",
-        label: "Asset Transfer"
-      },
-      {
-        invoiced: "$184,085.21",
-        productExpense: "—",
-        freightToStore: "$184,085.21",
-        numInvoices: "850",
-        numOrderingAccounts: "235",
-        numItemsOrdered: "72,545",
-        avgOrderValue: "—",
-        avgFreightToStore: "—",
-        avgItemsPerOrder: "14.5",
-        label: "Merchandise Freight Only"
-      }
-    ]
-  }
+    label: "Uniforms: Non-replenishment"
+  },
+  uniformSubtotalData,
+  {
+    type: "sectionHeader",
+    label: "Merchandise"
+  },
+  {
+    invoiced: "$1,278,757.87",
+    productExpense: "$1,278,757.87",
+    freightToStore: "—",
+    numInvoices: "—",
+    numOrderingAccounts: "—",
+    numItemsOrdered: "172,314",
+    avgOrderValue: "$202.45",
+    avgFreightToStore: "—",
+    avgItemsPerOrder: "—",
+    label: "Asset Transfer"
+  },
+  {
+    invoiced: "$184,085.21",
+    productExpense: "—",
+    freightToStore: "$184,085.21",
+    numInvoices: "850",
+    numOrderingAccounts: "235",
+    numItemsOrdered: "72,545",
+    avgOrderValue: "—",
+    avgFreightToStore: "—",
+    avgItemsPerOrder: "14.5",
+    label: "Merchandise Freight Only"
+  },
+  merchandiseSubtotalData
 ];
