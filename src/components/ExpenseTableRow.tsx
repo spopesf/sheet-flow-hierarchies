@@ -1,4 +1,5 @@
 
+
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
@@ -79,8 +80,14 @@ export function ExpenseTableRow({
 }: ExpenseTableRowProps) {
   // Handle section headers
   if (rowData.type === "sectionHeader") {
+    const isUniformExpensesSection = rowData.label === "Uniform Expenses";
+    const isMerchandiseSection = rowData.label === "Merchandise";
+    
     return (
-      <tr className="bg-slate-50 border-b border-slate-100">
+      <tr className={cn(
+        "bg-slate-50 border-b border-slate-100",
+        (isUniformExpensesSection || isMerchandiseSection) && "border-t-2 border-t-slate-400"
+      )}>
         <td colSpan={9} className="py-2 px-2 text-xs font-medium text-slate-600 tracking-wide text-left">
           {rowData.label}
         </td>
@@ -224,3 +231,4 @@ export function ExpenseTableRow({
     </tr>
   );
 }
+
