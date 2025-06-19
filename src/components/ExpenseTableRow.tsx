@@ -135,6 +135,7 @@ export function ExpenseTableRow({
         isTotalExpensesRow={isTotalExpensesRow}
         isSalesCreditRow={isSalesCreditRow}
         isSubtotalRow={isSubtotalRow}
+        isCurrency={true}
       />
       <DataCell 
         value={rowData.avgItemsPerOrder} 

@@ -7,6 +7,7 @@ interface DataCellProps {
   isTotalExpensesRow: boolean;
   isSalesCreditRow: boolean;
   isSubtotalRow: boolean;
+  isCurrency?: boolean;
 }
 
 export function DataCell({ 
@@ -14,8 +15,17 @@ export function DataCell({
   showNoData, 
   isTotalExpensesRow, 
   isSalesCreditRow, 
-  isSubtotalRow 
+  isSubtotalRow,
+  isCurrency = false
 }: DataCellProps) {
+  const formatValue = (val: string | undefined) => {
+    if (showNoData || !val || val === "—") return "—";
+    if (isCurrency && val !== "—") {
+      return val.startsWith("$") ? val : `$${val}`;
+    }
+    return val;
+  };
+
   return (
     <td className={cn(
       "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
@@ -23,7 +33,7 @@ export function DataCell({
       isSalesCreditRow && "text-slate-800",
       isSubtotalRow && "font-bold text-slate-800"
     )}>
-      {showNoData ? "—" : value}
+      {formatValue(value)}
     </td>
   );
 }
