@@ -8,6 +8,7 @@ interface DataCellProps {
   isSalesCreditRow: boolean;
   isSubtotalRow: boolean;
   isCurrency?: boolean;
+  decimalPlaces?: number;
 }
 
 export function DataCell({ 
@@ -16,10 +17,19 @@ export function DataCell({
   isTotalExpensesRow, 
   isSalesCreditRow, 
   isSubtotalRow,
-  isCurrency = false
+  isCurrency = false,
+  decimalPlaces
 }: DataCellProps) {
   const formatValue = (val: string | undefined) => {
     if (showNoData || !val || val === "—") return "—";
+    
+    if (decimalPlaces !== undefined && val !== "—") {
+      const numValue = parseFloat(val.replace(/[$,]/g, ''));
+      if (!isNaN(numValue)) {
+        return numValue.toFixed(decimalPlaces);
+      }
+    }
+    
     if (isCurrency && val !== "—") {
       return val.startsWith("$") ? val : `$${val}`;
     }

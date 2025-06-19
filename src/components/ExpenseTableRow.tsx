@@ -143,6 +143,7 @@ export function ExpenseTableRow({
         isTotalExpensesRow={isTotalExpensesRow}
         isSalesCreditRow={isSalesCreditRow}
         isSubtotalRow={isSubtotalRow}
+        decimalPlaces={1}
       />
     </tr>
   );
