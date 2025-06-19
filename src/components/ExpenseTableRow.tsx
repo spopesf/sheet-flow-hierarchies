@@ -1,3 +1,4 @@
+
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
@@ -36,20 +37,26 @@ const getTooltipContent = (label: string) => {
 
 const getCategoryIcon = (label: string) => {
   const iconMap: Record<string, { text: string; bgColor: string; textColor: string }> = {
-    "Uniforms: Replenishment": { text: "UR", bgColor: "bg-blue-500", textColor: "text-white" },
-    "Uniforms: Non-replenishment": { text: "UN", bgColor: "bg-green-500", textColor: "text-white" },
-    "Merchandise Freight Only": { text: "MR", bgColor: "bg-purple-500", textColor: "text-white" },
-    "Asset Transfer": { text: "AT", bgColor: "bg-gray-500", textColor: "text-white" }
+    // Uniform Group - Blue tones (professional, uniform-like)
+    "Uniforms: Replenishment": { text: "UR", bgColor: "bg-blue-600", textColor: "text-white" },
+    "Uniforms: Non-replenishment": { text: "UN", bgColor: "bg-blue-400", textColor: "text-white" },
+    
+    // Merchandise Group - Purple tones (retail, commerce)
+    "Asset Transfer": { text: "AT", bgColor: "bg-purple-600", textColor: "text-white" },
+    "Merchandise Freight Only": { text: "MF", bgColor: "bg-purple-400", textColor: "text-white" }
   };
   return iconMap[label] || { text: "??", bgColor: "bg-gray-500", textColor: "text-white" };
 };
 
 const getCategoryBorderColor = (label: string) => {
   const colorMap: Record<string, string> = {
-    "Uniforms: Replenishment": "border-l-blue-500",
-    "Uniforms: Non-replenishment": "border-l-green-500",
-    "Merchandise Freight Only": "border-l-purple-500",
-    "Asset Transfer": "border-l-gray-500"
+    // Uniform Group - Blue borders
+    "Uniforms: Replenishment": "border-l-blue-600",
+    "Uniforms: Non-replenishment": "border-l-blue-400",
+    
+    // Merchandise Group - Purple borders
+    "Asset Transfer": "border-l-purple-600", 
+    "Merchandise Freight Only": "border-l-purple-400"
   };
   return colorMap[label] || "border-l-gray-500";
 };
@@ -102,16 +109,16 @@ export function ExpenseTableRow({
         (index > 0 && Array.isArray(dataArray) && !isSubItem) || isSubItem && "bg-slate-50/30",
         shouldShowBorder && rowData.label && borderColor && `border-l-4 ${borderColor}`,
         showNoData && "opacity-50 bg-slate-100/50",
-        isTotalExpensesRow && "font-bold bg-amber-100 border-l-4 border-l-amber-600",
-        isSalesCreditRow && "font-bold bg-white border-l-4 border-l-red-600",
-        isSubtotalRow && "font-semibold bg-orange-50 border-l-4 border-l-orange-400"
+        isTotalExpensesRow && "font-bold bg-emerald-50 border-l-4 border-l-emerald-600",
+        isSalesCreditRow && "font-bold bg-white border-l-4 border-l-rose-500",
+        isSubtotalRow && "font-semibold bg-slate-50 border-l-4 border-l-slate-400"
       )}
     >
       <td className={cn(
         "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
-        isTotalExpensesRow && "font-bold",
-        isSalesCreditRow && "font-bold text-red-700",
-        isSubtotalRow && "font-semibold"
+        isTotalExpensesRow && "font-bold text-emerald-800",
+        isSalesCreditRow && "font-bold text-rose-700",
+        isSubtotalRow && "font-semibold text-slate-700"
       )}>
         {rowData.label && (
           <TooltipProvider>
@@ -136,9 +143,9 @@ export function ExpenseTableRow({
               <span className={cn(
                 "text-slate-700 font-sans font-medium text-xs whitespace-nowrap", 
                 showNoData && "text-slate-500",
-                isTotalExpensesRow && "font-bold",
-                isSalesCreditRow && "font-bold text-red-700",
-                isSubtotalRow && "font-semibold"
+                isTotalExpensesRow && "font-bold text-emerald-800",
+                isSalesCreditRow && "font-bold text-rose-700",
+                isSubtotalRow && "font-semibold text-slate-700"
               )}>
                 {rowData.label}
               </span>
@@ -149,65 +156,65 @@ export function ExpenseTableRow({
       </td>
       <td className={cn(
         "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
-        isTotalExpensesRow && "font-bold",
-        isSalesCreditRow && "font-bold text-red-700",
-        isSubtotalRow && "font-semibold"
+        isTotalExpensesRow && "font-bold text-emerald-800",
+        isSalesCreditRow && "font-bold text-rose-700",
+        isSubtotalRow && "font-semibold text-slate-700"
       )}>
         {showNoData ? "—" : rowData.productExpense}
       </td>
       <td className={cn(
         "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
-        isTotalExpensesRow && "font-bold",
-        isSalesCreditRow && "font-bold text-red-700",
-        isSubtotalRow && "font-semibold"
+        isTotalExpensesRow && "font-bold text-emerald-800",
+        isSalesCreditRow && "font-bold text-rose-700",
+        isSubtotalRow && "font-semibold text-slate-700"
       )}>
         {showNoData ? "—" : rowData.freightToStore}
       </td>
       <td className={cn(
         "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
-        isTotalExpensesRow && "font-bold",
-        isSalesCreditRow && "font-bold text-red-700",
-        isSubtotalRow && "font-semibold"
+        isTotalExpensesRow && "font-bold text-emerald-800",
+        isSalesCreditRow && "font-bold text-rose-700",
+        isSubtotalRow && "font-semibold text-slate-700"
       )}>
         {showNoData ? "—" : rowData.numInvoices}
       </td>
       <td className={cn(
         "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
-        isTotalExpensesRow && "font-bold",
-        isSalesCreditRow && "font-bold text-red-700",
-        isSubtotalRow && "font-semibold"
+        isTotalExpensesRow && "font-bold text-emerald-800",
+        isSalesCreditRow && "font-bold text-rose-700",
+        isSubtotalRow && "font-semibold text-slate-700"
       )}>
         {showNoData ? "—" : rowData.numOrderingAccounts}
       </td>
       <td className={cn(
         "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
-        isTotalExpensesRow && "font-bold",
-        isSalesCreditRow && "font-bold text-red-700",
-        isSubtotalRow && "font-semibold"
+        isTotalExpensesRow && "font-bold text-emerald-800",
+        isSalesCreditRow && "font-bold text-rose-700",
+        isSubtotalRow && "font-semibold text-slate-700"
       )}>
         {showNoData ? "—" : rowData.numItemsOrdered}
       </td>
       <td className={cn(
         "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
-        isTotalExpensesRow && "font-bold",
-        isSalesCreditRow && "font-bold text-red-700",
-        isSubtotalRow && "font-semibold"
+        isTotalExpensesRow && "font-bold text-emerald-800",
+        isSalesCreditRow && "font-bold text-rose-700",
+        isSubtotalRow && "font-semibold text-slate-700"
       )}>
         {showNoData ? "—" : rowData.avgOrderValue}
       </td>
       <td className={cn(
         "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
-        isTotalExpensesRow && "font-bold",
-        isSalesCreditRow && "font-bold text-red-700",
-        isSubtotalRow && "font-semibold"
+        isTotalExpensesRow && "font-bold text-emerald-800",
+        isSalesCreditRow && "font-bold text-rose-700",
+        isSubtotalRow && "font-semibold text-slate-700"
       )}>
         {showNoData ? "—" : rowData.avgFreightToStore}
       </td>
       <td className={cn(
         "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
-        isTotalExpensesRow && "font-bold",
-        isSalesCreditRow && "font-bold text-red-700",
-        isSubtotalRow && "font-semibold"
+        isTotalExpensesRow && "font-bold text-emerald-800",
+        isSalesCreditRow && "font-bold text-rose-700",
+        isSubtotalRow && "font-semibold text-slate-700"
       )}>
         {showNoData ? "—" : rowData.avgItemsPerOrder}
       </td>
