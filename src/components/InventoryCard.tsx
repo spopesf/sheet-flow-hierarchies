@@ -73,7 +73,8 @@ const renderInventoryRow = (label: string, data: { count: string; value: string 
   return (
     <tr key={label} className={cn(
       "border-b border-slate-100 hover:bg-slate-50/50 transition-colors",
-      borderColor && `border-l-4 ${borderColor}`
+      borderColor && `border-l-4 ${borderColor}`,
+      isAllInventory && "bg-slate-100 border-l-4 border-l-slate-600"
     )}>
       <td className={cn(
         "py-3 px-4 text-xs text-slate-800",
@@ -102,7 +103,14 @@ const renderInventoryRow = (label: string, data: { count: string; value: string 
             </div>
           </TooltipProvider>
         )}
-        {!icon && label}
+        {!icon && (
+          <span className={cn(
+            "text-slate-700 font-sans text-xs",
+            isAllInventory && "font-bold text-slate-800 uppercase tracking-wide pl-4"
+          )}>
+            {label}
+          </span>
+        )}
       </td>
       <td className={cn(
         "py-3 px-4 text-xs font-mono tabular-nums text-right text-slate-800",
