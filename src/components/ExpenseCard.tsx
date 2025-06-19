@@ -30,6 +30,7 @@ export function ExpenseCard({ title, data, variant, selectedFilter }: ExpenseCar
     <TableContainer 
       title={title} 
       variant={variant === "total" ? "highlighted" : "default"}
+      useTable={true}
     >
       <ExpenseTableHeader />
       <ExpenseTableBody 

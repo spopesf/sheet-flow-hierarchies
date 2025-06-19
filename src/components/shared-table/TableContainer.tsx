@@ -7,13 +7,15 @@ interface TableContainerProps {
   children: React.ReactNode;
   variant?: "default" | "highlighted";
   className?: string;
+  useTable?: boolean;
 }
 
 export function TableContainer({ 
   title, 
   children, 
   variant = "default",
-  className 
+  className,
+  useTable = false
 }: TableContainerProps) {
   const isHighlighted = variant === "highlighted";
   
@@ -40,7 +42,13 @@ export function TableContainer({
       </CardHeader>
       <CardContent className="p-0">
         <div className="overflow-x-auto">
-          {children}
+          {useTable ? (
+            <table className="w-full">
+              {children}
+            </table>
+          ) : (
+            children
+          )}
         </div>
       </CardContent>
     </Card>
