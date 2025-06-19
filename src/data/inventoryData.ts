@@ -3,8 +3,8 @@ export const inventorySnapshotData = {
   allInventory: { count: "145,678", value: "$2,456,789.00" },
   replenishment: { count: "89,432", value: "$1,578,456.00" },
   promotional: { count: "23,145", value: "$456,789.00" },
-  merchandiseB2B: { count: "18,901", value: "$278,934.00" },
-  merchandiseB2C: { count: "14,200", value: "$142,610.00" }
+  merchandiseWholesale: { count: "18,901", value: "$278,934.00" },
+  merchandiseRetail: { count: "14,200", value: "$142,610.00" }
 };
 
 export const internalOrdersItems = [

@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
@@ -7,8 +6,8 @@ interface InventorySnapshotData {
   allInventory: { count: string; value: string };
   replenishment: { count: string; value: string };
   promotional: { count: string; value: string };
-  merchandiseB2B: { count: string; value: string };
-  merchandiseB2C: { count: string; value: string };
+  merchandiseWholesale: { count: string; value: string };
+  merchandiseRetail: { count: string; value: string };
 }
 
 interface InventoryItem {
@@ -28,8 +27,8 @@ const getCategoryIcon = (label: string) => {
   const iconMap: Record<string, { text: string; bgColor: string; textColor: string }> = {
     "Uniforms: Replenishment": { text: "UR", bgColor: "bg-blue-500", textColor: "text-white" },
     "Uniforms: Non-replenishment": { text: "UN", bgColor: "bg-green-500", textColor: "text-white" },
-    "Merchandise (B2B)": { text: "MR", bgColor: "bg-purple-500", textColor: "text-white" },
-    "Merchandise (B2C)": { text: "MR", bgColor: "bg-purple-500", textColor: "text-white" }
+    "Merchandise (Wholesale)": { text: "MR", bgColor: "bg-purple-500", textColor: "text-white" },
+    "Merchandise (Retail)": { text: "MR", bgColor: "bg-purple-500", textColor: "text-white" }
   };
   return iconMap[label] || null;
 };
@@ -39,8 +38,8 @@ const getCategoryBorderColor = (label: string) => {
     "All Inventory": "border-l-yellow-500",
     "Uniforms: Replenishment": "border-l-blue-500",
     "Uniforms: Non-replenishment": "border-l-green-500",
-    "Merchandise (B2B)": "border-l-purple-500",
-    "Merchandise (B2C)": "border-l-purple-500"
+    "Merchandise (Wholesale)": "border-l-purple-500",
+    "Merchandise (Retail)": "border-l-purple-500"
   };
   return colorMap[label] || "";
 };
@@ -49,8 +48,8 @@ const getTooltipContent = (label: string) => {
   const definitions: Record<string, string> = {
     "Uniforms: Replenishment": "Regular uniform inventory restocking orders to maintain optimal stock levels across all store locations.",
     "Uniforms: Non-replenishment": "Special uniform orders and promotional items distributed to stores for specific campaigns and new employee onboarding.",
-    "Merchandise (B2B)": "Merchandise (non-uniform) on any platform",
-    "Merchandise (B2C)": "Merchandise (non-uniform) on any platform"
+    "Merchandise (Wholesale)": "Merchandise (non-uniform) on any platform",
+    "Merchandise (Retail)": "Merchandise (non-uniform) on any platform"
   };
   return definitions[label] || `Information about ${label}`;
 };
@@ -141,8 +140,8 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
                 {renderInventoryRow("All Inventory", snapshotData.allInventory)}
                 {renderInventoryRow("Uniforms: Replenishment", snapshotData.replenishment)}
                 {renderInventoryRow("Uniforms: Non-replenishment", snapshotData.promotional)}
-                {renderInventoryRow("Merchandise (B2B)", snapshotData.merchandiseB2B)}
-                {renderInventoryRow("Merchandise (B2C)", snapshotData.merchandiseB2C)}
+                {renderInventoryRow("Merchandise (Wholesale)", snapshotData.merchandiseWholesale)}
+                {renderInventoryRow("Merchandise (Retail)", snapshotData.merchandiseRetail)}
               </tbody>
             </table>
           </div>
