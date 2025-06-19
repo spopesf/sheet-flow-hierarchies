@@ -1,6 +1,7 @@
 
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
+import { CategoryIcon } from "../shared-table/CategoryIcon";
 import { getCategoryIcon, getTooltipContent } from "./utils";
 
 interface RowLabelProps {
@@ -29,21 +30,13 @@ export function RowLabel({
         (isSubtotalRow || isTotalExpensesRow || isSalesCreditRow) && "pl-4"
       )}>
         {shouldShowIcon && (
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <div className={cn(
-                "w-9 h-5 rounded-full flex items-center justify-center text-xs font-bold min-w-[36px] cursor-help hover:opacity-80 transition-opacity",
-                icon.bgColor,
-                icon.textColor,
-                showNoData && "opacity-60"
-              )}>
-                {icon.text}
-              </div>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p className="max-w-xs text-sm">{getTooltipContent(label)}</p>
-            </TooltipContent>
-          </Tooltip>
+          <CategoryIcon
+            text={icon.text}
+            bgColor={icon.bgColor}
+            textColor={icon.textColor}
+            tooltip={getTooltipContent(label)}
+            showNoData={showNoData}
+          />
         )}
         <span className={cn(
           "text-slate-700 font-sans font-medium text-xs whitespace-nowrap", 
