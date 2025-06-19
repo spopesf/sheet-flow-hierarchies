@@ -1,4 +1,3 @@
-
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
@@ -80,8 +79,8 @@ export function ExpenseTableRow({
   // Handle section headers
   if (rowData.type === "sectionHeader") {
     return (
-      <tr className="bg-slate-200 border-b-2 border-slate-300">
-        <td colSpan={9} className="py-4 px-4 text-sm font-bold text-slate-800 text-left uppercase tracking-wide">
+      <tr className="bg-white border-b border-slate-200">
+        <td colSpan={9} className="py-3 px-4 text-sm font-bold text-slate-800 text-left uppercase tracking-wide">
           {rowData.label}
         </td>
       </tr>
