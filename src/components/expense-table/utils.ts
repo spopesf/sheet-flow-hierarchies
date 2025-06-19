@@ -1,4 +1,3 @@
-
 interface ExpenseData {
   invoiced?: string;
   productExpense?: string;
@@ -54,7 +53,8 @@ export const shouldShowNoData = (label: string | undefined, selectedFilter: stri
          label && 
          (label.includes("Uniforms: Replenishment") || 
           label.includes("Uniforms: Non-replenishment") ||
-          label.includes("Asset Transfer"));
+          label.includes("Asset Transfer") ||
+          label.includes("Subtotal Uniforms"));
 };
 
 export const getRowTypeFlags = (label: string | undefined) => {
