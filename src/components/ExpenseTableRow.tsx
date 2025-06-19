@@ -1,3 +1,4 @@
+
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
@@ -108,7 +109,7 @@ export function ExpenseTableRow({
         (index > 0 && Array.isArray(dataArray) && !isSubItem) || isSubItem && "bg-slate-50/30",
         shouldShowBorder && rowData.label && borderColor && `border-l-4 ${borderColor}`,
         showNoData && "opacity-50 bg-slate-100/50",
-        isTotalExpensesRow && "bg-slate-100 border-l-4 border-l-slate-600 border-t-2 border-t-slate-300",
+        isTotalExpensesRow && "bg-slate-100 border-l-4 border-l-slate-600",
         isSalesCreditRow && "bg-white border-l-4 border-l-slate-600",
         isSubtotalRow && "bg-slate-100 border-l-4 border-l-slate-600 border-t-2 border-t-slate-300"
       )}
