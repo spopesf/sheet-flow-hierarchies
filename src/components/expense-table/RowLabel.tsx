@@ -47,10 +47,11 @@ export function RowLabel({
         )}
         <span className={cn(
           "text-slate-700 font-sans font-medium text-xs whitespace-nowrap", 
-          showNoData && "text-slate-500",
+          showNoData && "text-slate-400 font-normal",
           isTotalExpensesRow && "font-bold text-slate-800 uppercase tracking-wide",
           isSalesCreditRow && "text-slate-800",
-          isSubtotalRow && "font-bold text-slate-800 uppercase tracking-wide"
+          isSubtotalRow && !showNoData && "font-bold text-slate-800 uppercase tracking-wide",
+          isSubtotalRow && showNoData && "font-normal text-slate-400 uppercase tracking-wide"
         )}>
           {label}
         </span>
