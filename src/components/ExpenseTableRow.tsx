@@ -1,5 +1,13 @@
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+
 import { cn } from "@/lib/utils";
+import { SectionHeaderRow } from "./expense-table/SectionHeaderRow";
+import { RowLabel } from "./expense-table/RowLabel";
+import { DataCell } from "./expense-table/DataCell";
+import { 
+  getCategoryBorderColor, 
+  shouldShowNoData, 
+  getRowTypeFlags 
+} from "./expense-table/utils";
 
 interface ExpenseData {
   invoiced?: string;
@@ -24,50 +32,6 @@ interface ExpenseTableRowProps {
   dataArray: ExpenseData[];
 }
 
-const getTooltipContent = (label: string) => {
-  const definitions: Record<string, string> = {
-    "Uniforms: Replenishment": "Regular uniform inventory restocking orders to maintain optimal stock levels across all store locations.",
-    "Uniforms: Non-replenishment": "Special uniform orders and promotional items distributed to stores for specific campaigns and new employee onboarding.",
-    "Merchandise Freight Only": "Core product inventory including retail merchandise and goods for direct customer sales.",
-    "Asset Transfer": "Merchandise inventory transferred between different ownership entities or departments."
-  };
-  return definitions[label] || `Information about ${label}`;
-};
-
-const getCategoryIcon = (label: string) => {
-  const iconMap: Record<string, { text: string; bgColor: string; textColor: string }> = {
-    // Uniform Group - Blue tones (professional, uniform-like)
-    "Uniforms: Replenishment": { text: "UR", bgColor: "bg-blue-600", textColor: "text-white" },
-    "Uniforms: Non-replenishment": { text: "UN", bgColor: "bg-blue-400", textColor: "text-white" },
-    
-    // Merchandise Group - Purple tones (retail, commerce)
-    "Asset Transfer": { text: "AT", bgColor: "bg-purple-600", textColor: "text-white" },
-    "Merchandise Freight Only": { text: "MF", bgColor: "bg-purple-400", textColor: "text-white" }
-  };
-  return iconMap[label] || { text: "??", bgColor: "bg-gray-500", textColor: "text-white" };
-};
-
-const getCategoryBorderColor = (label: string) => {
-  const colorMap: Record<string, string> = {
-    // Uniform Group - Blue borders
-    "Uniforms: Replenishment": "border-l-blue-600",
-    "Uniforms: Non-replenishment": "border-l-blue-400",
-    
-    // Merchandise Group - Purple borders
-    "Asset Transfer": "border-l-purple-600", 
-    "Merchandise Freight Only": "border-l-purple-400"
-  };
-  return colorMap[label] || "border-l-gray-500";
-};
-
-const shouldShowNoData = (label: string | undefined, selectedFilter: string | undefined) => {
-  return selectedFilter === "rsc-corporate" && 
-         label && 
-         (label.includes("Uniforms: Replenishment") || 
-          label.includes("Uniforms: Non-replenishment") ||
-          label.includes("Asset Transfer"));
-};
-
 export function ExpenseTableRow({ 
   rowData, 
   index, 
@@ -77,28 +41,13 @@ export function ExpenseTableRow({
   dataArray 
 }: ExpenseTableRowProps) {
   // Handle section headers
-  if (rowData.type === "sectionHeader") {
-    const isUniformExpensesSection = rowData.label === "Uniform Expenses";
-    const isMerchandiseSection = rowData.label === "Merchandise";
-    
-    return (
-      <tr className={cn(
-        "bg-slate-50 border-b border-slate-100",
-        (isUniformExpensesSection || isMerchandiseSection) && "border-t-2 border-t-slate-300"
-      )}>
-        <td colSpan={9} className="py-2 px-2 text-xs font-medium text-slate-600 tracking-wide text-left">
-          {rowData.label}
-        </td>
-      </tr>
-    );
+  if (rowData.type === "sectionHeader" && rowData.label) {
+    return <SectionHeaderRow label={rowData.label} />;
   }
 
-  const icon = rowData.label ? getCategoryIcon(rowData.label) : null;
   const borderColor = rowData.label ? getCategoryBorderColor(rowData.label) : "";
   const showNoData = shouldShowNoData(rowData.label, selectedFilter);
-  const isTotalExpensesRow = rowData.label === "Total Expenses";
-  const isSalesCreditRow = rowData.label === "Sales Credit";
-  const isSubtotalRow = rowData.label?.startsWith("Subtotal");
+  const { isTotalExpensesRow, isSalesCreditRow, isSubtotalRow } = getRowTypeFlags(rowData.label);
   
   // Special styling logic
   const shouldShowIcon = !isTotalExpensesRow && !isSubtotalRow && !isSalesCreditRow;
@@ -126,106 +75,74 @@ export function ExpenseTableRow({
         isSubtotalRow && "font-bold text-slate-800"
       )}>
         {rowData.label && (
-          <TooltipProvider>
-            <div className={cn(
-              "flex items-center gap-2 mb-1",
-              (isSubtotalRow || isTotalExpensesRow || isSalesCreditRow) && "pl-4"
-            )}>
-              {shouldShowIcon && (
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <div className={cn(
-                      "w-9 h-5 rounded-full flex items-center justify-center text-xs font-bold min-w-[36px] cursor-help hover:opacity-80 transition-opacity",
-                      icon.bgColor,
-                      icon.textColor,
-                      showNoData && "opacity-60"
-                    )}>
-                      {icon.text}
-                    </div>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p className="max-w-xs text-sm">{getTooltipContent(rowData.label)}</p>
-                  </TooltipContent>
-                </Tooltip>
-              )}
-              <span className={cn(
-                "text-slate-700 font-sans font-medium text-xs whitespace-nowrap", 
-                showNoData && "text-slate-500",
-                isTotalExpensesRow && "font-bold text-slate-800 uppercase tracking-wide",
-                isSalesCreditRow && "text-slate-800",
-                isSubtotalRow && "font-bold text-slate-800 uppercase tracking-wide"
-              )}>
-                {rowData.label}
-              </span>
-            </div>
-          </TooltipProvider>
+          <RowLabel 
+            label={rowData.label}
+            showNoData={showNoData}
+            shouldShowIcon={shouldShowIcon}
+            isSubtotalRow={isSubtotalRow}
+            isTotalExpensesRow={isTotalExpensesRow}
+            isSalesCreditRow={isSalesCreditRow}
+          />
         )}
         {showNoData ? "—" : rowData.invoiced}
       </td>
-      <td className={cn(
-        "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
-        isTotalExpensesRow && "font-bold text-slate-800",
-        isSalesCreditRow && "text-slate-800",
-        isSubtotalRow && "font-bold text-slate-800"
-      )}>
-        {showNoData ? "—" : rowData.productExpense}
-      </td>
-      <td className={cn(
-        "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
-        isTotalExpensesRow && "font-bold text-slate-800",
-        isSalesCreditRow && "text-slate-800",
-        isSubtotalRow && "font-bold text-slate-800"
-      )}>
-        {showNoData ? "—" : rowData.freightToStore}
-      </td>
-      <td className={cn(
-        "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
-        isTotalExpensesRow && "font-bold text-slate-800",
-        isSalesCreditRow && "text-slate-800",
-        isSubtotalRow && "font-bold text-slate-800"
-      )}>
-        {showNoData ? "—" : rowData.numInvoices}
-      </td>
-      <td className={cn(
-        "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
-        isTotalExpensesRow && "font-bold text-slate-800",
-        isSalesCreditRow && "text-slate-800",
-        isSubtotalRow && "font-bold text-slate-800"
-      )}>
-        {showNoData ? "—" : rowData.numOrderingAccounts}
-      </td>
-      <td className={cn(
-        "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
-        isTotalExpensesRow && "font-bold text-slate-800",
-        isSalesCreditRow && "text-slate-800",
-        isSubtotalRow && "font-bold text-slate-800"
-      )}>
-        {showNoData ? "—" : rowData.numItemsOrdered}
-      </td>
-      <td className={cn(
-        "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
-        isTotalExpensesRow && "font-bold text-slate-800",
-        isSalesCreditRow && "text-slate-800",
-        isSubtotalRow && "font-bold text-slate-800"
-      )}>
-        {showNoData ? "—" : rowData.avgOrderValue}
-      </td>
-      <td className={cn(
-        "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
-        isTotalExpensesRow && "font-bold text-slate-800",
-        isSalesCreditRow && "text-slate-800",
-        isSubtotalRow && "font-bold text-slate-800"
-      )}>
-        {showNoData ? "—" : rowData.avgFreightToStore}
-      </td>
-      <td className={cn(
-        "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
-        isTotalExpensesRow && "font-bold text-slate-800",
-        isSalesCreditRow && "text-slate-800",
-        isSubtotalRow && "font-bold text-slate-800"
-      )}>
-        {showNoData ? "—" : rowData.avgItemsPerOrder}
-      </td>
+      
+      <DataCell 
+        value={rowData.productExpense} 
+        showNoData={showNoData}
+        isTotalExpensesRow={isTotalExpensesRow}
+        isSalesCreditRow={isSalesCreditRow}
+        isSubtotalRow={isSubtotalRow}
+      />
+      <DataCell 
+        value={rowData.freightToStore} 
+        showNoData={showNoData}
+        isTotalExpensesRow={isTotalExpensesRow}
+        isSalesCreditRow={isSalesCreditRow}
+        isSubtotalRow={isSubtotalRow}
+      />
+      <DataCell 
+        value={rowData.numInvoices} 
+        showNoData={showNoData}
+        isTotalExpensesRow={isTotalExpensesRow}
+        isSalesCreditRow={isSalesCreditRow}
+        isSubtotalRow={isSubtotalRow}
+      />
+      <DataCell 
+        value={rowData.numOrderingAccounts} 
+        showNoData={showNoData}
+        isTotalExpensesRow={isTotalExpensesRow}
+        isSalesCreditRow={isSalesCreditRow}
+        isSubtotalRow={isSubtotalRow}
+      />
+      <DataCell 
+        value={rowData.numItemsOrdered} 
+        showNoData={showNoData}
+        isTotalExpensesRow={isTotalExpensesRow}
+        isSalesCreditRow={isSalesCreditRow}
+        isSubtotalRow={isSubtotalRow}
+      />
+      <DataCell 
+        value={rowData.avgOrderValue} 
+        showNoData={showNoData}
+        isTotalExpensesRow={isTotalExpensesRow}
+        isSalesCreditRow={isSalesCreditRow}
+        isSubtotalRow={isSubtotalRow}
+      />
+      <DataCell 
+        value={rowData.avgFreightToStore} 
+        showNoData={showNoData}
+        isTotalExpensesRow={isTotalExpensesRow}
+        isSalesCreditRow={isSalesCreditRow}
+        isSubtotalRow={isSubtotalRow}
+      />
+      <DataCell 
+        value={rowData.avgItemsPerOrder} 
+        showNoData={showNoData}
+        isTotalExpensesRow={isTotalExpensesRow}
+        isSalesCreditRow={isSalesCreditRow}
+        isSubtotalRow={isSubtotalRow}
+      />
     </tr>
   );
 }
