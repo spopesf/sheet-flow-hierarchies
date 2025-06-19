@@ -58,9 +58,9 @@ const getInternalOrderItemBorder = (itemName: string) => {
   // Staff 1, 2, 4, 5, 7, 8, 9 get blue border (UR)
   // Staff 3, 6, 10 get green border (UN)
   if (itemName.includes("Staff 3") || itemName.includes("Staff 6") || itemName.includes("Staff 10")) {
-    return "border-l-4 border-l-green-500";
+    return "border-l-4 border-l-blue-400";
   } else if (itemName.includes("Staff")) {
-    return "border-l-4 border-l-blue-500";
+    return "border-l-4 border-l-blue-600";
   }
   return "";
 };
@@ -158,7 +158,7 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
                 <div className="flex items-center gap-1">
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <div className="w-9 h-5 rounded-full flex items-center justify-center text-xs font-bold min-w-[36px] cursor-help hover:opacity-80 transition-opacity bg-blue-500 text-white">
+                      <div className="w-9 h-5 rounded-full flex items-center justify-center text-xs font-bold min-w-[36px] cursor-help hover:opacity-80 transition-opacity bg-blue-600 text-white">
                         UR
                       </div>
                     </TooltipTrigger>
@@ -168,7 +168,7 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
                   </Tooltip>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <div className="w-9 h-5 rounded-full flex items-center justify-center text-xs font-bold min-w-[36px] cursor-help hover:opacity-80 transition-opacity bg-green-500 text-white">
+                      <div className="w-9 h-5 rounded-full flex items-center justify-center text-xs font-bold min-w-[36px] cursor-help hover:opacity-80 transition-opacity bg-blue-400 text-white">
                         UN
                       </div>
                     </TooltipTrigger>
