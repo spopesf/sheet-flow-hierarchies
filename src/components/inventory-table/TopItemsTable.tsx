@@ -24,7 +24,7 @@ const columns = [
   { label: "Count", className: "text-right" },
   { label: "Value", className: "text-right" },
   { 
-    label: "",
+    label: "Days on Hand",
     className: "text-right pr-6"
   }
 ];
@@ -47,38 +47,32 @@ export function TopItemsTable({ title, items, icons, itemBorderClass }: TopItems
         {title}
       </div>
     }>
-      <TableHeader columns={[
-        ...columns.slice(0, -1),
-        {
-          label: (
-            <div className="flex items-center gap-1 justify-end">
-              Days on Hand
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <div className="w-4 h-4 rounded-full bg-slate-400 flex items-center justify-center cursor-help hover:bg-slate-500 transition-colors">
-                      <span className="text-white text-xs font-bold">?</span>
-                    </div>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p className="max-w-xs text-sm">The number of days current inventory will last based on average daily usage</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-            </div>
-          ) as any,
-          className: "text-right pr-6"
-        }
-      ]} />
-      <tbody>
-        {items.map((item, index) => (
-          <TopItemsRow 
-            key={index}
-            item={item}
-            borderClass={itemBorderClass}
-          />
-        ))}
-      </tbody>
+      <table className="w-full">
+        <TableHeader columns={columns} />
+        <tbody>
+          {items.map((item, index) => (
+            <TopItemsRow 
+              key={index}
+              item={item}
+              borderClass={itemBorderClass}
+            />
+          ))}
+        </tbody>
+      </table>
+      <div className="flex justify-end pr-6 pb-2">
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <div className="w-4 h-4 rounded-full bg-slate-400 flex items-center justify-center cursor-help hover:bg-slate-500 transition-colors">
+                <span className="text-white text-xs font-bold">?</span>
+              </div>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p className="max-w-xs text-sm">The number of days current inventory will last based on average daily usage</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      </div>
     </TableContainer>
   );
 }
