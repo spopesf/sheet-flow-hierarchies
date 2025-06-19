@@ -3,7 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
 interface TableContainerProps {
-  title: string;
+  title: string | React.ReactNode;
   children: React.ReactNode;
   variant?: "default" | "highlighted";
   className?: string;
@@ -40,9 +40,7 @@ export function TableContainer({
       </CardHeader>
       <CardContent className="p-0">
         <div className="overflow-x-auto">
-          <table className="w-full">
-            {children}
-          </table>
+          {children}
         </div>
       </CardContent>
     </Card>
