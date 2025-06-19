@@ -25,8 +25,8 @@ interface InventoryCardProps {
 
 const getCategoryIcon = (label: string) => {
   const iconMap: Record<string, { text: string; bgColor: string; textColor: string }> = {
-    "Uniforms: Replenishment": { text: "UR", bgColor: "bg-blue-500", textColor: "text-white" },
-    "Uniforms: Non-replenishment": { text: "UN", bgColor: "bg-green-500", textColor: "text-white" },
+    "Uniforms: Replenishment": { text: "UR", bgColor: "bg-blue-600", textColor: "text-white" },
+    "Uniforms: Non-replenishment": { text: "UN", bgColor: "bg-blue-400", textColor: "text-white" },
     "Merchandise (Wholesale)": { text: "MR", bgColor: "bg-purple-500", textColor: "text-white" },
     "Merchandise (Retail)": { text: "MR", bgColor: "bg-purple-500", textColor: "text-white" }
   };
@@ -36,8 +36,8 @@ const getCategoryIcon = (label: string) => {
 const getCategoryBorderColor = (label: string) => {
   const colorMap: Record<string, string> = {
     "All Inventory": "border-l-yellow-500",
-    "Uniforms: Replenishment": "border-l-blue-500",
-    "Uniforms: Non-replenishment": "border-l-green-500",
+    "Uniforms: Replenishment": "border-l-blue-600",
+    "Uniforms: Non-replenishment": "border-l-blue-400",
     "Merchandise (Wholesale)": "border-l-purple-500",
     "Merchandise (Retail)": "border-l-purple-500"
   };
