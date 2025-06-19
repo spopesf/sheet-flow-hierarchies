@@ -109,14 +109,14 @@ export function ExpenseTableRow({
         shouldShowBorder && rowData.label && borderColor && `border-l-4 ${borderColor}`,
         showNoData && "opacity-50 bg-slate-100/50",
         isTotalExpensesRow && "font-bold bg-emerald-50 border-l-4 border-l-emerald-600",
-        isSalesCreditRow && "font-bold bg-white border-l-4 border-l-rose-500",
+        isSalesCreditRow && "bg-white border-l-4 border-l-rose-500",
         isSubtotalRow && "font-bold bg-slate-100 border-l-4 border-l-slate-600 border-t-2 border-t-slate-300"
       )}
     >
       <td className={cn(
         "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
         isTotalExpensesRow && "font-bold text-emerald-800",
-        isSalesCreditRow && "font-bold text-rose-700",
+        isSalesCreditRow && "text-rose-700",
         isSubtotalRow && "font-bold text-slate-800"
       )}>
         {rowData.label && (
@@ -146,7 +146,7 @@ export function ExpenseTableRow({
                 "text-slate-700 font-sans font-medium text-xs whitespace-nowrap", 
                 showNoData && "text-slate-500",
                 isTotalExpensesRow && "font-bold text-emerald-800",
-                isSalesCreditRow && "font-bold text-rose-700",
+                isSalesCreditRow && "text-rose-700",
                 isSubtotalRow && "font-bold text-slate-800 uppercase tracking-wide"
               )}>
                 {rowData.label}
@@ -159,7 +159,7 @@ export function ExpenseTableRow({
       <td className={cn(
         "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
         isTotalExpensesRow && "font-bold text-emerald-800",
-        isSalesCreditRow && "font-bold text-rose-700",
+        isSalesCreditRow && "text-rose-700",
         isSubtotalRow && "font-bold text-slate-800"
       )}>
         {showNoData ? "—" : rowData.productExpense}
@@ -167,7 +167,7 @@ export function ExpenseTableRow({
       <td className={cn(
         "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
         isTotalExpensesRow && "font-bold text-emerald-800",
-        isSalesCreditRow && "font-bold text-rose-700",
+        isSalesCreditRow && "text-rose-700",
         isSubtotalRow && "font-bold text-slate-800"
       )}>
         {showNoData ? "—" : rowData.freightToStore}
@@ -175,7 +175,7 @@ export function ExpenseTableRow({
       <td className={cn(
         "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
         isTotalExpensesRow && "font-bold text-emerald-800",
-        isSalesCreditRow && "font-bold text-rose-700",
+        isSalesCreditRow && "text-rose-700",
         isSubtotalRow && "font-bold text-slate-800"
       )}>
         {showNoData ? "—" : rowData.numInvoices}
@@ -183,7 +183,7 @@ export function ExpenseTableRow({
       <td className={cn(
         "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
         isTotalExpensesRow && "font-bold text-emerald-800",
-        isSalesCreditRow && "font-bold text-rose-700",
+        isSalesCreditRow && "text-rose-700",
         isSubtotalRow && "font-bold text-slate-800"
       )}>
         {showNoData ? "—" : rowData.numOrderingAccounts}
@@ -191,7 +191,7 @@ export function ExpenseTableRow({
       <td className={cn(
         "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
         isTotalExpensesRow && "font-bold text-emerald-800",
-        isSalesCreditRow && "font-bold text-rose-700",
+        isSalesCreditRow && "text-rose-700",
         isSubtotalRow && "font-bold text-slate-800"
       )}>
         {showNoData ? "—" : rowData.numItemsOrdered}
@@ -199,7 +199,7 @@ export function ExpenseTableRow({
       <td className={cn(
         "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
         isTotalExpensesRow && "font-bold text-emerald-800",
-        isSalesCreditRow && "font-bold text-rose-700",
+        isSalesCreditRow && "text-rose-700",
         isSubtotalRow && "font-bold text-slate-800"
       )}>
         {showNoData ? "—" : rowData.avgOrderValue}
@@ -207,7 +207,7 @@ export function ExpenseTableRow({
       <td className={cn(
         "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
         isTotalExpensesRow && "font-bold text-emerald-800",
-        isSalesCreditRow && "font-bold text-rose-700",
+        isSalesCreditRow && "text-rose-700",
         isSubtotalRow && "font-bold text-slate-800"
       )}>
         {showNoData ? "—" : rowData.avgFreightToStore}
@@ -215,7 +215,7 @@ export function ExpenseTableRow({
       <td className={cn(
         "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
         isTotalExpensesRow && "font-bold text-emerald-800",
-        isSalesCreditRow && "font-bold text-rose-700",
+        isSalesCreditRow && "text-rose-700",
         isSubtotalRow && "font-bold text-slate-800"
       )}>
         {showNoData ? "—" : rowData.avgItemsPerOrder}
