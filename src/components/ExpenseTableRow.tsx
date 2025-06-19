@@ -86,7 +86,7 @@ export function ExpenseTableRow({
     return (
       <tr className={cn(
         "bg-slate-50 border-b border-slate-100",
-        (isUniformExpensesSection || isMerchandiseSection) && "border-t-2 border-t-slate-400"
+        (isUniformExpensesSection || isMerchandiseSection) && "border-t-2 border-t-slate-300"
       )}>
         <td colSpan={9} className="py-2 px-2 text-xs font-medium text-slate-600 tracking-wide text-left">
           {rowData.label}
