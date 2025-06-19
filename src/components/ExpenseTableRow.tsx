@@ -80,8 +80,8 @@ export function ExpenseTableRow({
   // Handle section headers
   if (rowData.type === "sectionHeader") {
     return (
-      <tr className="bg-slate-100 border-b border-slate-200">
-        <td colSpan={9} className="py-3 px-4 text-sm font-semibold text-slate-700 text-left">
+      <tr className="bg-slate-200 border-b-2 border-slate-300">
+        <td colSpan={9} className="py-4 px-4 text-sm font-bold text-slate-800 text-left uppercase tracking-wide">
           {rowData.label}
         </td>
       </tr>
@@ -111,18 +111,21 @@ export function ExpenseTableRow({
         showNoData && "opacity-50 bg-slate-100/50",
         isTotalExpensesRow && "font-bold bg-emerald-50 border-l-4 border-l-emerald-600",
         isSalesCreditRow && "font-bold bg-white border-l-4 border-l-rose-500",
-        isSubtotalRow && "font-semibold bg-slate-50 border-l-4 border-l-slate-400"
+        isSubtotalRow && "font-bold bg-slate-100 border-l-4 border-l-slate-600 border-t-2 border-t-slate-300"
       )}
     >
       <td className={cn(
         "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
         isTotalExpensesRow && "font-bold text-emerald-800",
         isSalesCreditRow && "font-bold text-rose-700",
-        isSubtotalRow && "font-semibold text-slate-700"
+        isSubtotalRow && "font-bold text-slate-800"
       )}>
         {rowData.label && (
           <TooltipProvider>
-            <div className="flex items-center gap-2 mb-1">
+            <div className={cn(
+              "flex items-center gap-2 mb-1",
+              isSubtotalRow && "pl-4"
+            )}>
               {shouldShowIcon && (
                 <Tooltip>
                   <TooltipTrigger asChild>
@@ -145,7 +148,7 @@ export function ExpenseTableRow({
                 showNoData && "text-slate-500",
                 isTotalExpensesRow && "font-bold text-emerald-800",
                 isSalesCreditRow && "font-bold text-rose-700",
-                isSubtotalRow && "font-semibold text-slate-700"
+                isSubtotalRow && "font-bold text-slate-800 uppercase tracking-wide"
               )}>
                 {rowData.label}
               </span>
@@ -158,7 +161,7 @@ export function ExpenseTableRow({
         "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
         isTotalExpensesRow && "font-bold text-emerald-800",
         isSalesCreditRow && "font-bold text-rose-700",
-        isSubtotalRow && "font-semibold text-slate-700"
+        isSubtotalRow && "font-bold text-slate-800"
       )}>
         {showNoData ? "—" : rowData.productExpense}
       </td>
@@ -166,7 +169,7 @@ export function ExpenseTableRow({
         "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
         isTotalExpensesRow && "font-bold text-emerald-800",
         isSalesCreditRow && "font-bold text-rose-700",
-        isSubtotalRow && "font-semibold text-slate-700"
+        isSubtotalRow && "font-bold text-slate-800"
       )}>
         {showNoData ? "—" : rowData.freightToStore}
       </td>
@@ -174,7 +177,7 @@ export function ExpenseTableRow({
         "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
         isTotalExpensesRow && "font-bold text-emerald-800",
         isSalesCreditRow && "font-bold text-rose-700",
-        isSubtotalRow && "font-semibold text-slate-700"
+        isSubtotalRow && "font-bold text-slate-800"
       )}>
         {showNoData ? "—" : rowData.numInvoices}
       </td>
@@ -182,7 +185,7 @@ export function ExpenseTableRow({
         "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
         isTotalExpensesRow && "font-bold text-emerald-800",
         isSalesCreditRow && "font-bold text-rose-700",
-        isSubtotalRow && "font-semibold text-slate-700"
+        isSubtotalRow && "font-bold text-slate-800"
       )}>
         {showNoData ? "—" : rowData.numOrderingAccounts}
       </td>
@@ -190,7 +193,7 @@ export function ExpenseTableRow({
         "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
         isTotalExpensesRow && "font-bold text-emerald-800",
         isSalesCreditRow && "font-bold text-rose-700",
-        isSubtotalRow && "font-semibold text-slate-700"
+        isSubtotalRow && "font-bold text-slate-800"
       )}>
         {showNoData ? "—" : rowData.numItemsOrdered}
       </td>
@@ -198,7 +201,7 @@ export function ExpenseTableRow({
         "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
         isTotalExpensesRow && "font-bold text-emerald-800",
         isSalesCreditRow && "font-bold text-rose-700",
-        isSubtotalRow && "font-semibold text-slate-700"
+        isSubtotalRow && "font-bold text-slate-800"
       )}>
         {showNoData ? "—" : rowData.avgOrderValue}
       </td>
@@ -206,7 +209,7 @@ export function ExpenseTableRow({
         "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
         isTotalExpensesRow && "font-bold text-emerald-800",
         isSalesCreditRow && "font-bold text-rose-700",
-        isSubtotalRow && "font-semibold text-slate-700"
+        isSubtotalRow && "font-bold text-slate-800"
       )}>
         {showNoData ? "—" : rowData.avgFreightToStore}
       </td>
@@ -214,7 +217,7 @@ export function ExpenseTableRow({
         "py-2 px-2 text-xs font-mono tabular-nums text-slate-800 text-right align-bottom",
         isTotalExpensesRow && "font-bold text-emerald-800",
         isSalesCreditRow && "font-bold text-rose-700",
-        isSubtotalRow && "font-semibold text-slate-700"
+        isSubtotalRow && "font-bold text-slate-800"
       )}>
         {showNoData ? "—" : rowData.avgItemsPerOrder}
       </td>
