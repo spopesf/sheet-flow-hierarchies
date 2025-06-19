@@ -1,4 +1,3 @@
-
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
@@ -80,8 +79,8 @@ export function ExpenseTableRow({
   // Handle section headers
   if (rowData.type === "sectionHeader") {
     return (
-      <tr className="bg-white border-b border-slate-200">
-        <td colSpan={9} className="py-3 px-4 text-sm font-bold text-slate-800 text-left uppercase tracking-wide">
+      <tr className="bg-slate-50 border-b border-slate-100">
+        <td colSpan={9} className="py-2 px-2 text-xs font-medium text-slate-600 tracking-wide text-left">
           {rowData.label}
         </td>
       </tr>
@@ -109,9 +108,9 @@ export function ExpenseTableRow({
         (index > 0 && Array.isArray(dataArray) && !isSubItem) || isSubItem && "bg-slate-50/30",
         shouldShowBorder && rowData.label && borderColor && `border-l-4 ${borderColor}`,
         showNoData && "opacity-50 bg-slate-100/50",
-        isTotalExpensesRow && "font-bold bg-slate-100 border-l-4 border-l-slate-600 border-t-2 border-t-slate-300",
+        isTotalExpensesRow && "bg-slate-100 border-l-4 border-l-slate-600 border-t-2 border-t-slate-300",
         isSalesCreditRow && "bg-white border-l-4 border-l-slate-600",
-        isSubtotalRow && "font-bold bg-slate-100 border-l-4 border-l-slate-600 border-t-2 border-t-slate-300"
+        isSubtotalRow && "bg-slate-100 border-l-4 border-l-slate-600 border-t-2 border-t-slate-300"
       )}
     >
       <td className={cn(
