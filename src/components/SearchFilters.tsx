@@ -118,30 +118,35 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
           <h2 className="text-base font-semibold text-foreground">Choose your filter</h2>
         </div>
         
-        {/* Search Method Selection - 5 columns, only show for expenses */}
+        {/* Search Method Selection - using same 4+8 column structure as Store/Employee inputs */}
         <div className="col-span-5 space-y-0.5">
           {showSearchMethods && (
             <>
               <label className="text-xs font-medium text-muted-foreground">Search Method</label>
               <RadioGroup value={searchMethod} onValueChange={handleSearchMethodChange} className="space-y-0.5">
-                {/* All User Groups Dropdown Option - first */}
-                <div className="flex items-center space-x-2 p-1.5 rounded border border-border bg-background/50">
-                  <RadioGroupItem value="filter" id="filter" className="mt-0 h-3 w-3" />
-                  <Label htmlFor="filter" className="flex items-center flex-1 cursor-pointer">
-                    <Select value={selectedDropdown} onValueChange={handleDropdownChange} disabled={searchMethod !== "filter"}>
-                      <SelectTrigger className="w-full font-medium disabled:opacity-50 disabled:cursor-not-allowed border-0 shadow-none bg-transparent h-6 text-xs">
-                        <SelectValue placeholder="All User Groups" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="all-user-groups">All User Groups</SelectItem>
-                        <SelectItem value="rsc-corporate">RSC Corporate</SelectItem>
-                        <SelectItem value="admin">Admin</SelectItem>
-                        <SelectItem value="restaurants">Restaurants</SelectItem>
-                        <SelectItem value="ctm-and-r">CTM and R</SelectItem>
-                        <SelectItem value="facilities-nro-r-ops-leaders">Facilities, NRO, R Ops Leaders</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </Label>
+                {/* All User Groups Dropdown Option - using same grid as Store/Employee */}
+                <div className="grid grid-cols-12 gap-2 items-center">
+                  {/* Empty space - 4 columns to match error message space */}
+                  <div className="col-span-4"></div>
+                  {/* Input field - 8 columns to match Store/Employee inputs */}
+                  <div className="col-span-8 flex items-center space-x-2 p-1.5 rounded border border-border bg-background/50">
+                    <RadioGroupItem value="filter" id="filter" className="mt-0 h-3 w-3" />
+                    <Label htmlFor="filter" className="flex items-center flex-1 cursor-pointer">
+                      <Select value={selectedDropdown} onValueChange={handleDropdownChange} disabled={searchMethod !== "filter"}>
+                        <SelectTrigger className="w-full font-medium disabled:opacity-50 disabled:cursor-not-allowed border-0 shadow-none bg-transparent h-6 text-xs">
+                          <SelectValue placeholder="All User Groups" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="all-user-groups">All User Groups</SelectItem>
+                          <SelectItem value="rsc-corporate">RSC Corporate</SelectItem>
+                          <SelectItem value="admin">Admin</SelectItem>
+                          <SelectItem value="restaurants">Restaurants</SelectItem>
+                          <SelectItem value="ctm-and-r">CTM and R</SelectItem>
+                          <SelectItem value="facilities-nro-r-ops-leaders">Facilities, NRO, R Ops Leaders</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </Label>
+                  </div>
                 </div>
 
                 {/* Store # Input Option with error to the left */}
