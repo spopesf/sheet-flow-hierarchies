@@ -122,7 +122,13 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
         <div className="col-span-5 space-y-0.5">
           {showSearchMethods && (
             <>
-              <label className="text-xs font-medium text-muted-foreground">Search Method</label>
+              {/* Search Method label aligned in 4+8 structure */}
+              <div className="grid grid-cols-12 gap-2">
+                <div className="col-span-4"></div>
+                <div className="col-span-8">
+                  <label className="text-xs font-medium text-muted-foreground">Search Method</label>
+                </div>
+              </div>
               <RadioGroup value={searchMethod} onValueChange={handleSearchMethodChange} className="space-y-0.5">
                 {/* All User Groups Dropdown Option - using same grid as Store/Employee */}
                 <div className="grid grid-cols-12 gap-2 items-center">
