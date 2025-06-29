@@ -1,4 +1,5 @@
 
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -145,11 +146,11 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
                 </div>
 
                 {/* Store # Input Option - second */}
-                <div className="space-y-1">
+                <div>
                   {storeError && searchMethod === "store" && (
-                    <div className="flex items-center text-red-600 pl-5">
-                      <AlertCircle className="h-3 w-3 mr-1" />
-                      <span className="text-xs">{storeError}</span>
+                    <div className="flex items-center text-red-600 pl-5 pb-0.5">
+                      <AlertCircle className="h-2.5 w-2.5 mr-1" />
+                      <span className="text-[10px] leading-none">{storeError}</span>
                     </div>
                   )}
                   <div className="flex items-center space-x-2 p-1.5 rounded border border-border bg-background/50">
@@ -170,11 +171,11 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
                 </div>
 
                 {/* Employee # Input Option - third */}
-                <div className="space-y-1">
+                <div>
                   {employeeError && searchMethod === "employee" && (
-                    <div className="flex items-center text-red-600 pl-5">
-                      <AlertCircle className="h-3 w-3 mr-1" />
-                      <span className="text-xs">{employeeError}</span>
+                    <div className="flex items-center text-red-600 pl-5 pb-0.5">
+                      <AlertCircle className="h-2.5 w-2.5 mr-1" />
+                      <span className="text-[10px] leading-none">{employeeError}</span>
                     </div>
                   )}
                   <div className="flex items-center space-x-2 p-1.5 rounded border border-border bg-background/50">
@@ -319,3 +320,4 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
     </div>
   );
 }
+
