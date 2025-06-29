@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -145,6 +146,12 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
 
                 {/* Store # Input Option - second */}
                 <div className="space-y-1">
+                  {storeError && searchMethod === "store" && (
+                    <div className="flex items-center text-red-600 pl-5">
+                      <AlertCircle className="h-3 w-3 mr-1" />
+                      <span className="text-xs">{storeError}</span>
+                    </div>
+                  )}
                   <div className="flex items-center space-x-2 p-1.5 rounded border border-border bg-background/50">
                     <RadioGroupItem value="store" id="store" className="mt-0 h-3 w-3" />
                     <Label htmlFor="store" className="flex items-center flex-1 cursor-pointer">
@@ -159,17 +166,17 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
                         <Search className="h-3 w-3 text-muted-foreground absolute right-1.5 top-1/2 transform -translate-y-1/2 pointer-events-none" />
                       </div>
                     </Label>
-                    {storeError && searchMethod === "store" && (
-                      <div className="flex items-center ml-2 text-red-600">
-                        <AlertCircle className="h-3 w-3 mr-1" />
-                        <span className="text-xs">{storeError}</span>
-                      </div>
-                    )}
                   </div>
                 </div>
 
                 {/* Employee # Input Option - third */}
                 <div className="space-y-1">
+                  {employeeError && searchMethod === "employee" && (
+                    <div className="flex items-center text-red-600 pl-5">
+                      <AlertCircle className="h-3 w-3 mr-1" />
+                      <span className="text-xs">{employeeError}</span>
+                    </div>
+                  )}
                   <div className="flex items-center space-x-2 p-1.5 rounded border border-border bg-background/50">
                     <RadioGroupItem value="employee" id="employee" className="mt-0 h-3 w-3" />
                     <Label htmlFor="employee" className="flex items-center flex-1 cursor-pointer">
@@ -184,12 +191,6 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
                         <Search className="h-3 w-3 text-muted-foreground absolute right-1.5 top-1/2 transform -translate-y-1/2 pointer-events-none" />
                       </div>
                     </Label>
-                    {employeeError && searchMethod === "employee" && (
-                      <div className="flex items-center ml-2 text-red-600">
-                        <AlertCircle className="h-3 w-3 mr-1" />
-                        <span className="text-xs">{employeeError}</span>
-                      </div>
-                    )}
                   </div>
                 </div>
               </RadioGroup>
