@@ -113,13 +113,13 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
   return (
     <div className="p-2 bg-card rounded-lg border border-border shadow-sm">
       <div className="grid grid-cols-12 gap-4 items-start">
-        {/* Section Title - 2 columns */}
-        <div className="col-span-2">
+        {/* Section Title - 3 columns */}
+        <div className="col-span-3">
           <h2 className="text-base font-semibold text-foreground">Choose your filter</h2>
         </div>
         
-        {/* Search Method Selection - 6 columns, only show for expenses */}
-        <div className="col-span-6 space-y-0.5">
+        {/* Search Method Selection - 5 columns, only show for expenses */}
+        <div className="col-span-5 space-y-0.5">
           {showSearchMethods && (
             <>
               <label className="text-xs font-medium text-muted-foreground">Search Method</label>
