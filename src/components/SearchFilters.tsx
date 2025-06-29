@@ -112,14 +112,14 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
 
   return (
     <div className="p-2 bg-card rounded-lg border border-border shadow-sm">
-      <div className="grid grid-cols-3 gap-12 items-start">
-        {/* Section Title - left column */}
-        <div>
+      <div className="grid grid-cols-12 gap-4 items-start">
+        {/* Section Title - 2 columns */}
+        <div className="col-span-2">
           <h2 className="text-base font-semibold text-foreground">Choose your filter</h2>
         </div>
         
-        {/* Search Method Selection - middle column, only show for expenses */}
-        <div className="space-y-0.5">
+        {/* Search Method Selection - 6 columns, only show for expenses */}
+        <div className="col-span-6 space-y-0.5">
           {showSearchMethods && (
             <>
               <label className="text-xs font-medium text-muted-foreground">Search Method</label>
@@ -144,19 +144,19 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
                   </Label>
                 </div>
 
-                {/* Store # Input Option - second */}
-                <div className="flex items-center space-x-2">
-                  {/* Error message to the left */}
-                  <div className="w-32 flex-shrink-0">
+                {/* Store # Input Option with error to the left */}
+                <div className="grid grid-cols-12 gap-2 items-center">
+                  {/* Error message - 4 columns */}
+                  <div className="col-span-4">
                     {storeError && searchMethod === "store" && (
-                      <div className="flex items-center text-red-600">
+                      <div className="flex items-center text-red-600 justify-end">
                         <AlertCircle className="h-2.5 w-2.5 mr-0.5" />
                         <span className="text-[10px] leading-none whitespace-nowrap">{storeError}</span>
                       </div>
                     )}
                   </div>
-                  {/* Input field */}
-                  <div className="flex items-center space-x-2 p-1.5 rounded border border-border bg-background/50 flex-1">
+                  {/* Input field - 8 columns */}
+                  <div className="col-span-8 flex items-center space-x-2 p-1.5 rounded border border-border bg-background/50">
                     <RadioGroupItem value="store" id="store" className="mt-0 h-3 w-3" />
                     <Label htmlFor="store" className="flex items-center flex-1 cursor-pointer">
                       <div className="relative flex-1">
@@ -173,19 +173,19 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
                   </div>
                 </div>
 
-                {/* Employee # Input Option - third */}
-                <div className="flex items-center space-x-2">
-                  {/* Error message to the left */}
-                  <div className="w-32 flex-shrink-0">
+                {/* Employee # Input Option with error to the left */}
+                <div className="grid grid-cols-12 gap-2 items-center">
+                  {/* Error message - 4 columns */}
+                  <div className="col-span-4">
                     {employeeError && searchMethod === "employee" && (
-                      <div className="flex items-center text-red-600">
+                      <div className="flex items-center text-red-600 justify-end">
                         <AlertCircle className="h-2.5 w-2.5 mr-0.5" />
                         <span className="text-[10px] leading-none whitespace-nowrap">{employeeError}</span>
                       </div>
                     )}
                   </div>
-                  {/* Input field */}
-                  <div className="flex items-center space-x-2 p-1.5 rounded border border-border bg-background/50 flex-1">
+                  {/* Input field - 8 columns */}
+                  <div className="col-span-8 flex items-center space-x-2 p-1.5 rounded border border-border bg-background/50">
                     <RadioGroupItem value="employee" id="employee" className="mt-0 h-3 w-3" />
                     <Label htmlFor="employee" className="flex items-center flex-1 cursor-pointer">
                       <div className="relative flex-1">
@@ -206,8 +206,8 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
           )}
         </div>
         
-        {/* Date Range - right column */}
-        <div className="space-y-0.5">
+        {/* Date Range - 4 columns */}
+        <div className="col-span-4 space-y-0.5">
           <label className="text-xs font-medium text-muted-foreground">
             {isInventoryTab ? "On Date" : "Date Range"}
           </label>
