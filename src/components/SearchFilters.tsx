@@ -1,11 +1,10 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, SelectSeparator } from "@/components/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
-import { Search, CalendarDays, ChevronRight } from "lucide-react";
+import { Search, CalendarDays, ChevronRight, AlertCircle } from "lucide-react";
 
 interface SearchFiltersProps {
   onFilterChange?: (filter: string) => void;
@@ -21,22 +20,70 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
   const [selectedDateRange, setSelectedDateRange] = useState("year-to-date");
   const [selectedYear, setSelectedYear] = useState("2024");
   const [selectedQuarter, setSelectedQuarter] = useState("Q4");
+  const [storeError, setStoreError] = useState("");
+  const [employeeError, setEmployeeError] = useState("");
+
+  const validateStoreNumber = (value: string) => {
+    // Simple validation - you can modify this logic based on your actual validation needs
+    if (value && value.length > 0) {
+      // For demo purposes, let's say store numbers should be numeric and exist in a certain range
+      const storeNum = parseInt(value);
+      if (isNaN(storeNum) || storeNum < 1 || storeNum > 9999) {
+        setStoreError("This store # does not exist");
+      } else {
+        setStoreError("");
+      }
+    } else {
+      setStoreError("");
+    }
+  };
+
+  const validateEmployeeNumber = (value: string) => {
+    // Simple validation - you can modify this logic based on your actual validation needs
+    if (value && value.length > 0) {
+      // For demo purposes, let's say employee numbers should be numeric and exist in a certain range
+      const empNum = parseInt(value);
+      if (isNaN(empNum) || empNum < 1 || empNum > 99999) {
+        setEmployeeError("This employee # does not exist");
+      } else {
+        setEmployeeError("");
+      }
+    } else {
+      setEmployeeError("");
+    }
+  };
 
   const handleSearchMethodChange = (value: string) => {
     setSearchMethod(value);
-    // Clear the other inputs when switching methods
+    // Clear the other inputs and errors when switching methods
     if (value === "store") {
       setSelectedDropdown("");
       setEmployeeInput("");
+      setEmployeeError("");
       onFilterChange?.("");
     } else if (value === "employee") {
       setSelectedDropdown("");
       setSearchInput("");
+      setStoreError("");
       onFilterChange?.("");
     } else {
       setSearchInput("");
       setEmployeeInput("");
+      setStoreError("");
+      setEmployeeError("");
     }
+  };
+
+  const handleStoreInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSearchInput(value);
+    validateStoreNumber(value);
+  };
+
+  const handleEmployeeInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setEmployeeInput(value);
+    validateEmployeeNumber(value);
   };
 
   const handleDropdownChange = (value: string) => {
@@ -97,37 +144,53 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
                 </div>
 
                 {/* Store # Input Option - second */}
-                <div className="flex items-center space-x-2 p-1.5 rounded border border-border bg-background/50">
-                  <RadioGroupItem value="store" id="store" className="mt-0 h-3 w-3" />
-                  <Label htmlFor="store" className="flex items-center flex-1 cursor-pointer">
-                    <div className="relative flex-1">
-                      <Input 
-                        placeholder="Store #" 
-                        value={searchInput}
-                        onChange={(e) => setSearchInput(e.target.value)}
-                        disabled={searchMethod !== "store"}
-                        className="border-0 shadow-none focus-visible:ring-0 font-medium placeholder:text-muted-foreground disabled:opacity-50 disabled:cursor-not-allowed bg-transparent h-6 text-xs pr-6"
-                      />
-                      <Search className="h-3 w-3 text-muted-foreground absolute right-1.5 top-1/2 transform -translate-y-1/2 pointer-events-none" />
-                    </div>
-                  </Label>
+                <div className="space-y-1">
+                  <div className="flex items-center space-x-2 p-1.5 rounded border border-border bg-background/50">
+                    <RadioGroupItem value="store" id="store" className="mt-0 h-3 w-3" />
+                    <Label htmlFor="store" className="flex items-center flex-1 cursor-pointer">
+                      <div className="relative flex-1 flex items-center">
+                        <Input 
+                          placeholder="Store #" 
+                          value={searchInput}
+                          onChange={handleStoreInputChange}
+                          disabled={searchMethod !== "store"}
+                          className={`border-0 shadow-none focus-visible:ring-0 font-medium placeholder:text-muted-foreground disabled:opacity-50 disabled:cursor-not-allowed bg-transparent h-6 text-xs pr-6 ${storeError ? 'text-red-600' : ''}`}
+                        />
+                        <Search className="h-3 w-3 text-muted-foreground absolute right-1.5 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+                      </div>
+                    </Label>
+                    {storeError && searchMethod === "store" && (
+                      <div className="flex items-center ml-2 text-red-600">
+                        <AlertCircle className="h-3 w-3 mr-1" />
+                        <span className="text-xs">{storeError}</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 {/* Employee # Input Option - third */}
-                <div className="flex items-center space-x-2 p-1.5 rounded border border-border bg-background/50">
-                  <RadioGroupItem value="employee" id="employee" className="mt-0 h-3 w-3" />
-                  <Label htmlFor="employee" className="flex items-center flex-1 cursor-pointer">
-                    <div className="relative flex-1">
-                      <Input 
-                        placeholder="Employee #" 
-                        value={employeeInput}
-                        onChange={(e) => setEmployeeInput(e.target.value)}
-                        disabled={searchMethod !== "employee"}
-                        className="border-0 shadow-none focus-visible:ring-0 font-medium placeholder:text-muted-foreground disabled:opacity-50 disabled:cursor-not-allowed bg-transparent h-6 text-xs pr-6"
-                      />
-                      <Search className="h-3 w-3 text-muted-foreground absolute right-1.5 top-1/2 transform -translate-y-1/2 pointer-events-none" />
-                    </div>
-                  </Label>
+                <div className="space-y-1">
+                  <div className="flex items-center space-x-2 p-1.5 rounded border border-border bg-background/50">
+                    <RadioGroupItem value="employee" id="employee" className="mt-0 h-3 w-3" />
+                    <Label htmlFor="employee" className="flex items-center flex-1 cursor-pointer">
+                      <div className="relative flex-1 flex items-center">
+                        <Input 
+                          placeholder="Employee #" 
+                          value={employeeInput}
+                          onChange={handleEmployeeInputChange}
+                          disabled={searchMethod !== "employee"}
+                          className={`border-0 shadow-none focus-visible:ring-0 font-medium placeholder:text-muted-foreground disabled:opacity-50 disabled:cursor-not-allowed bg-transparent h-6 text-xs pr-6 ${employeeError ? 'text-red-600' : ''}`}
+                        />
+                        <Search className="h-3 w-3 text-muted-foreground absolute right-1.5 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+                      </div>
+                    </Label>
+                    {employeeError && searchMethod === "employee" && (
+                      <div className="flex items-center ml-2 text-red-600">
+                        <AlertCircle className="h-3 w-3 mr-1" />
+                        <span className="text-xs">{employeeError}</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </RadioGroup>
             </>
