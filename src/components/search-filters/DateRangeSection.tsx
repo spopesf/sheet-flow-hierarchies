@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue, SelectSeparator } from "@/components/ui/select";
@@ -8,9 +7,10 @@ import { CalendarDays, ChevronRight } from "lucide-react";
 
 interface DateRangeSectionProps {
   activeTab?: string;
+  colSpan?: number;
 }
 
-export function DateRangeSection({ activeTab }: DateRangeSectionProps) {
+export function DateRangeSection({ activeTab, colSpan = 4 }: DateRangeSectionProps) {
   const [dateRangeMethod, setDateRangeMethod] = useState("predefined");
   const [selectedDateRange, setSelectedDateRange] = useState("year-to-date");
   const [selectedYear, setSelectedYear] = useState("2024");
@@ -31,7 +31,7 @@ export function DateRangeSection({ activeTab }: DateRangeSectionProps) {
   const isSustainabilityTab = activeTab === "sustainability";
 
   return (
-    <div className="col-span-4 space-y-0.5">
+    <div className={`col-span-${colSpan} space-y-0.5`}>
       <label className="text-xs font-medium text-muted-foreground">
         {isInventoryTab ? "On Date" : "Date Range"}
       </label>

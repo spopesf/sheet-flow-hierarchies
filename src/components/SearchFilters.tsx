@@ -15,11 +15,16 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
     <div className="p-2 bg-card rounded-lg border border-border shadow-sm">
       <div className="grid grid-cols-12 gap-4 items-start">
         <FilterHeader title="Choose your filter" />
-        <SearchMethodSection 
-          onFilterChange={onFilterChange}
-          showSearchMethods={showSearchMethods}
+        {showSearchMethods && (
+          <SearchMethodSection 
+            onFilterChange={onFilterChange}
+            showSearchMethods={showSearchMethods}
+          />
+        )}
+        <DateRangeSection 
+          activeTab={activeTab} 
+          colSpan={showSearchMethods ? 4 : 9}
         />
-        <DateRangeSection activeTab={activeTab} />
       </div>
     </div>
   );
