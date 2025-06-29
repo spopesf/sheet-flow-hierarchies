@@ -21,10 +21,12 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
             showSearchMethods={showSearchMethods}
           />
         )}
-        <DateRangeSection 
-          activeTab={activeTab} 
-          colSpan={4}
-        />
+        <div className={showSearchMethods ? "col-span-4" : "col-start-9 col-span-4"}>
+          <DateRangeSection 
+            activeTab={activeTab} 
+            colSpan={4}
+          />
+        </div>
       </div>
     </div>
   );
