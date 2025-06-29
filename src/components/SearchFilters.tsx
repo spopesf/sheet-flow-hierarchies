@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -147,21 +148,23 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
                 <div className="flex items-center space-x-2 p-1.5 rounded border border-border bg-background/50">
                   <RadioGroupItem value="store" id="store" className="mt-0 h-3 w-3" />
                   <Label htmlFor="store" className="flex items-center flex-1 cursor-pointer">
-                    <div className="relative flex-1 flex items-center">
+                    <div className="flex items-center w-full gap-1">
                       {storeError && searchMethod === "store" && (
-                        <div className="flex items-center text-red-600 mr-2 flex-shrink-0">
-                          <AlertCircle className="h-2.5 w-2.5 mr-1" />
+                        <div className="flex items-center text-red-600 flex-shrink-0">
+                          <AlertCircle className="h-2.5 w-2.5 mr-0.5" />
                           <span className="text-[10px] leading-none whitespace-nowrap">{storeError}</span>
                         </div>
                       )}
-                      <Input 
-                        placeholder="Store #" 
-                        value={searchInput}
-                        onChange={handleStoreInputChange}
-                        disabled={searchMethod !== "store"}
-                        className={`border-0 shadow-none focus-visible:ring-0 font-medium placeholder:text-muted-foreground disabled:opacity-50 disabled:cursor-not-allowed bg-transparent h-6 text-xs pr-6 ${storeError ? 'text-red-600' : ''}`}
-                      />
-                      <Search className="h-3 w-3 text-muted-foreground absolute right-1.5 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+                      <div className="relative flex-1">
+                        <Input 
+                          placeholder="Store #" 
+                          value={searchInput}
+                          onChange={handleStoreInputChange}
+                          disabled={searchMethod !== "store"}
+                          className={`border-0 shadow-none focus-visible:ring-0 font-medium placeholder:text-muted-foreground disabled:opacity-50 disabled:cursor-not-allowed bg-transparent h-6 text-xs pr-6 ${storeError ? 'text-red-600' : ''}`}
+                        />
+                        <Search className="h-3 w-3 text-muted-foreground absolute right-1.5 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+                      </div>
                     </div>
                   </Label>
                 </div>
@@ -170,21 +173,23 @@ export function SearchFilters({ onFilterChange, activeTab }: SearchFiltersProps)
                 <div className="flex items-center space-x-2 p-1.5 rounded border border-border bg-background/50">
                   <RadioGroupItem value="employee" id="employee" className="mt-0 h-3 w-3" />
                   <Label htmlFor="employee" className="flex items-center flex-1 cursor-pointer">
-                    <div className="relative flex-1 flex items-center">
+                    <div className="flex items-center w-full gap-1">
                       {employeeError && searchMethod === "employee" && (
-                        <div className="flex items-center text-red-600 mr-2 flex-shrink-0">
-                          <AlertCircle className="h-2.5 w-2.5 mr-1" />
+                        <div className="flex items-center text-red-600 flex-shrink-0">
+                          <AlertCircle className="h-2.5 w-2.5 mr-0.5" />
                           <span className="text-[10px] leading-none whitespace-nowrap">{employeeError}</span>
                         </div>
                       )}
-                      <Input 
-                        placeholder="Employee #" 
-                        value={employeeInput}
-                        onChange={handleEmployeeInputChange}
-                        disabled={searchMethod !== "employee"}
-                        className={`border-0 shadow-none focus-visible:ring-0 font-medium placeholder:text-muted-foreground disabled:opacity-50 disabled:cursor-not-allowed bg-transparent h-6 text-xs pr-6 ${employeeError ? 'text-red-600' : ''}`}
-                      />
-                      <Search className="h-3 w-3 text-muted-foreground absolute right-1.5 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+                      <div className="relative flex-1">
+                        <Input 
+                          placeholder="Employee #" 
+                          value={employeeInput}
+                          onChange={handleEmployeeInputChange}
+                          disabled={searchMethod !== "employee"}
+                          className={`border-0 shadow-none focus-visible:ring-0 font-medium placeholder:text-muted-foreground disabled:opacity-50 disabled:cursor-not-allowed bg-transparent h-6 text-xs pr-6 ${employeeError ? 'text-red-600' : ''}`}
+                        />
+                        <Search className="h-3 w-3 text-muted-foreground absolute right-1.5 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+                      </div>
                     </div>
                   </Label>
                 </div>
