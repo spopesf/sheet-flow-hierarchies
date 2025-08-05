@@ -34,7 +34,7 @@ const generateEmployeeData = () => {
 const employeeData = generateEmployeeData();
 
 export function YearlyAllowancesTab({ selectedFilter, onFilterChange }: YearlyAllowancesTabProps) {
-  const [showAllEmployees, setShowAllEmployees] = useState(true);
+  const [showAllEmployees, setShowAllEmployees] = useState(false);
   const [employeeNumber, setEmployeeNumber] = useState("");
   const [searchedEmployee, setSearchedEmployee] = useState<{id: string, allowanceRemaining: number} | null>(null);
 
