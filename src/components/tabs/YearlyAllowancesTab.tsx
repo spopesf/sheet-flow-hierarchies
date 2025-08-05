@@ -25,10 +25,10 @@ const generateEmployeeData = () => {
   for (let i = 1001; i <= 3000; i++) {
     employees.push({
       id: `EMP${i}`,
-      allowanceRemaining: Math.floor(Math.random() * 5000)
+      allowanceRemaining: Math.floor(Math.random() * 10001) / 100 // Random amount between $0.00 and $100.00
     });
   }
-  return employees;
+  return employees.sort((a, b) => b.allowanceRemaining - a.allowanceRemaining); // Sort highest to lowest
 };
 
 const employeeData = generateEmployeeData();
