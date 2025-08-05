@@ -63,10 +63,12 @@ export function YearlyAllowancesTab({ selectedFilter, onFilterChange }: YearlyAl
   const [showAllEmployees, setShowAllEmployees] = useState(true);
   const [employeeNumber, setEmployeeNumber] = useState("");
   const [searchedEmployee, setSearchedEmployee] = useState<{id: string, allowanceRemaining: number} | null>(null);
+  const [hasSearched, setHasSearched] = useState(false);
 
   const handleEmployeeSearch = () => {
     const employee = employeeData.find(emp => emp.id === employeeNumber.toUpperCase());
     setSearchedEmployee(employee || null);
+    setHasSearched(true);
   };
 
   return (
@@ -191,7 +193,7 @@ export function YearlyAllowancesTab({ selectedFilter, onFilterChange }: YearlyAl
                   </div>
                 </CardContent>
               </Card>
-            ) : employeeNumber && (
+            ) : hasSearched && !searchedEmployee && employeeNumber && (
               <Card>
                 <CardContent className="py-8">
                   <div className="text-center text-muted-foreground">
