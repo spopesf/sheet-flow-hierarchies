@@ -79,10 +79,7 @@ export function YearlyAllowancesTab({ selectedFilter, onFilterChange }: YearlyAl
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-12 gap-4 items-center">
-              <div className="col-span-3">
-                <Label>Employee Filter</Label>
-              </div>
-              <div className="col-span-5 flex items-center space-x-3">
+              <div className="col-span-8 flex items-center space-x-3">
                 <Label htmlFor="employee-toggle">Employee #</Label>
                 <Switch
                   id="employee-toggle"
@@ -90,6 +87,17 @@ export function YearlyAllowancesTab({ selectedFilter, onFilterChange }: YearlyAl
                   onCheckedChange={setShowAllEmployees}
                 />
                 <Label htmlFor="employee-toggle">All Employees</Label>
+                {!showAllEmployees && (
+                  <>
+                    <Input
+                      placeholder="Enter Employee ID (e.g., EMP1001)"
+                      value={employeeNumber}
+                      onChange={(e) => setEmployeeNumber(e.target.value)}
+                      className="max-w-xs ml-4"
+                    />
+                    <Button onClick={handleEmployeeSearch}>Search</Button>
+                  </>
+                )}
               </div>
               <div className="col-span-4">
                 <div className="text-sm text-muted-foreground">
@@ -97,18 +105,6 @@ export function YearlyAllowancesTab({ selectedFilter, onFilterChange }: YearlyAl
                 </div>
               </div>
             </div>
-
-            {!showAllEmployees && (
-              <div className="flex items-center space-x-2">
-                <Input
-                  placeholder="Enter Employee ID (e.g., EMP1001)"
-                  value={employeeNumber}
-                  onChange={(e) => setEmployeeNumber(e.target.value)}
-                  className="max-w-xs"
-                />
-                <Button onClick={handleEmployeeSearch}>Search</Button>
-              </div>
-            )}
           </CardContent>
         </Card>
 
