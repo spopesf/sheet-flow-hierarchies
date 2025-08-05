@@ -42,6 +42,12 @@ export function NavigationTabs({ activeTab, onTabChange }: NavigationTabsProps) 
             >
               Sustainability
             </TabsTrigger>
+            <TabsTrigger 
+              value="yearly-allowances"
+              className="h-12 px-6 rounded-none border-b-2 border-transparent data-[state=active]:border-slate-900 data-[state=active]:bg-transparent data-[state=active]:shadow-none font-medium"
+            >
+              Yearly Allowances
+            </TabsTrigger>
           </TabsList>
         </Tabs>
       </div>

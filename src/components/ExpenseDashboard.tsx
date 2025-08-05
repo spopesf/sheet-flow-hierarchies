@@ -6,6 +6,7 @@ import { IncomeTab } from "./tabs/IncomeTab";
 import { InventoryTab } from "./tabs/InventoryTab";
 import { CustomerServiceTab } from "./tabs/CustomerServiceTab";
 import { SustainabilityTab } from "./tabs/SustainabilityTab";
+import { YearlyAllowancesTab } from "./tabs/YearlyAllowancesTab";
 
 export function ExpenseDashboard() {
   const { activeTab, setActiveTab, selectedFilter, setSelectedFilter } = useDashboard();
@@ -22,6 +23,8 @@ export function ExpenseDashboard() {
         return <CustomerServiceTab selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />;
       case "sustainability":
         return <SustainabilityTab selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />;
+      case "yearly-allowances":
+        return <YearlyAllowancesTab selectedFilter={selectedFilter} onFilterChange={setSelectedFilter} />;
       default:
         return null;
     }
