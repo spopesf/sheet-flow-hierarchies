@@ -22,13 +22,39 @@ const allowanceData = [
 // Mock data for employee list
 const generateEmployeeData = () => {
   const employees = [];
-  for (let i = 1001; i <= 3000; i++) {
+  let empId = 1001;
+  
+  // 450 employees with full allowance ($100.00)
+  for (let i = 0; i < 450; i++) {
     employees.push({
-      id: `EMP${i}`,
-      allowanceRemaining: Math.floor(Math.random() * 10001) / 100 // Random amount between $0.00 and $100.00
+      id: `EMP${empId++}`,
+      allowanceRemaining: 100.00
     });
   }
-  return employees.sort((a, b) => b.allowanceRemaining - a.allowanceRemaining); // Sort highest to lowest
+  
+  // 320 employees with some remaining allowance ($0.01 - $99.99)
+  const partialAllowances = [];
+  for (let i = 0; i < 320; i++) {
+    partialAllowances.push(Math.floor(Math.random() * 9999 + 1) / 100); // $0.01 to $99.99
+  }
+  partialAllowances.sort((a, b) => b - a); // Sort high to low
+  
+  for (let i = 0; i < 320; i++) {
+    employees.push({
+      id: `EMP${empId++}`,
+      allowanceRemaining: partialAllowances[i]
+    });
+  }
+  
+  // 180 employees with no remaining allowance ($0.00)
+  for (let i = 0; i < 180; i++) {
+    employees.push({
+      id: `EMP${empId++}`,
+      allowanceRemaining: 0.00
+    });
+  }
+  
+  return employees;
 };
 
 const employeeData = generateEmployeeData();
