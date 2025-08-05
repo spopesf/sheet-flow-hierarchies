@@ -57,13 +57,13 @@ export function YearlyAllowancesTab({ selectedFilter, onFilterChange }: YearlyAl
                 <Label>Employee Filter</Label>
               </div>
               <div className="col-span-5 flex items-center space-x-3">
-                <Label htmlFor="employee-toggle">All Employees</Label>
+                <Label htmlFor="employee-toggle">Employee #</Label>
                 <Switch
                   id="employee-toggle"
                   checked={showAllEmployees}
                   onCheckedChange={setShowAllEmployees}
                 />
-                <Label htmlFor="employee-toggle">Employee #</Label>
+                <Label htmlFor="employee-toggle">All Employees</Label>
               </div>
               <div className="col-span-4">
                 <div className="text-sm text-muted-foreground">
