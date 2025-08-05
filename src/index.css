@@ -37,6 +37,11 @@
 
     --radius: 0.375rem;
 
+    /* Chart colors - blues and purples */
+    --chart-blue-1: 217 91% 60%;    /* bright blue */
+    --chart-blue-2: 221 83% 53%;    /* medium blue */
+    --chart-purple: 262 83% 58%;    /* purple */
+
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 0 0% 9%;
     --sidebar-primary: 0 0% 9%;

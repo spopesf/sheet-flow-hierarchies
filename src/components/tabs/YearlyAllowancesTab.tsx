@@ -14,9 +14,9 @@ interface YearlyAllowancesTabProps {
 
 // Mock data for the bar chart
 const allowanceData = [
-  { name: "Full Allowance", value: 450, fill: "hsl(var(--primary))" },
-  { name: "Some Remaining", value: 320, fill: "hsl(var(--secondary))" },
-  { name: "No Remaining", value: 180, fill: "hsl(var(--destructive))" }
+  { name: "Full Allowance", value: 450, fill: "hsl(var(--chart-blue-1))" },
+  { name: "Some Remaining", value: 320, fill: "hsl(var(--chart-blue-2))" },
+  { name: "No Remaining", value: 180, fill: "hsl(var(--chart-purple))" }
 ];
 
 // Mock data for employee list
