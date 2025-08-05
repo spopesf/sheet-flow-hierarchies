@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, LabelList } from "recharts";
 
 interface YearlyAllowancesTabProps {
   selectedFilter: string;
@@ -108,7 +108,9 @@ export function YearlyAllowancesTab({ selectedFilter, onFilterChange }: YearlyAl
                       <XAxis dataKey="name" />
                       <YAxis />
                       <ChartTooltip content={<ChartTooltipContent />} />
-                      <Bar dataKey="value" />
+                       <Bar dataKey="value">
+                         <LabelList dataKey="value" position="top" />
+                       </Bar>
                     </BarChart>
                   </ResponsiveContainer>
                 </ChartContainer>
