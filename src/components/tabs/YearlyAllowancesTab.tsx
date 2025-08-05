@@ -98,14 +98,17 @@ export function YearlyAllowancesTab({ selectedFilter, onFilterChange }: YearlyAl
             </div>
 
             {!showAllEmployees && (
-              <div className="flex items-center space-x-2">
-                <Input
-                  placeholder="Enter Employee ID (e.g., EMP1001)"
-                  value={employeeNumber}
-                  onChange={(e) => setEmployeeNumber(e.target.value)}
-                  className="max-w-xs"
-                />
-                <Button onClick={handleEmployeeSearch}>Search</Button>
+              <div className="grid grid-cols-12 gap-4">
+                <div className="col-span-3"></div>
+                <div className="col-span-5 flex items-center space-x-2">
+                  <Input
+                    placeholder="Enter Employee ID (e.g., EMP1001)"
+                    value={employeeNumber}
+                    onChange={(e) => setEmployeeNumber(e.target.value)}
+                    className="max-w-xs"
+                  />
+                  <Button onClick={handleEmployeeSearch}>Search</Button>
+                </div>
               </div>
             )}
           </CardContent>
