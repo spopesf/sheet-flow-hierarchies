@@ -79,7 +79,9 @@ export function YearlyAllowancesTab({ selectedFilter, onFilterChange }: YearlyAl
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-12 gap-4 items-center">
-              <div className="col-span-8 flex items-center space-x-3">
+              <div className="col-span-3">
+              </div>
+              <div className="col-span-5 flex items-center space-x-3">
                 <Label htmlFor="employee-toggle">Employee #</Label>
                 <Switch
                   id="employee-toggle"
