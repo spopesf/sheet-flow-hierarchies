@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, LabelList } from "recharts";
+import { FilterHeader } from "../search-filters/FilterHeader";
 
 interface YearlyAllowancesTabProps {
   selectedFilter: string;
@@ -76,13 +77,9 @@ export function YearlyAllowancesTab({ selectedFilter, onFilterChange }: YearlyAl
       <div className="px-1 space-y-6">
         {/* Filter Section */}
         <Card>
-          <CardHeader>
-            <CardTitle>Choose your filter</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
+          <CardContent className="pt-6">
             <div className="grid grid-cols-12 gap-4 items-center">
-              <div className="col-span-3">
-              </div>
+              <FilterHeader title="Choose your filter" />
               <div className="col-span-5 flex items-center space-x-3">
                 <Label htmlFor="employee-toggle">Employee #</Label>
                 <Switch
