@@ -77,7 +77,7 @@ export function YearlyAllowancesTab({ selectedFilter, onFilterChange }: YearlyAl
         {/* Filter Section */}
         <Card>
           <CardHeader>
-            <CardTitle>Filters</CardTitle>
+            <CardTitle>Choose your filter</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-12 gap-4 items-center">
