@@ -78,38 +78,40 @@ export function YearlyAllowancesTab({ selectedFilter, onFilterChange }: YearlyAl
         {/* Filter Section */}
         <Card>
           <CardContent className="pt-6">
-            <div className="grid grid-cols-12 gap-4 items-center">
-              <FilterHeader title="Choose your filter" />
-              <div className="col-span-5 flex items-center space-x-3">
-                <Label htmlFor="employee-toggle">Employee #</Label>
-                <Switch
-                  id="employee-toggle"
-                  checked={showAllEmployees}
-                  onCheckedChange={setShowAllEmployees}
-                />
-                <Label htmlFor="employee-toggle">All Employees</Label>
-              </div>
-              <div className="col-span-4">
-                <div className="text-sm text-muted-foreground">
-                  <strong>Date Range:</strong> Year to Date
-                </div>
-              </div>
-            </div>
-
-            {!showAllEmployees && (
-              <div className="grid grid-cols-12 gap-4">
-                <div className="col-span-3"></div>
-                <div className="col-span-5 flex items-center space-x-2">
-                  <Input
-                    placeholder="Enter Employee ID (e.g., EMP1001)"
-                    value={employeeNumber}
-                    onChange={(e) => setEmployeeNumber(e.target.value)}
-                    className="max-w-xs"
+            <div className="space-y-4">
+              <div className="grid grid-cols-12 gap-4 items-center">
+                <FilterHeader title="Choose your filter" />
+                <div className="col-span-5 flex items-center space-x-3">
+                  <Label htmlFor="employee-toggle">Employee #</Label>
+                  <Switch
+                    id="employee-toggle"
+                    checked={showAllEmployees}
+                    onCheckedChange={setShowAllEmployees}
                   />
-                  <Button onClick={handleEmployeeSearch}>Search</Button>
+                  <Label htmlFor="employee-toggle">All Employees</Label>
+                </div>
+                <div className="col-span-4">
+                  <div className="text-sm text-muted-foreground">
+                    <strong>Date Range:</strong> Year to Date
+                  </div>
                 </div>
               </div>
-            )}
+
+              {!showAllEmployees && (
+                <div className="grid grid-cols-12 gap-4">
+                  <div className="col-span-3"></div>
+                  <div className="col-span-5 flex items-center space-x-2">
+                    <Input
+                      placeholder="Enter Employee ID (e.g., EMP1001)"
+                      value={employeeNumber}
+                      onChange={(e) => setEmployeeNumber(e.target.value)}
+                      className="max-w-xs"
+                    />
+                    <Button onClick={handleEmployeeSearch}>Search</Button>
+                  </div>
+                </div>
+              )}
+            </div>
           </CardContent>
         </Card>
 
