@@ -152,7 +152,7 @@ export function IncomeCard({ title, data, dataB2C, variant, selectedFilter, show
               </tr>
 
               {/* WSL Refunds Row */}
-              <tr className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors text-slate-600">
+              <tr className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors text-slate-600 border-l-4 border-l-orange-500">
                 <td className="py-2 px-2 text-xs italic text-slate-600 pl-8">Refunds</td>
                 <td className="py-2 px-2 text-xs font-mono tabular-nums text-slate-600 text-right">-$12,765.90</td>
                 <td className="py-2 px-2 text-xs font-mono tabular-nums text-slate-600 text-right">-$12,314.40</td>
@@ -170,7 +170,7 @@ export function IncomeCard({ title, data, dataB2C, variant, selectedFilter, show
               </tr>
 
               {/* WSL SUBTOTAL Row */}
-              <tr className="border-b border-slate-200 bg-slate-50 font-semibold">
+              <tr className="border-b border-slate-200 bg-slate-50 font-semibold border-l-4 border-l-orange-500">
                 <td className="py-2 px-2 text-xs font-semibold text-slate-900">SUBTOTAL</td>
                 <td className="py-2 px-2 text-xs font-mono tabular-nums text-slate-900 text-right">$92,999.27</td>
                 <td className="py-2 px-2 text-xs font-mono tabular-nums text-slate-900 text-right">$69,727.48</td>
@@ -208,7 +208,7 @@ export function IncomeCard({ title, data, dataB2C, variant, selectedFilter, show
               </tr>
 
               {/* RTL Refunds Row */}
-              <tr className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors text-slate-600">
+              <tr className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors text-slate-600 border-l-4 border-l-pink-500">
                 <td className="py-2 px-2 text-xs italic text-slate-600 pl-8">Refunds</td>
                 <td className="py-2 px-2 text-xs font-mono tabular-nums text-slate-600 text-right">-$2,611.07</td>
                 <td className="py-2 px-2 text-xs font-mono tabular-nums text-slate-600 text-right">-$2,407.00</td>
@@ -226,7 +226,7 @@ export function IncomeCard({ title, data, dataB2C, variant, selectedFilter, show
               </tr>
 
               {/* RTL SUBTOTAL Row */}
-              <tr className="border-b border-slate-200 bg-slate-50 font-semibold">
+              <tr className="border-b border-slate-200 bg-slate-50 font-semibold border-l-4 border-l-pink-500">
                 <td className="py-2 px-2 text-xs font-semibold text-slate-900">SUBTOTAL</td>
                 <td className="py-2 px-2 text-xs font-mono tabular-nums text-slate-900 text-right">$51,549.58</td>
                 <td className="py-2 px-2 text-xs font-mono tabular-nums text-slate-900 text-right">$46,644.50</td>
