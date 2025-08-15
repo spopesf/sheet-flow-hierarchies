@@ -1,15 +1,16 @@
 
 export const consumerMerchandiseData = {
-  grossIncome: "$1,234,567.89",
-  freightToCustomerExpense: "$98,765.43",
-  salesTax: "$123,456.78",
-  discounts: "$45,678.90",
-  netIncome: "$967,666.78",
-  numOrders: "12,345",
-  avgOrderValue: "$100.12",
-  numOrderingAccounts: "8,765",
-  numItemsOrdered: "45,678",
-  avgOrderValueAlt: "$110.23",
-  avgFreightToCustomerExpense: "$8.00",
-  avgNumItemsOrder: "3.7"
+  grossIncome: "$144,548.85",
+  productSales: "$116,371.98", 
+  freight: "$25,020.85",
+  salesTax: "$3,156.02",
+  allowanceSpent: "$53,780.17",
+  discounts: "-$115.00",
+  netIncome: "$154,701.67",
+  numOrders: "2,434",
+  avgValue: "129.27",
+  numAccounts: "2,552", 
+  numItems: "7,540",
+  avgFreight: "19",
+  avgNumItems: "6"
 };
