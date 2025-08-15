@@ -4,6 +4,7 @@ export const supportCaseDataB2B = {
   ytdSolvedTickets: "2,075",
   ytdUnsolvedTickets: "1",
   resolutionPercentage: "99.95%",
+  numberOfSurveys: "1,869",
   satisfactionScore: "80.88%"
 };
 
@@ -25,6 +26,7 @@ export const supportCaseDataB2C = {
   ytdSolvedTickets: "1,542",
   ytdUnsolvedTickets: "1",
   resolutionPercentage: "99.93%",
+  numberOfSurveys: "1,385",
   satisfactionScore: "85.42%"
 };
 

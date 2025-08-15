@@ -7,6 +7,7 @@ interface SupportCaseData {
   ytdSolvedTickets: string;
   ytdUnsolvedTickets: string;
   resolutionPercentage: string;
+  numberOfSurveys: string;
   satisfactionScore: string;
 }
 
@@ -73,7 +74,7 @@ export function CustomerServiceCard({
         </CardTitle>
       </CardHeader>
       <CardContent className="p-6">
-        <div className="grid grid-cols-5 gap-6">
+        <div className="grid grid-cols-6 gap-6">
           <div className="text-center flex flex-col">
             <div className="text-xs font-medium text-slate-600 tracking-wide mb-2 flex-1 flex items-start">Created Tickets</div>
             <div className="text-xs font-bold text-slate-900">{data.ytdCreatedTickets}</div>
@@ -89,6 +90,19 @@ export function CustomerServiceCard({
           <div className="text-center flex flex-col">
             <div className="text-xs font-medium text-slate-600 tracking-wide mb-2 flex-1 flex items-start">Resolution %</div>
             <div className="text-xs font-bold text-slate-900">{formatPercentage(data.resolutionPercentage)}</div>
+          </div>
+          <div className="text-center flex flex-col">
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <div className="text-xs font-medium text-slate-600 tracking-wide mb-2 flex-1 flex items-start cursor-help"># of Surveys</div>
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Excludes any ticket that was assigned as wrong support channel</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            <div className="text-xs font-bold text-slate-900">{data.numberOfSurveys}</div>
           </div>
           <div className="text-center flex flex-col">
             <div className="text-xs font-medium text-slate-600 tracking-wide mb-2 flex-1 flex items-start">Satisfaction Score</div>
