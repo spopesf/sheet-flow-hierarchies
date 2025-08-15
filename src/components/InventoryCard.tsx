@@ -39,14 +39,14 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
       
       <div className="grid grid-cols-2 gap-6">
         <TopItemsTable
-          title="Top 10 Items"
+          title="Top 10 UPCs"
           items={internalOrdersItems}
           icons={internalOrderIcons}
           itemBorderClass="internal"
         />
         
         <TopItemsTable
-          title="Top 10 Items"
+          title="Top 10 UPCs"
           items={consumerOrdersItems}
           icons={consumerOrderIcons}
           itemBorderClass="consumer"
