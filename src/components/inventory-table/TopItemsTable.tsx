@@ -71,7 +71,7 @@ const columns = [
   },
   { 
     label: (
-      <div className="flex items-center justify-end gap-1 pr-6">
+      <div className="flex items-center justify-end gap-1 pr-2">
         Sales-to-<br />Stock Ratio
         <TooltipProvider>
           <Tooltip>
@@ -87,7 +87,7 @@ const columns = [
         </TooltipProvider>
       </div>
     ),
-    className: "text-right pr-6"
+    className: "text-right pr-2"
   }
 ];
 

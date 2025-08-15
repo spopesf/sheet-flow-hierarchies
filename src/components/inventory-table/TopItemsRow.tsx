@@ -53,7 +53,7 @@ export function TopItemsRow({ item, borderClass }: TopItemsRowProps) {
       <td className="py-2 px-3 text-xs font-mono tabular-nums text-right text-slate-800">
         {item.sellThroughRate}
       </td>
-      <td className="py-2 px-3 pr-20 text-xs font-mono tabular-nums text-right text-slate-800">
+      <td className="py-2 px-3 pr-6 text-xs font-mono tabular-nums text-right text-slate-800">
         {item.salesToStockRatio}
       </td>
     </tr>
