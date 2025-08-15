@@ -126,9 +126,9 @@ export function YearlyAllowancesTab({ selectedFilter, onFilterChange }: YearlyAl
             {/* Financial Overview */}
             <TableContainer title="Financial Overview" useTable={true}>
               <TableHeader columns={[
-                { label: "", className: "text-left", minWidth: "200px" },
-                { label: "Amount", className: "text-right", minWidth: "120px" },
-                { label: "Percent", className: "text-right", minWidth: "80px" }
+                { label: "", className: "text-left w-[300px]" },
+                { label: "Amount", className: "text-right w-[120px]" },
+                { label: "Percent", className: "text-right w-[80px]" }
               ]} />
               <tbody>
                 <AllowanceStatRow 
@@ -155,9 +155,9 @@ export function YearlyAllowancesTab({ selectedFilter, onFilterChange }: YearlyAl
             {/* Employee Statistics */}
             <TableContainer title="Employee Statistics" useTable={true}>
               <TableHeader columns={[
-                { label: "", className: "text-left", minWidth: "200px" },
-                { label: "Count", className: "text-right", minWidth: "120px" },
-                { label: "Percent", className: "text-right", minWidth: "80px" }
+                { label: "", className: "text-left w-[300px]" },
+                { label: "Count", className: "text-right w-[120px]" },
+                { label: "Percent", className: "text-right w-[80px]" }
               ]} />
               <tbody>
                 <AllowanceStatRow 
