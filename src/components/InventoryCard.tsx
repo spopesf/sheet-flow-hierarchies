@@ -12,6 +12,7 @@ interface InventorySnapshotData {
 
 interface InventoryItem {
   item: string;
+  upc: string;
   count: string;
   value: string;
   daysOnHand: string;

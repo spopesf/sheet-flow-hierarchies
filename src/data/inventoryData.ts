@@ -8,27 +8,27 @@ export const inventorySnapshotData = {
 };
 
 export const internalOrdersItems = [
-  { item: "Men's Long Sleeve R + C Polo", count: "6,379", value: "$140,338.00", daysOnHand: "120" },
-  { item: "Men's Long Sleeve R + C Polo", count: "3,892", value: "$85,624.00", daysOnHand: "110" },
-  { item: "Chipotle Goods Tote - Blank", count: "5,289", value: "$95,202.00", daysOnHand: "95" },
-  { item: "Chipotle Goods Tote - Blank", count: "2,156", value: "$38,808.00", daysOnHand: "90" },
-  { item: "Women's Greyson Spicy Fields Polo", count: "4,037", value: "$96,888.00", daysOnHand: "88" },
-  { item: "Women's Greyson Spicy Fields Polo", count: "1,834", value: "$44,016.00", daysOnHand: "80" },
-  { item: "Crew Member T-Shirt", count: "1,403", value: "$22,448.00", daysOnHand: "76" },
-  { item: "Foil Tee", count: "564", value: "$10,716.00", daysOnHand: "70" },
-  { item: "Crew Member T-Shirt", count: "487", value: "$7,792.00", daysOnHand: "65" },
-  { item: "Men's Short Sleeve Manager Polo", count: "155", value: "$3,565.00", daysOnHand: "60" }
+  { item: "Men's Long Sleeve R + C Polo", upc: "919191123736", count: "6,379", value: "$140,338.00", daysOnHand: "120" },
+  { item: "Men's Long Sleeve R + C Polo", upc: "919191123729", count: "3,892", value: "$85,624.00", daysOnHand: "110" },
+  { item: "Chipotle Goods Tote - Blank", upc: "919191123712", count: "5,289", value: "$95,202.00", daysOnHand: "95" },
+  { item: "Chipotle Goods Tote - Blank", upc: "919191123705", count: "2,156", value: "$38,808.00", daysOnHand: "90" },
+  { item: "Women's Greyson Spicy Fields Polo", upc: "919191123699", count: "4,037", value: "$96,888.00", daysOnHand: "88" },
+  { item: "Women's Greyson Spicy Fields Polo", upc: "919191123682", count: "1,834", value: "$44,016.00", daysOnHand: "80" },
+  { item: "Crew Member T-Shirt", upc: "919191123675", count: "1,403", value: "$22,448.00", daysOnHand: "76" },
+  { item: "Foil Tee", upc: "919191123668", count: "564", value: "$10,716.00", daysOnHand: "70" },
+  { item: "Crew Member T-Shirt", upc: "919191123651", count: "487", value: "$7,792.00", daysOnHand: "65" },
+  { item: "Men's Short Sleeve Manager Polo", upc: "919191067092", count: "155", value: "$3,565.00", daysOnHand: "60" }
 ];
 
 export const consumerOrdersItems = [
-  { item: "Chipotle Crossed Forks Patch Crewneck", count: "423", value: "$10,575.00", daysOnHand: "110" },
-  { item: "Chipotle Crossed Forks Patch Crewneck", count: "4,823", value: "$120,575.00", daysOnHand: "105" },
-  { item: "Burritos. Block Crewneck", count: "3,674", value: "$84,502.00", daysOnHand: "98" },
-  { item: "Burritos. Block Crewneck", count: "298", value: "$6,854.00", daysOnHand: "95" },
-  { item: "Burritos. Block Patch Tee", count: "2,951", value: "$59,020.00", daysOnHand: "92" },
-  { item: "Burritos. Arch Tee", count: "1,789", value: "$32,202.00", daysOnHand: "85" },
-  { item: "Burritos. Block Patch Tee", count: "187", value: "$3,740.00", daysOnHand: "83" },
-  { item: "Fork And Cloud Tee", count: "1,256", value: "$21,352.00", daysOnHand: "78" },
-  { item: "Burritos. Arch Hoodie", count: "892", value: "$21,408.00", daysOnHand: "72" },
-  { item: "Hydroflask Tag Along Tote", count: "634", value: "$13,314.00", daysOnHand: "66" }
+  { item: "Chipotle Crossed Forks Patch Crewneck", upc: "919191123736", count: "423", value: "$10,575.00", daysOnHand: "110" },
+  { item: "Chipotle Crossed Forks Patch Crewneck", upc: "919191123729", count: "4,823", value: "$120,575.00", daysOnHand: "105" },
+  { item: "Burritos. Block Crewneck", upc: "919191123712", count: "3,674", value: "$84,502.00", daysOnHand: "98" },
+  { item: "Burritos. Block Crewneck", upc: "919191123705", count: "298", value: "$6,854.00", daysOnHand: "95" },
+  { item: "Burritos. Block Patch Tee", upc: "919191123699", count: "2,951", value: "$59,020.00", daysOnHand: "92" },
+  { item: "Burritos. Arch Tee", upc: "919191123682", count: "1,789", value: "$32,202.00", daysOnHand: "85" },
+  { item: "Burritos. Block Patch Tee", upc: "919191123675", count: "187", value: "$3,740.00", daysOnHand: "83" },
+  { item: "Fork And Cloud Tee", upc: "919191123668", count: "1,256", value: "$21,352.00", daysOnHand: "78" },
+  { item: "Burritos. Arch Hoodie", upc: "919191123651", count: "892", value: "$21,408.00", daysOnHand: "72" },
+  { item: "Hydroflask Tag Along Tote", upc: "919191067092", count: "634", value: "$13,314.00", daysOnHand: "66" }
 ];

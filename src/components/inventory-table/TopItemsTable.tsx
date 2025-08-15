@@ -7,6 +7,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 
 interface InventoryItem {
   item: string;
+  upc: string;
   count: string;
   value: string;
   daysOnHand: string;
@@ -21,6 +22,7 @@ interface TopItemsTableProps {
 
 const columns = [
   { label: "Item", className: "text-right" },
+  { label: "UPC", className: "text-right" },
   { label: "Count", className: "text-right" },
   { label: "Value", className: "text-right" },
   { 

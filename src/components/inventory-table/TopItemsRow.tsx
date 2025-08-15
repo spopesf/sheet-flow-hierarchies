@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 
 interface InventoryItem {
   item: string;
+  upc: string;
   count: string;
   value: string;
   daysOnHand: string;
@@ -34,6 +35,9 @@ export function TopItemsRow({ item, borderClass }: TopItemsRowProps) {
     )}>
       <td className="py-2 px-3 text-xs font-medium text-slate-800 text-right">
         {item.item}
+      </td>
+      <td className="py-2 px-3 text-xs font-mono tabular-nums text-right text-slate-800">
+        {item.upc}
       </td>
       <td className="py-2 px-3 text-xs font-mono tabular-nums text-right text-slate-800">
         {item.count}
