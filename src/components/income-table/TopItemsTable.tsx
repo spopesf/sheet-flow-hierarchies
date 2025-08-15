@@ -86,8 +86,8 @@ export function TopItemsTable({ title, variant }: TopItemsTableProps) {
             <thead>
               <tr className="border-b border-slate-100 bg-slate-50">
                 <th className="text-left py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Item</th>
-                <th className="text-right py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Number Sold</th>
-                <th className="text-right py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">MSRP</th>
+                <th className="text-right py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Number of Items Sold</th>
+                <th className="text-right py-2 px-3 font-medium text-xs text-slate-600 tracking-wide">Sales</th>
               </tr>
             </thead>
             <tbody>
