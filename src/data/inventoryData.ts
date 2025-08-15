@@ -8,27 +8,27 @@ export const inventorySnapshotData = {
 };
 
 export const internalOrdersItems = [
-  { item: "Staff 1", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
-  { item: "Staff 2", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
-  { item: "Staff 3", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
-  { item: "Staff 4", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
-  { item: "Staff 5", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
-  { item: "Staff 6", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
-  { item: "Staff 7", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
-  { item: "Staff 8", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
-  { item: "Staff 9", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
-  { item: "Staff 10", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" }
+  { item: "Men's Long Sleeve R + C Polo", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
+  { item: "Chipotle Goods Tote - Blank", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
+  { item: "Women's Greyson Spicy Fields Polo", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
+  { item: "Crew Member T-Shirt", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
+  { item: "Foil Tee", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
+  { item: "Crew Member T-Shirt", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
+  { item: "Men's Short Sleeve Manager Polo", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
+  { item: "Men's Long Sleeve R + C Polo", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
+  { item: "Chipotle Goods Tote - Blank", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
+  { item: "Women's Greyson Spicy Fields Polo", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" }
 ];
 
 export const consumerOrdersItems = [
-  { item: "Merch 1", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
-  { item: "Merch 2", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
-  { item: "Merch 3", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
-  { item: "Merch 4", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
-  { item: "Merch 5", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
-  { item: "Merch 6", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
-  { item: "Merch 7", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
-  { item: "Merch 8", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
-  { item: "Merch 9", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
-  { item: "Merch 10", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" }
+  { item: "Chipotle Crossed Forks Patch Crewneck", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
+  { item: "Burritos. Block Crewneck", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
+  { item: "Burritos. Block Patch Tee", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
+  { item: "Burritos. Arch Tee", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
+  { item: "Fork And Cloud Tee", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
+  { item: "Burritos. Arch Hoodie", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
+  { item: "Hydroflask Tag Along Tote", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
+  { item: "Chipotle Crossed Forks Patch Crewneck", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
+  { item: "Burritos. Block Crewneck", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" },
+  { item: "Burritos. Block Patch Tee", count: "xxx,xxx,xxx", value: "$xxx,xxx,xxx", daysOnHand: "xxx" }
 ];
