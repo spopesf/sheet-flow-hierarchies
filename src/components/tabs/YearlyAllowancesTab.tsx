@@ -130,7 +130,7 @@ export function YearlyAllowancesTab({ selectedFilter, onFilterChange }: YearlyAl
               ]} />
               <tbody>
                 <AllowanceStatRow 
-                  label="Total $ value of Allowance given" 
+                  label="Total $ value of allowance given" 
                   value={`$${(employeeData.length * 200).toLocaleString()}`}
                   valueColor="text-green-600"
                 />
