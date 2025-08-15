@@ -56,7 +56,7 @@ export function CustomerComparisonTable() {
             </thead>
             <tbody>
               {customerComparisonData.map((row, index) => (
-                <tr key={index} className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors">
+                <tr key={index} className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors border-l-4 border-l-pink-500">
                   <td className="py-3 px-4 text-sm font-medium text-slate-900">{row.metric}</td>
                   <td className="py-3 px-4 text-sm font-mono tabular-nums text-slate-800 text-right">{row.firstTime}</td>
                   <td className="py-3 px-4 text-sm font-mono tabular-nums text-slate-800 text-right">{row.returning}</td>
