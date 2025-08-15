@@ -51,7 +51,27 @@ const wslItems: TopItem[] = [
   { item: "Merch 2", numberSold: "1,875", msrp: "$32.50" },
   { item: "Merch 3", numberSold: "1,654", msrp: "$28.99" },
   { item: "Merch 4", numberSold: "1,432", msrp: "$55.00" },
-  { item: "Merch 5", numberSold: "1,298", msrp: "$42.99" }
+  { item: "Merch 5", numberSold: "1,298", msrp: "$42.99" },
+  { item: "Merch 6", numberSold: "1,156", msrp: "$38.50" },
+  { item: "Merch 7", numberSold: "1,087", msrp: "$47.25" },
+  { item: "Merch 8", numberSold: "998", msrp: "$29.99" },
+  { item: "Merch 9", numberSold: "945", msrp: "$52.00" },
+  { item: "Merch 10", numberSold: "876", msrp: "$34.75" },
+  { item: "Merch 11", numberSold: "834", msrp: "$41.50" },
+  { item: "Merch 12", numberSold: "789", msrp: "$36.99" },
+  { item: "Merch 13", numberSold: "723", msrp: "$48.75" },
+  { item: "Merch 14", numberSold: "687", msrp: "$33.25" },
+  { item: "Merch 15", numberSold: "654", msrp: "$44.99" },
+  { item: "Merch 16", numberSold: "612", msrp: "$39.50" },
+  { item: "Merch 17", numberSold: "578", msrp: "$31.75" },
+  { item: "Merch 18", numberSold: "543", msrp: "$46.25" },
+  { item: "Merch 19", numberSold: "512", msrp: "$37.99" },
+  { item: "Merch 20", numberSold: "487", msrp: "$43.50" },
+  { item: "Merch 21", numberSold: "456", msrp: "$35.75" },
+  { item: "Merch 22", numberSold: "423", msrp: "$49.99" },
+  { item: "Merch 23", numberSold: "398", msrp: "$32.25" },
+  { item: "Merch 24", numberSold: "367", msrp: "$40.50" },
+  { item: "Merch 25", numberSold: "334", msrp: "$38.75" }
 ];
 
 const rtlItems: TopItem[] = [
@@ -59,7 +79,27 @@ const rtlItems: TopItem[] = [
   { item: "Merch B", numberSold: "2,987", msrp: "$29.95" },
   { item: "Merch C", numberSold: "2,543", msrp: "$49.50" },
   { item: "Merch D", numberSold: "2,109", msrp: "$35.00" },
-  { item: "Merch E", numberSold: "1,876", msrp: "$42.99" }
+  { item: "Merch E", numberSold: "1,876", msrp: "$42.99" },
+  { item: "Merch F", numberSold: "1,743", msrp: "$37.50" },
+  { item: "Merch G", numberSold: "1,612", msrp: "$44.25" },
+  { item: "Merch H", numberSold: "1,489", msrp: "$33.75" },
+  { item: "Merch I", numberSold: "1,367", msrp: "$41.99" },
+  { item: "Merch J", numberSold: "1,254", msrp: "$36.50" },
+  { item: "Merch K", numberSold: "1,143", msrp: "$48.25" },
+  { item: "Merch L", numberSold: "1,076", msrp: "$31.99" },
+  { item: "Merch M", numberSold: "987", msrp: "$45.75" },
+  { item: "Merch N", numberSold: "923", msrp: "$34.25" },
+  { item: "Merch O", numberSold: "876", msrp: "$39.99" },
+  { item: "Merch P", numberSold: "821", msrp: "$43.50" },
+  { item: "Merch Q", numberSold: "789", msrp: "$32.75" },
+  { item: "Merch R", numberSold: "745", msrp: "$46.99" },
+  { item: "Merch S", numberSold: "698", msrp: "$35.50" },
+  { item: "Merch T", numberSold: "654", msrp: "$41.25" },
+  { item: "Merch U", numberSold: "612", msrp: "$38.99" },
+  { item: "Merch V", numberSold: "578", msrp: "$44.75" },
+  { item: "Merch W", numberSold: "534", msrp: "$33.50" },
+  { item: "Merch X", numberSold: "498", msrp: "$47.25" },
+  { item: "Merch Y", numberSold: "456", msrp: "$36.75" }
 ];
 
 export function TopItemsTable({ title, variant }: TopItemsTableProps) {

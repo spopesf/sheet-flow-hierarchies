@@ -33,12 +33,12 @@ export function IncomeTab({ selectedFilter, onFilterChange }: IncomeTabProps) {
         {/* Side by Side Top Items Tables */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <TopItemsTable
-            title="Top 10 Items"
+            title="Top 25 Items"
             items={[]}
             variant="wsl"
           />
           <TopItemsTable
-            title="Top 10 Items"
+            title="Top 25 Items"
             items={[]}
             variant="rtl"
           />
