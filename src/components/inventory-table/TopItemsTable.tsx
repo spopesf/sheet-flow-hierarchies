@@ -31,12 +31,12 @@ const columns = [
   { label: "Value", className: "text-right" },
   { 
     label: (
-      <div className="flex items-baseline justify-end gap-1">
-        Days on Hand
+      <div className="flex items-end justify-end gap-1">
+        <span>Days on Hand</span>
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <div className="w-3 h-3 rounded-full bg-slate-400 flex items-center justify-center cursor-help hover:bg-slate-500 transition-colors">
+              <div className="w-3 h-3 rounded-full bg-slate-400 flex items-center justify-center cursor-help hover:bg-slate-500 transition-colors mb-0.5">
                 <span className="text-white text-[10px] font-bold">?</span>
               </div>
             </TooltipTrigger>
@@ -51,12 +51,12 @@ const columns = [
   },
   { 
     label: (
-      <div className="flex items-baseline justify-end gap-1">
-        Sell Through Rate
+      <div className="flex items-end justify-end gap-1">
+        <span>Sell Through Rate</span>
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <div className="w-3 h-3 rounded-full bg-slate-400 flex items-center justify-center cursor-help hover:bg-slate-500 transition-colors">
+              <div className="w-3 h-3 rounded-full bg-slate-400 flex items-center justify-center cursor-help hover:bg-slate-500 transition-colors mb-0.5">
                 <span className="text-white text-[10px] font-bold">?</span>
               </div>
             </TooltipTrigger>
@@ -71,12 +71,12 @@ const columns = [
   },
   { 
     label: (
-      <div className="flex items-baseline justify-end gap-1 pr-2">
-        Sales-to-<br />Stock Ratio
+      <div className="flex items-end justify-end gap-1 pr-2">
+        <span>Sales-to-<br />Stock Ratio</span>
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <div className="w-3 h-3 rounded-full bg-slate-400 flex items-center justify-center cursor-help hover:bg-slate-500 transition-colors">
+              <div className="w-3 h-3 rounded-full bg-slate-400 flex items-center justify-center cursor-help hover:bg-slate-500 transition-colors mb-0.5">
                 <span className="text-white text-[10px] font-bold">?</span>
               </div>
             </TooltipTrigger>
