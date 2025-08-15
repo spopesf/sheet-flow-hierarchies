@@ -127,22 +127,26 @@ export function YearlyAllowancesTab({ selectedFilter, onFilterChange }: YearlyAl
             <TableContainer title="Financial Overview" useTable={true}>
               <TableHeader columns={[
                 { label: "", className: "text-right", minWidth: "200px" },
-                { label: "Amount", minWidth: "100px" }
+                { label: "Amount", minWidth: "100px" },
+                { label: "Percent", minWidth: "100px" }
               ]} />
               <tbody>
                 <AllowanceStatRow 
                   label="Total $ value of allowance given" 
                   value={`$${(employeeData.length * 200).toLocaleString()}`}
+                  percentage="100.0%"
                   valueColor="text-green-600"
                 />
                 <AllowanceStatRow 
                   label="Total $ value of allowance spent" 
                   value={`$${(employeeData.length * 200 - employeeData.reduce((sum, emp) => sum + emp.allowanceRemaining, 0) - (employeeData.length * 100)).toLocaleString()}`}
+                  percentage={`${(((employeeData.length * 200 - employeeData.reduce((sum, emp) => sum + emp.allowanceRemaining, 0) - (employeeData.length * 100)) / (employeeData.length * 200)) * 100).toFixed(1)}%`}
                   valueColor="text-blue-600"
                 />
                 <AllowanceStatRow 
                   label="Total $ value of allowance not spent" 
                   value={`$${employeeData.reduce((sum, emp) => sum + emp.allowanceRemaining, 0).toLocaleString()}`}
+                  percentage={`${((employeeData.reduce((sum, emp) => sum + emp.allowanceRemaining, 0) / (employeeData.length * 200)) * 100).toFixed(1)}%`}
                   valueColor="text-orange-600"
                 />
               </tbody>
@@ -152,24 +156,29 @@ export function YearlyAllowancesTab({ selectedFilter, onFilterChange }: YearlyAl
             <TableContainer title="Employee Statistics" useTable={true}>
               <TableHeader columns={[
                 { label: "", className: "text-right", minWidth: "200px" },
-                { label: "Count", minWidth: "100px" }
+                { label: "Count", minWidth: "100px" },
+                { label: "Percent", minWidth: "100px" }
               ]} />
               <tbody>
                 <AllowanceStatRow 
                   label="Number of employees given allowance" 
                   value={employeeData.length.toLocaleString()}
+                  percentage="100.0%"
                 />
                 <AllowanceStatRow 
                   label="Number of employees who have spent some or all of their allowance" 
                   value={employeeData.filter(emp => emp.allowanceRemaining < 100).length.toLocaleString()}
+                  percentage={`${((employeeData.filter(emp => emp.allowanceRemaining < 100).length / employeeData.length) * 100).toFixed(1)}%`}
                 />
                 <AllowanceStatRow 
                   label="Number of employees who have spent all their allowance" 
                   value={employeeData.filter(emp => emp.allowanceRemaining === 0).length.toLocaleString()}
+                  percentage={`${((employeeData.filter(emp => emp.allowanceRemaining === 0).length / employeeData.length) * 100).toFixed(1)}%`}
                 />
                 <AllowanceStatRow 
                   label="Number of employees who have spent over their allowance" 
                   value="0"
+                  percentage="0.0%"
                 />
               </tbody>
             </TableContainer>

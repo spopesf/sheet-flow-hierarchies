@@ -3,11 +3,12 @@ import { cn } from "@/lib/utils";
 interface AllowanceStatRowProps {
   label: string;
   value: string;
+  percentage: string;
   isTotal?: boolean;
   valueColor?: string;
 }
 
-export function AllowanceStatRow({ label, value, isTotal = false, valueColor }: AllowanceStatRowProps) {
+export function AllowanceStatRow({ label, value, percentage, isTotal = false, valueColor }: AllowanceStatRowProps) {
   return (
     <tr className={cn(
       "border-b border-slate-100 hover:bg-slate-50/50 transition-colors",
@@ -31,6 +32,12 @@ export function AllowanceStatRow({ label, value, isTotal = false, valueColor }: 
         valueColor || "text-slate-800"
       )}>
         {value}
+      </td>
+      <td className={cn(
+        "py-3 px-4 text-xs font-mono tabular-nums text-right text-slate-800",
+        isTotal && "font-bold"
+      )}>
+        {percentage}
       </td>
     </tr>
   );
