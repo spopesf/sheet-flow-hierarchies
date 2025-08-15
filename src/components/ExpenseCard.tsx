@@ -2,6 +2,8 @@
 import { TableContainer } from "./shared-table/TableContainer";
 import { ExpenseTableHeader } from "./ExpenseTableHeader";
 import { ExpenseTableBody } from "./ExpenseTableBody";
+import { Button } from "@/components/ui/button";
+import { Download } from "lucide-react";
 
 interface ExpenseData {
   invoiced?: string;
@@ -26,9 +28,19 @@ interface ExpenseCardProps {
 }
 
 export function ExpenseCard({ title, data, variant, selectedFilter }: ExpenseCardProps) {
+  const headerTitle = title === "Expense Summary by Order Type" ? (
+    <div className="flex items-center justify-between w-full">
+      <span>{title}</span>
+      <Button variant="outline" className="justify-start font-medium tracking-tight" size="sm">
+        <Download className="h-3 w-3 mr-2" />
+        DOWNLOAD SPEND PER ITEM
+      </Button>
+    </div>
+  ) : title;
+
   return (
     <TableContainer 
-      title={title} 
+      title={headerTitle} 
       variant={variant === "total" ? "highlighted" : "default"}
       useTable={true}
     >
