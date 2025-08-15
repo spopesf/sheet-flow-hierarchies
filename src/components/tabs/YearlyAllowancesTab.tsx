@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Download } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
@@ -176,7 +177,13 @@ export function YearlyAllowancesTab({ selectedFilter, onFilterChange }: YearlyAl
             {/* Employee List */}
             <Card>
               <CardHeader>
-                <CardTitle>All Employees - Yearly Allowance Remaining</CardTitle>
+                <div className="flex justify-between items-center">
+                  <CardTitle>All Employees - Yearly Allowance Remaining</CardTitle>
+                  <Button variant="outline" size="sm" className="flex items-center gap-2">
+                    <Download size={16} />
+                    Download Full List
+                  </Button>
+                </div>
               </CardHeader>
               <CardContent>
                 <div className="max-h-96 overflow-y-auto">
