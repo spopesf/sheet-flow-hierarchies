@@ -11,6 +11,7 @@ interface InventoryItem {
   count: string;
   value: string;
   daysOnHand: string;
+  salesToStockRatio: string;
 }
 
 interface TopItemsTableProps {
@@ -25,8 +26,9 @@ const columns = [
   { label: "UPC", className: "text-right" },
   { label: "Count", className: "text-right" },
   { label: "Value", className: "text-right" },
+  { label: "Days on Hand", className: "text-right" },
   { 
-    label: "Days on Hand",
+    label: "Sales-to-Stock Ratio",
     className: "text-right pr-6"
   }
 ];

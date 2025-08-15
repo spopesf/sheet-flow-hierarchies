@@ -16,6 +16,7 @@ interface InventoryItem {
   count: string;
   value: string;
   daysOnHand: string;
+  salesToStockRatio: string;
 }
 
 interface InventoryCardProps {
