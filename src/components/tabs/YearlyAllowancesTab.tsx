@@ -124,47 +124,68 @@ export function YearlyAllowancesTab({ selectedFilter, onFilterChange }: YearlyAl
                 <CardTitle>Employee Allowance Statistics</CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="overflow-x-auto">
-                  <table className="w-full">
-                    <tbody>
-                      <tr className="border-b border-slate-100">
-                        <td className="py-3 px-4 font-medium text-slate-900">Total $ value of Allowance given</td>
-                        <td className="py-3 px-4 text-right font-semibold text-slate-900">
-                          ${(employeeData.length * 200).toLocaleString()}
-                        </td>
-                      </tr>
-                      <tr className="border-b border-slate-100">
-                        <td className="py-3 px-4 font-medium text-slate-900">Total $ value of allowance spent</td>
-                        <td className="py-3 px-4 text-right font-semibold text-slate-900">
-                          ${(employeeData.length * 200 - employeeData.reduce((sum, emp) => sum + emp.allowanceRemaining, 0) - (employeeData.length * 100)).toLocaleString()}
-                        </td>
-                      </tr>
-                      <tr className="border-b border-slate-100">
-                        <td className="py-3 px-4 font-medium text-slate-900">Number of employees given allowance</td>
-                        <td className="py-3 px-4 text-right font-semibold text-slate-900">
-                          {employeeData.length.toLocaleString()}
-                        </td>
-                      </tr>
-                      <tr className="border-b border-slate-100">
-                        <td className="py-3 px-4 font-medium text-slate-900">Number of employees who have spent some or all of their allowance</td>
-                        <td className="py-3 px-4 text-right font-semibold text-slate-900">
-                          {employeeData.filter(emp => emp.allowanceRemaining < 100).length.toLocaleString()}
-                        </td>
-                      </tr>
-                      <tr className="border-b border-slate-100">
-                        <td className="py-3 px-4 font-medium text-slate-900">Number of employees who have spent all their allowance</td>
-                        <td className="py-3 px-4 text-right font-semibold text-slate-900">
-                          {employeeData.filter(emp => emp.allowanceRemaining === 0).length.toLocaleString()}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="py-3 px-4 font-medium text-slate-900">Number of employees who have spent over their allowance</td>
-                        <td className="py-3 px-4 text-right font-semibold text-slate-900">
-                          0
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                <div className="space-y-6">
+                  {/* Financial Overview Section */}
+                  <div>
+                    <h3 className="text-lg font-semibold text-slate-900 mb-4 pb-2 border-b border-slate-200">
+                      Financial Overview
+                    </h3>
+                    <div className="overflow-x-auto">
+                      <table className="w-full">
+                        <tbody>
+                          <tr className="border-b border-slate-100">
+                            <td className="py-3 px-4 font-medium text-slate-900">Total $ value of Allowance given</td>
+                            <td className="py-3 px-4 text-right font-semibold text-lg text-green-600">
+                              ${(employeeData.length * 200).toLocaleString()}
+                            </td>
+                          </tr>
+                          <tr className="border-b border-slate-100">
+                            <td className="py-3 px-4 font-medium text-slate-900">Total $ value of allowance spent</td>
+                            <td className="py-3 px-4 text-right font-semibold text-lg text-blue-600">
+                              ${(employeeData.length * 200 - employeeData.reduce((sum, emp) => sum + emp.allowanceRemaining, 0) - (employeeData.length * 100)).toLocaleString()}
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  {/* Employee Statistics Section */}
+                  <div>
+                    <h3 className="text-lg font-semibold text-slate-900 mb-4 pb-2 border-b border-slate-200">
+                      Employee Statistics
+                    </h3>
+                    <div className="overflow-x-auto">
+                      <table className="w-full">
+                        <tbody>
+                          <tr className="border-b border-slate-100">
+                            <td className="py-3 px-4 font-medium text-slate-900">Number of employees given allowance</td>
+                            <td className="py-3 px-4 text-right font-semibold text-slate-900">
+                              {employeeData.length.toLocaleString()}
+                            </td>
+                          </tr>
+                          <tr className="border-b border-slate-100">
+                            <td className="py-3 px-4 font-medium text-slate-900">Number of employees who have spent some or all of their allowance</td>
+                            <td className="py-3 px-4 text-right font-semibold text-slate-900">
+                              {employeeData.filter(emp => emp.allowanceRemaining < 100).length.toLocaleString()}
+                            </td>
+                          </tr>
+                          <tr className="border-b border-slate-100">
+                            <td className="py-3 px-4 font-medium text-slate-900">Number of employees who have spent all their allowance</td>
+                            <td className="py-3 px-4 text-right font-semibold text-slate-900">
+                              {employeeData.filter(emp => emp.allowanceRemaining === 0).length.toLocaleString()}
+                            </td>
+                          </tr>
+                          <tr>
+                            <td className="py-3 px-4 font-medium text-slate-900">Number of employees who have spent over their allowance</td>
+                            <td className="py-3 px-4 text-right font-semibold text-slate-900">
+                              0
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
                 </div>
               </CardContent>
             </Card>
