@@ -118,74 +118,64 @@ export function YearlyAllowancesTab({ selectedFilter, onFilterChange }: YearlyAl
         {/* Content based on toggle */}
         {showAllEmployees ? (
           <div className="space-y-6">
-            {/* Allowance Statistics Table */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Employee Allowance Statistics</CardTitle>
+            {/* Financial Overview Card */}
+            <Card className="border-slate-200 bg-white hover:shadow-md overflow-hidden transition-all duration-200">
+              <CardHeader className="pb-6 border-b border-slate-100">
+                <CardTitle className="text-lg tracking-tight text-slate-900 font-semibold">
+                  Financial Overview
+                </CardTitle>
               </CardHeader>
-              <CardContent>
-                <div className="space-y-6">
-                  {/* Financial Overview Section */}
-                  <div>
-                    <h3 className="text-lg font-semibold text-slate-900 mb-4 pb-2 border-b border-slate-200">
-                      Financial Overview
-                    </h3>
-                    <div className="overflow-x-auto">
-                      <table className="w-full">
-                        <tbody>
-                          <tr className="border-b border-slate-100">
-                            <td className="py-3 px-4 font-medium text-slate-900">Total $ value of Allowance given</td>
-                            <td className="py-3 px-4 text-right font-semibold text-lg text-green-600">
-                              ${(employeeData.length * 200).toLocaleString()}
-                            </td>
-                          </tr>
-                          <tr className="border-b border-slate-100">
-                            <td className="py-3 px-4 font-medium text-slate-900">Total $ value of allowance spent</td>
-                            <td className="py-3 px-4 text-right font-semibold text-lg text-blue-600">
-                              ${(employeeData.length * 200 - employeeData.reduce((sum, emp) => sum + emp.allowanceRemaining, 0) - (employeeData.length * 100)).toLocaleString()}
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
+              <CardContent className="p-6">
+                <div className="grid grid-cols-2 gap-8">
+                  <div className="text-center flex flex-col">
+                    <div className="text-xs font-medium text-slate-600 tracking-wide mb-2 flex-1 flex items-start">Total $ value of Allowance given</div>
+                    <div className="text-2xl font-bold text-green-600">${(employeeData.length * 200).toLocaleString()}</div>
                   </div>
+                  <div className="text-center flex flex-col">
+                    <div className="text-xs font-medium text-slate-600 tracking-wide mb-2 flex-1 flex items-start">Total $ value of allowance spent</div>
+                    <div className="text-2xl font-bold text-blue-600">${(employeeData.length * 200 - employeeData.reduce((sum, emp) => sum + emp.allowanceRemaining, 0) - (employeeData.length * 100)).toLocaleString()}</div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
 
-                  {/* Employee Statistics Section */}
-                  <div>
-                    <h3 className="text-lg font-semibold text-slate-900 mb-4 pb-2 border-b border-slate-200">
-                      Employee Statistics
-                    </h3>
-                    <div className="overflow-x-auto">
-                      <table className="w-full">
-                        <tbody>
-                          <tr className="border-b border-slate-100">
-                            <td className="py-3 px-4 font-medium text-slate-900">Number of employees given allowance</td>
-                            <td className="py-3 px-4 text-right font-semibold text-slate-900">
-                              {employeeData.length.toLocaleString()}
-                            </td>
-                          </tr>
-                          <tr className="border-b border-slate-100">
-                            <td className="py-3 px-4 font-medium text-slate-900">Number of employees who have spent some or all of their allowance</td>
-                            <td className="py-3 px-4 text-right font-semibold text-slate-900">
-                              {employeeData.filter(emp => emp.allowanceRemaining < 100).length.toLocaleString()}
-                            </td>
-                          </tr>
-                          <tr className="border-b border-slate-100">
-                            <td className="py-3 px-4 font-medium text-slate-900">Number of employees who have spent all their allowance</td>
-                            <td className="py-3 px-4 text-right font-semibold text-slate-900">
-                              {employeeData.filter(emp => emp.allowanceRemaining === 0).length.toLocaleString()}
-                            </td>
-                          </tr>
-                          <tr>
-                            <td className="py-3 px-4 font-medium text-slate-900">Number of employees who have spent over their allowance</td>
-                            <td className="py-3 px-4 text-right font-semibold text-slate-900">
-                              0
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
+            {/* Employee Statistics Card */}
+            <Card className="border-slate-200 bg-white hover:shadow-md overflow-hidden transition-all duration-200">
+              <CardHeader className="pb-6 border-b border-slate-100">
+                <CardTitle className="text-lg tracking-tight text-slate-900 font-semibold">
+                  Employee Statistics
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="p-0">
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <tbody>
+                      <tr className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors">
+                        <td className="py-4 px-6 text-sm font-medium text-slate-800">Number of employees given allowance</td>
+                        <td className="py-4 px-6 text-right text-sm font-bold text-slate-900">
+                          {employeeData.length.toLocaleString()}
+                        </td>
+                      </tr>
+                      <tr className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors">
+                        <td className="py-4 px-6 text-sm font-medium text-slate-800">Number of employees who have spent some or all of their allowance</td>
+                        <td className="py-4 px-6 text-right text-sm font-bold text-slate-900">
+                          {employeeData.filter(emp => emp.allowanceRemaining < 100).length.toLocaleString()}
+                        </td>
+                      </tr>
+                      <tr className="border-b border-slate-100 hover:bg-slate-50/50 transition-colors">
+                        <td className="py-4 px-6 text-sm font-medium text-slate-800">Number of employees who have spent all their allowance</td>
+                        <td className="py-4 px-6 text-right text-sm font-bold text-slate-900">
+                          {employeeData.filter(emp => emp.allowanceRemaining === 0).length.toLocaleString()}
+                        </td>
+                      </tr>
+                      <tr className="hover:bg-slate-50/50 transition-colors">
+                        <td className="py-4 px-6 text-sm font-medium text-slate-800">Number of employees who have spent over their allowance</td>
+                        <td className="py-4 px-6 text-right text-sm font-bold text-slate-900">
+                          0
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
                 </div>
               </CardContent>
             </Card>
