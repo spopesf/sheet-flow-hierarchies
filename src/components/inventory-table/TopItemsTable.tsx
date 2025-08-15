@@ -44,19 +44,25 @@ const columns = [
 export function TopItemsTable({ title, items, icons, itemBorderClass }: TopItemsTableProps) {
   return (
     <TableContainer title={
-      <div className="flex items-center gap-2">
-        <div className="flex items-center gap-1">
-          {icons.map((icon, index) => (
-            <CategoryIcon
-              key={index}
-              text={icon.text}
-              bgColor={icon.bgColor}
-              textColor={icon.textColor}
-              tooltip={icon.tooltip}
-            />
-          ))}
+      <div className="flex items-center justify-between w-full">
+        <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
+            {icons.map((icon, index) => (
+              <CategoryIcon
+                key={index}
+                text={icon.text}
+                bgColor={icon.bgColor}
+                textColor={icon.textColor}
+                tooltip={icon.tooltip}
+              />
+            ))}
+          </div>
+          {title}
         </div>
-        {title}
+        <Button variant="outline" className="justify-start font-medium tracking-tight" size="sm">
+          <Download className="h-3 w-3 mr-2" />
+          DOWNLOAD FULL LIST
+        </Button>
       </div>
     }>
       <table className="w-full">
@@ -71,11 +77,7 @@ export function TopItemsTable({ title, items, icons, itemBorderClass }: TopItems
           ))}
         </tbody>
       </table>
-      <div className="flex justify-between items-center pr-6 pb-2">
-        <Button variant="outline" className="justify-start font-medium tracking-tight" size="sm">
-          <Download className="h-3 w-3 mr-2" />
-          DOWNLOAD FULL LIST
-        </Button>
+      <div className="flex justify-end pr-6 pb-2">
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
