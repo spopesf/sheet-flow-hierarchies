@@ -116,7 +116,7 @@ export function TopItemsTable({ title, variant }: TopItemsTableProps) {
           </div>
           <Button variant="outline" className="justify-start font-medium tracking-tight" size="sm">
             <Download className="h-3 w-3 mr-2" />
-            DOWNLOAD
+            DOWNLOAD FULL LIST
           </Button>
         </CardTitle>
       </CardHeader>
