@@ -23,7 +23,7 @@ const columns = [
 
 export function InventorySnapshotTable({ data }: InventorySnapshotTableProps) {
   return (
-    <TableContainer title="Inventory KPIs – 30-Day View" useTable={true}>
+    <TableContainer title="Inventory KPIs: 30-Day View" useTable={true}>
       <TableHeader columns={columns} />
       <tbody>
         <InventorySnapshotRow label="All Inventory" data={data.allInventory} isTotal />
