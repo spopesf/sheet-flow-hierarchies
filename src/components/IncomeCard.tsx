@@ -114,7 +114,7 @@ export function IncomeCard({ title, data, dataB2C, variant, selectedFilter, show
             </thead>
             <tbody>
               {/* TOTAL Row */}
-              <tr className="border-b border-slate-200 bg-slate-100 font-bold">
+              <tr className="border-b border-slate-200 bg-slate-100 font-bold border-l-4 border-l-purple-500">
                 <td className="py-3 px-2 text-xs font-bold text-slate-900">TOTAL</td>
                 <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-900 text-right">$144,548.85</td>
                 <td className="py-3 px-2 text-xs font-mono tabular-nums text-slate-900 text-right">$116,371.98</td>
