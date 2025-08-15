@@ -181,7 +181,7 @@ export function YearlyAllowancesTab({ selectedFilter, onFilterChange }: YearlyAl
                   <CardTitle>All Employees - Yearly Allowance Remaining</CardTitle>
                   <Button variant="outline" size="sm" className="flex items-center gap-2">
                     <Download size={16} />
-                    Download Full List
+                    DOWNLOAD FULL LIST
                   </Button>
                 </div>
               </CardHeader>
