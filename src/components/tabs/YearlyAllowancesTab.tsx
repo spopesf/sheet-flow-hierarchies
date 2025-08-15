@@ -146,7 +146,7 @@ export function YearlyAllowancesTab({ selectedFilter, onFilterChange }: YearlyAl
                         </td>
                       </tr>
                       <tr className="border-b border-slate-100">
-                        <td className="py-3 px-4 font-medium text-slate-900">Number of employees who have spent some or all allowance</td>
+                        <td className="py-3 px-4 font-medium text-slate-900">Number of employees who have spent some or all of their allowance</td>
                         <td className="py-3 px-4 text-right font-semibold text-slate-900">
                           {employeeData.filter(emp => emp.allowanceRemaining < 100).length.toLocaleString()}
                         </td>
