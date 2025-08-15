@@ -7,6 +7,10 @@ import { Button } from "@/components/ui/button";
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, LabelList } from "recharts";
 import { FilterHeader } from "../search-filters/FilterHeader";
+import { AllowanceStatRow } from "./AllowanceStatRow";
+import { TableContainer } from "../shared-table/TableContainer";
+import { TableHeader } from "../shared-table/TableHeader";
+import { cn } from "@/lib/utils";
 
 interface YearlyAllowancesTabProps {
   selectedFilter: string;
@@ -118,83 +122,56 @@ export function YearlyAllowancesTab({ selectedFilter, onFilterChange }: YearlyAl
         {/* Content based on toggle */}
         {showAllEmployees ? (
           <div className="space-y-6">
-            {/* Allowance Statistics Table */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Employee Allowance Statistics</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-6">
-                  {/* Financial Overview Section */}
-                  <div>
-                    <h3 className="text-lg font-semibold text-slate-900 mb-4 pb-2 border-b border-slate-200">
-                      Financial Overview
-                    </h3>
-                    <div className="overflow-x-auto">
-                      <table className="w-full">
-                        <tbody>
-                          <tr className="border-b border-slate-100">
-                            <td className="py-3 px-4 font-medium text-slate-900">Total $ value of Allowance given</td>
-                            <td className="py-3 px-4 text-right font-semibold text-lg text-green-600">
-                              ${(employeeData.length * 200).toLocaleString()}
-                            </td>
-                          </tr>
-                          <tr className="border-b border-slate-100">
-                            <td className="py-3 px-4 font-medium text-slate-900">Total $ value of allowance spent</td>
-                            <td className="py-3 px-4 text-right font-semibold text-lg text-blue-600">
-                              ${(employeeData.length * 200 - employeeData.reduce((sum, emp) => sum + emp.allowanceRemaining, 0) - (employeeData.length * 100)).toLocaleString()}
-                            </td>
-                          </tr>
-                          <tr className="border-b border-slate-100">
-                            <td className="py-3 px-4 font-medium text-slate-900">Total $ value of allowance not spent</td>
-                            <td className="py-3 px-4 text-right font-semibold text-lg text-orange-600">
-                              ${employeeData.reduce((sum, emp) => sum + emp.allowanceRemaining, 0).toLocaleString()}
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
+            {/* Financial Overview */}
+            <TableContainer title="Financial Overview" useTable={true}>
+              <TableHeader columns={[
+                { label: "", className: "text-right", minWidth: "200px" },
+                { label: "Amount", minWidth: "100px" }
+              ]} />
+              <tbody>
+                <AllowanceStatRow 
+                  label="Total $ value of Allowance given" 
+                  value={`$${(employeeData.length * 200).toLocaleString()}`}
+                  valueColor="text-green-600"
+                />
+                <AllowanceStatRow 
+                  label="Total $ value of allowance spent" 
+                  value={`$${(employeeData.length * 200 - employeeData.reduce((sum, emp) => sum + emp.allowanceRemaining, 0) - (employeeData.length * 100)).toLocaleString()}`}
+                  valueColor="text-blue-600"
+                />
+                <AllowanceStatRow 
+                  label="Total $ value of allowance not spent" 
+                  value={`$${employeeData.reduce((sum, emp) => sum + emp.allowanceRemaining, 0).toLocaleString()}`}
+                  valueColor="text-orange-600"
+                />
+              </tbody>
+            </TableContainer>
 
-                  {/* Employee Statistics Section */}
-                  <div>
-                    <h3 className="text-lg font-semibold text-slate-900 mb-4 pb-2 border-b border-slate-200">
-                      Employee Statistics
-                    </h3>
-                    <div className="overflow-x-auto">
-                      <table className="w-full">
-                        <tbody>
-                          <tr className="border-b border-slate-100">
-                            <td className="py-3 px-4 font-medium text-slate-900">Number of employees given allowance</td>
-                            <td className="py-3 px-4 text-right font-semibold text-slate-900">
-                              {employeeData.length.toLocaleString()}
-                            </td>
-                          </tr>
-                          <tr className="border-b border-slate-100">
-                            <td className="py-3 px-4 font-medium text-slate-900">Number of employees who have spent some or all of their allowance</td>
-                            <td className="py-3 px-4 text-right font-semibold text-slate-900">
-                              {employeeData.filter(emp => emp.allowanceRemaining < 100).length.toLocaleString()}
-                            </td>
-                          </tr>
-                          <tr className="border-b border-slate-100">
-                            <td className="py-3 px-4 font-medium text-slate-900">Number of employees who have spent all their allowance</td>
-                            <td className="py-3 px-4 text-right font-semibold text-slate-900">
-                              {employeeData.filter(emp => emp.allowanceRemaining === 0).length.toLocaleString()}
-                            </td>
-                          </tr>
-                          <tr>
-                            <td className="py-3 px-4 font-medium text-slate-900">Number of employees who have spent over their allowance</td>
-                            <td className="py-3 px-4 text-right font-semibold text-slate-900">
-                              0
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+            {/* Employee Statistics */}
+            <TableContainer title="Employee Statistics" useTable={true}>
+              <TableHeader columns={[
+                { label: "", className: "text-right", minWidth: "200px" },
+                { label: "Count", minWidth: "100px" }
+              ]} />
+              <tbody>
+                <AllowanceStatRow 
+                  label="Number of employees given allowance" 
+                  value={employeeData.length.toLocaleString()}
+                />
+                <AllowanceStatRow 
+                  label="Number of employees who have spent some or all of their allowance" 
+                  value={employeeData.filter(emp => emp.allowanceRemaining < 100).length.toLocaleString()}
+                />
+                <AllowanceStatRow 
+                  label="Number of employees who have spent all their allowance" 
+                  value={employeeData.filter(emp => emp.allowanceRemaining === 0).length.toLocaleString()}
+                />
+                <AllowanceStatRow 
+                  label="Number of employees who have spent over their allowance" 
+                  value="0"
+                />
+              </tbody>
+            </TableContainer>
 
             {/* Employee List */}
             <Card>
