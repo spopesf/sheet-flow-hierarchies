@@ -29,13 +29,63 @@ const columns = [
   { label: "UPC", className: "text-right" },
   { label: "Count", className: "text-right" },
   { label: "Value", className: "text-right" },
-  { label: "Days on Hand", className: "text-right" },
-  { label: "Sell Through Rate", className: "text-right" },
   { 
     label: (
-      <>
+      <div className="flex items-center justify-end gap-1">
+        Days on Hand
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <div className="w-3 h-3 rounded-full bg-slate-400 flex items-center justify-center cursor-help hover:bg-slate-500 transition-colors">
+                <span className="text-white text-[10px] font-bold">?</span>
+              </div>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p className="max-w-xs text-sm">The number of days current inventory will last based on average daily usage</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      </div>
+    ), 
+    className: "text-right" 
+  },
+  { 
+    label: (
+      <div className="flex items-center justify-end gap-1">
+        Sell Through Rate
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <div className="w-3 h-3 rounded-full bg-slate-400 flex items-center justify-center cursor-help hover:bg-slate-500 transition-colors">
+                <span className="text-white text-[10px] font-bold">?</span>
+              </div>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p className="max-w-xs text-sm">The rate at which inventory is sold over a given period</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      </div>
+    ), 
+    className: "text-right" 
+  },
+  { 
+    label: (
+      <div className="flex items-center justify-end gap-1 pr-6">
         Sales-to-<br />Stock Ratio
-      </>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <div className="w-3 h-3 rounded-full bg-slate-400 flex items-center justify-center cursor-help hover:bg-slate-500 transition-colors">
+                <span className="text-white text-[10px] font-bold">?</span>
+              </div>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p className="max-w-xs text-sm">Ratio comparing sales volume to available stock levels</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      </div>
     ),
     className: "text-right pr-6"
   }
@@ -77,20 +127,6 @@ export function TopItemsTable({ title, items, icons, itemBorderClass }: TopItems
           ))}
         </tbody>
       </table>
-      <div className="flex justify-end pr-6 pb-2">
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <div className="w-4 h-4 rounded-full bg-slate-400 flex items-center justify-center cursor-help hover:bg-slate-500 transition-colors">
-                <span className="text-white text-xs font-bold">?</span>
-              </div>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p className="max-w-xs text-sm">The number of days current inventory will last based on average daily usage</p>
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
-      </div>
     </TableContainer>
   );
 }
