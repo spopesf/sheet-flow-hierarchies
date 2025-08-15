@@ -118,31 +118,54 @@ export function YearlyAllowancesTab({ selectedFilter, onFilterChange }: YearlyAl
         {/* Content based on toggle */}
         {showAllEmployees ? (
           <div className="space-y-6">
-            {/* Bar Chart */}
+            {/* Allowance Statistics Table */}
             <Card>
               <CardHeader>
-                <CardTitle>Employee Allowance Distribution</CardTitle>
+                <CardTitle>Employee Allowance Statistics</CardTitle>
               </CardHeader>
               <CardContent>
-                <ChartContainer
-                  config={{
-                    value: {
-                      label: "Number of Employees",
-                    },
-                  }}
-                  className="h-[300px]"
-                >
-                  <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={allowanceData}>
-                      <XAxis dataKey="name" />
-                      <YAxis />
-                      <ChartTooltip content={<ChartTooltipContent />} />
-                       <Bar dataKey="value">
-                         <LabelList dataKey="value" position="top" />
-                       </Bar>
-                    </BarChart>
-                  </ResponsiveContainer>
-                </ChartContainer>
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <tbody>
+                      <tr className="border-b border-slate-100">
+                        <td className="py-3 px-4 font-medium text-slate-900">Total $ value of Allowance given</td>
+                        <td className="py-3 px-4 text-right font-semibold text-slate-900">
+                          ${(employeeData.length * 100).toLocaleString()}
+                        </td>
+                      </tr>
+                      <tr className="border-b border-slate-100">
+                        <td className="py-3 px-4 font-medium text-slate-900">Total $ value of allowance spent</td>
+                        <td className="py-3 px-4 text-right font-semibold text-slate-900">
+                          ${(employeeData.length * 100 - employeeData.reduce((sum, emp) => sum + emp.allowanceRemaining, 0)).toLocaleString()}
+                        </td>
+                      </tr>
+                      <tr className="border-b border-slate-100">
+                        <td className="py-3 px-4 font-medium text-slate-900">Number of employees given allowance</td>
+                        <td className="py-3 px-4 text-right font-semibold text-slate-900">
+                          {employeeData.length.toLocaleString()}
+                        </td>
+                      </tr>
+                      <tr className="border-b border-slate-100">
+                        <td className="py-3 px-4 font-medium text-slate-900">Number of employees who have spent some or all allowance</td>
+                        <td className="py-3 px-4 text-right font-semibold text-slate-900">
+                          {employeeData.filter(emp => emp.allowanceRemaining < 100).length.toLocaleString()}
+                        </td>
+                      </tr>
+                      <tr className="border-b border-slate-100">
+                        <td className="py-3 px-4 font-medium text-slate-900">Number of employees who have spent all their allowance</td>
+                        <td className="py-3 px-4 text-right font-semibold text-slate-900">
+                          {employeeData.filter(emp => emp.allowanceRemaining === 0).length.toLocaleString()}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="py-3 px-4 font-medium text-slate-900">Number of employees who have spent over their allowance</td>
+                        <td className="py-3 px-4 text-right font-semibold text-slate-900">
+                          0
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </CardContent>
             </Card>
 
