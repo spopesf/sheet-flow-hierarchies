@@ -31,7 +31,7 @@ const columns = [
   { label: "Value", className: "text-right" },
   { 
     label: (
-      <div className="flex items-end justify-end gap-1">
+      <div className="flex items-baseline justify-end gap-1">
         Days on Hand
         <TooltipProvider>
           <Tooltip>
@@ -51,7 +51,7 @@ const columns = [
   },
   { 
     label: (
-      <div className="flex items-end justify-end gap-1">
+      <div className="flex items-baseline justify-end gap-1">
         Sell Through Rate
         <TooltipProvider>
           <Tooltip>
@@ -71,7 +71,7 @@ const columns = [
   },
   { 
     label: (
-      <div className="flex items-end justify-end gap-1 pr-2">
+      <div className="flex items-baseline justify-end gap-1 pr-2">
         Sales-to-<br />Stock Ratio
         <TooltipProvider>
           <Tooltip>
