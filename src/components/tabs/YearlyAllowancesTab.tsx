@@ -130,13 +130,13 @@ export function YearlyAllowancesTab({ selectedFilter, onFilterChange }: YearlyAl
                       <tr className="border-b border-slate-100">
                         <td className="py-3 px-4 font-medium text-slate-900">Total $ value of Allowance given</td>
                         <td className="py-3 px-4 text-right font-semibold text-slate-900">
-                          ${(employeeData.length * 100).toLocaleString()}
+                          ${(employeeData.length * 200).toLocaleString()}
                         </td>
                       </tr>
                       <tr className="border-b border-slate-100">
                         <td className="py-3 px-4 font-medium text-slate-900">Total $ value of allowance spent</td>
                         <td className="py-3 px-4 text-right font-semibold text-slate-900">
-                          ${(employeeData.length * 100 - employeeData.reduce((sum, emp) => sum + emp.allowanceRemaining, 0)).toLocaleString()}
+                          ${(employeeData.length * 200 - employeeData.reduce((sum, emp) => sum + emp.allowanceRemaining, 0) - (employeeData.length * 100)).toLocaleString()}
                         </td>
                       </tr>
                       <tr className="border-b border-slate-100">
