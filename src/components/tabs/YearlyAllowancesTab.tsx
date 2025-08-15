@@ -145,6 +145,12 @@ export function YearlyAllowancesTab({ selectedFilter, onFilterChange }: YearlyAl
                               ${(employeeData.length * 200 - employeeData.reduce((sum, emp) => sum + emp.allowanceRemaining, 0) - (employeeData.length * 100)).toLocaleString()}
                             </td>
                           </tr>
+                          <tr className="border-b border-slate-100">
+                            <td className="py-3 px-4 font-medium text-slate-900">Total $ value of allowance not spent</td>
+                            <td className="py-3 px-4 text-right font-semibold text-lg text-orange-600">
+                              ${employeeData.reduce((sum, emp) => sum + emp.allowanceRemaining, 0).toLocaleString()}
+                            </td>
+                          </tr>
                         </tbody>
                       </table>
                     </div>
