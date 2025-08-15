@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 interface TableHeaderProps {
   columns: Array<{
-    label: string;
+    label: string | React.ReactNode;
     className?: string;
     minWidth?: string;
   }>;

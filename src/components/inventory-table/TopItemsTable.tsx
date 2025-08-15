@@ -30,7 +30,11 @@ const columns = [
   { label: "Days on Hand", className: "text-right" },
   { label: "Sell Through Rate", className: "text-right" },
   { 
-    label: "Sales-to-Stock Ratio",
+    label: (
+      <>
+        Sales-to-<br />Stock Ratio
+      </>
+    ),
     className: "text-right pr-6"
   }
 ];
