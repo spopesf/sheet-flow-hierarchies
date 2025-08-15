@@ -4,6 +4,8 @@ import { TableHeader } from "../shared-table/TableHeader";
 import { CategoryIcon } from "../shared-table/CategoryIcon";
 import { TopItemsRow } from "./TopItemsRow";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { Button } from "@/components/ui/button";
+import { Download } from "lucide-react";
 
 interface InventoryItem {
   item: string;
@@ -69,7 +71,11 @@ export function TopItemsTable({ title, items, icons, itemBorderClass }: TopItems
           ))}
         </tbody>
       </table>
-      <div className="flex justify-end pr-6 pb-2">
+      <div className="flex justify-between items-center pr-6 pb-2">
+        <Button variant="outline" className="justify-start font-medium tracking-tight" size="sm">
+          <Download className="h-3 w-3 mr-2" />
+          DOWNLOAD FULL LIST
+        </Button>
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
