@@ -1,6 +1,7 @@
 
 import { IncomeCard } from "../IncomeCard";
-import { InsightsSection } from "../InsightsSection";
+import { CustomerComparisonTable } from "../income-table/CustomerComparisonTable";
+import { TopItemsTable } from "../income-table/TopItemsTable";
 import { SearchFilters } from "../SearchFilters";
 import { consumerMerchandiseData } from "@/data/incomeData";
 
@@ -17,6 +18,7 @@ export function IncomeTab({ selectedFilter, onFilterChange }: IncomeTabProps) {
       </div>
 
       <div className="space-y-8 px-1">
+        {/* Merchandise Summary */}
         <IncomeCard
           title="Consumer Merchandise (if a B2C site exists)"
           data={consumerMerchandiseData}
@@ -25,7 +27,22 @@ export function IncomeTab({ selectedFilter, onFilterChange }: IncomeTabProps) {
           showTooltip={true}
         />
         
-        <InsightsSection />
+        {/* Customer Comparison Table - Full Width */}
+        <CustomerComparisonTable />
+
+        {/* Side by Side Top Items Tables */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <TopItemsTable
+            title="Top 10 Items"
+            items={[]}
+            variant="wsl"
+          />
+          <TopItemsTable
+            title="Top 10 Items"
+            items={[]}
+            variant="rtl"
+          />
+        </div>
 
         {/* Key Section */}
         <div className="bg-slate-50 rounded-lg p-4 border border-slate-200">
