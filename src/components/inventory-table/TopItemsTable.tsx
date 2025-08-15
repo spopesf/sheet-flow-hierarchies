@@ -11,6 +11,7 @@ interface InventoryItem {
   count: string;
   value: string;
   daysOnHand: string;
+  sellThroughRate: string;
   salesToStockRatio: string;
 }
 
@@ -27,6 +28,7 @@ const columns = [
   { label: "Count", className: "text-right" },
   { label: "Value", className: "text-right" },
   { label: "Days on Hand", className: "text-right" },
+  { label: "Sell Through Rate", className: "text-right" },
   { 
     label: "Sales-to-Stock Ratio",
     className: "text-right pr-6"

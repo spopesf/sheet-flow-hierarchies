@@ -7,6 +7,7 @@ interface InventoryItem {
   count: string;
   value: string;
   daysOnHand: string;
+  sellThroughRate: string;
   salesToStockRatio: string;
 }
 
@@ -48,6 +49,9 @@ export function TopItemsRow({ item, borderClass }: TopItemsRowProps) {
       </td>
       <td className="py-2 px-3 text-xs font-mono tabular-nums text-right text-slate-800">
         {item.daysOnHand}
+      </td>
+      <td className="py-2 px-3 text-xs font-mono tabular-nums text-right text-slate-800">
+        {item.sellThroughRate}
       </td>
       <td className="py-2 px-3 pr-20 text-xs font-mono tabular-nums text-right text-slate-800">
         {item.salesToStockRatio}
