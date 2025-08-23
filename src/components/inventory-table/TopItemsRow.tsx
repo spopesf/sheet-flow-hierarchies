@@ -17,12 +17,19 @@ interface TopItemsRowProps {
 }
 
 const getInternalOrderItemBorder = (itemName: string) => {
-  if (itemName.includes("Staff 3") || itemName.includes("Staff 6") || itemName.includes("Staff 10")) {
+  // UN (Uniform Non-replenishment) items - blue-400 border
+  const unItems = [
+    "Staff 3", "Staff 6", "Staff 10", // Specific staff levels
+    "Chipotle Goods Tote", "Foil Tee", "Crew Member T-Shirt" // Non-replenishment items
+  ];
+  
+  // Check if item is UN
+  if (unItems.some(unItem => itemName.includes(unItem))) {
     return "border-l-4 border-l-blue-400";
-  } else if (itemName.includes("Staff")) {
-    return "border-l-4 border-l-blue-600";
   }
-  return "";
+  
+  // All other internal order items are UR (Uniform Replenishment) - blue-600 border
+  return "border-l-4 border-l-blue-600";
 };
 
 export function TopItemsRow({ item, borderClass }: TopItemsRowProps) {
