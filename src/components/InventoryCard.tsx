@@ -24,9 +24,17 @@ interface InventoryCardProps {
   snapshotData: InventorySnapshotData;
   internalOrdersItems: InventoryItem[];
   consumerOrdersItems: InventoryItem[];
+  internalOrdersBottomItems: InventoryItem[];
+  consumerOrdersBottomItems: InventoryItem[];
 }
 
-export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrdersItems }: InventoryCardProps) {
+export function InventoryCard({ 
+  snapshotData, 
+  internalOrdersItems, 
+  consumerOrdersItems,
+  internalOrdersBottomItems,
+  consumerOrdersBottomItems 
+}: InventoryCardProps) {
   const internalOrderIcons = [
     { text: "UR", bgColor: "bg-blue-600", textColor: "text-white", tooltip: "Uniform replenishment items from internal orders" },
     { text: "UN", bgColor: "bg-blue-400", textColor: "text-white", tooltip: "Uniform non-replenishment items from internal orders" }
@@ -51,6 +59,22 @@ export function InventoryCard({ snapshotData, internalOrdersItems, consumerOrder
         <TopItemsTable
           title="Top 10 UPCs"
           items={consumerOrdersItems}
+          icons={consumerOrderIcons}
+          itemBorderClass="consumer"
+        />
+      </div>
+
+      <div className="grid grid-cols-2 gap-6">
+        <TopItemsTable
+          title="Bottom 10 UPCs"
+          items={internalOrdersBottomItems}
+          icons={internalOrderIcons}
+          itemBorderClass="internal"
+        />
+        
+        <TopItemsTable
+          title="Bottom 10 UPCs"
+          items={consumerOrdersBottomItems}
           icons={consumerOrderIcons}
           itemBorderClass="consumer"
         />

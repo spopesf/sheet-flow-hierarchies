@@ -1,7 +1,12 @@
-
 import { InventoryCard } from "../InventoryCard";
 import { SearchFilters } from "../SearchFilters";
-import { inventorySnapshotData, internalOrdersItems, consumerOrdersItems } from "@/data/inventoryData";
+import { 
+  inventorySnapshotData, 
+  internalOrdersItems, 
+  consumerOrdersItems,
+  internalOrdersBottomItems,
+  consumerOrdersBottomItems
+} from "@/data/inventoryData";
 
 interface InventoryTabProps {
   selectedFilter: string;
@@ -20,6 +25,8 @@ export function InventoryTab({ selectedFilter, onFilterChange }: InventoryTabPro
           snapshotData={inventorySnapshotData}
           internalOrdersItems={internalOrdersItems}
           consumerOrdersItems={consumerOrdersItems}
+          internalOrdersBottomItems={internalOrdersBottomItems}
+          consumerOrdersBottomItems={consumerOrdersBottomItems}
         />
       </div>
     </>
