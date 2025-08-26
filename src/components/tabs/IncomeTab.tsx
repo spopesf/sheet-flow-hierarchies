@@ -44,6 +44,22 @@ export function IncomeTab({ selectedFilter, onFilterChange }: IncomeTabProps) {
           />
         </div>
 
+        {/* Side by Side Bottom Items Tables */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <TopItemsTable
+            title="Bottom 25 Items"
+            items={[]}
+            variant="wsl"
+            type="bottom"
+          />
+          <TopItemsTable
+            title="Bottom 25 Items"
+            items={[]}
+            variant="rtl"
+            type="bottom"
+          />
+        </div>
+
       </div>
     </>
   );

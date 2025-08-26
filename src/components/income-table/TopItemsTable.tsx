@@ -14,6 +14,7 @@ interface TopItemsTableProps {
   title: string;
   items: TopItem[];
   variant: "wsl" | "rtl";
+  type?: "top" | "bottom";
 }
 
 const B2BIcon = () => (
@@ -102,8 +103,71 @@ const rtlItems: TopItem[] = [
   { item: "Merch Y", numberSold: "456", msrp: "$36.75" }
 ];
 
-export function TopItemsTable({ title, variant }: TopItemsTableProps) {
-  const items = variant === "wsl" ? wslItems : rtlItems;
+const wslBottomItems: TopItem[] = [
+  { item: "Low Merch 1", numberSold: "45", msrp: "$12.99" },
+  { item: "Low Merch 2", numberSold: "38", msrp: "$8.50" },
+  { item: "Low Merch 3", numberSold: "32", msrp: "$15.25" },
+  { item: "Low Merch 4", numberSold: "28", msrp: "$9.99" },
+  { item: "Low Merch 5", numberSold: "25", msrp: "$11.75" },
+  { item: "Low Merch 6", numberSold: "22", msrp: "$7.50" },
+  { item: "Low Merch 7", numberSold: "19", msrp: "$13.99" },
+  { item: "Low Merch 8", numberSold: "17", msrp: "$6.25" },
+  { item: "Low Merch 9", numberSold: "15", msrp: "$10.50" },
+  { item: "Low Merch 10", numberSold: "13", msrp: "$8.99" },
+  { item: "Low Merch 11", numberSold: "12", msrp: "$14.25" },
+  { item: "Low Merch 12", numberSold: "10", msrp: "$5.75" },
+  { item: "Low Merch 13", numberSold: "9", msrp: "$12.50" },
+  { item: "Low Merch 14", numberSold: "8", msrp: "$7.99" },
+  { item: "Low Merch 15", numberSold: "7", msrp: "$11.25" },
+  { item: "Low Merch 16", numberSold: "6", msrp: "$9.50" },
+  { item: "Low Merch 17", numberSold: "5", msrp: "$6.75" },
+  { item: "Low Merch 18", numberSold: "4", msrp: "$13.25" },
+  { item: "Low Merch 19", numberSold: "3", msrp: "$8.25" },
+  { item: "Low Merch 20", numberSold: "3", msrp: "$10.99" },
+  { item: "Low Merch 21", numberSold: "2", msrp: "$7.25" },
+  { item: "Low Merch 22", numberSold: "2", msrp: "$12.75" },
+  { item: "Low Merch 23", numberSold: "1", msrp: "$5.99" },
+  { item: "Low Merch 24", numberSold: "1", msrp: "$9.75" },
+  { item: "Low Merch 25", numberSold: "1", msrp: "$6.50" }
+];
+
+const rtlBottomItems: TopItem[] = [
+  { item: "Low Merch AA", numberSold: "52", msrp: "$14.99" },
+  { item: "Low Merch BB", numberSold: "41", msrp: "$9.95" },
+  { item: "Low Merch CC", numberSold: "35", msrp: "$16.50" },
+  { item: "Low Merch DD", numberSold: "31", msrp: "$11.00" },
+  { item: "Low Merch EE", numberSold: "27", msrp: "$13.99" },
+  { item: "Low Merch FF", numberSold: "24", msrp: "$8.50" },
+  { item: "Low Merch GG", numberSold: "21", msrp: "$15.25" },
+  { item: "Low Merch HH", numberSold: "18", msrp: "$7.75" },
+  { item: "Low Merch II", numberSold: "16", msrp: "$12.99" },
+  { item: "Low Merch JJ", numberSold: "14", msrp: "$10.50" },
+  { item: "Low Merch KK", numberSold: "13", msrp: "$17.25" },
+  { item: "Low Merch LL", numberSold: "11", msrp: "$6.99" },
+  { item: "Low Merch MM", numberSold: "10", msrp: "$14.75" },
+  { item: "Low Merch NN", numberSold: "9", msrp: "$9.25" },
+  { item: "Low Merch OO", numberSold: "8", msrp: "$11.99" },
+  { item: "Low Merch PP", numberSold: "7", msrp: "$13.50" },
+  { item: "Low Merch QQ", numberSold: "6", msrp: "$8.75" },
+  { item: "Low Merch RR", numberSold: "5", msrp: "$15.99" },
+  { item: "Low Merch SS", numberSold: "4", msrp: "$10.50" },
+  { item: "Low Merch TT", numberSold: "3", msrp: "$12.25" },
+  { item: "Low Merch UU", numberSold: "3", msrp: "$7.99" },
+  { item: "Low Merch VV", numberSold: "2", msrp: "$14.75" },
+  { item: "Low Merch WW", numberSold: "2", msrp: "$9.50" },
+  { item: "Low Merch XX", numberSold: "1", msrp: "$16.25" },
+  { item: "Low Merch YY", numberSold: "1", msrp: "$8.75" }
+];
+
+export function TopItemsTable({ title, variant, type = "top" }: TopItemsTableProps) {
+  const getItems = () => {
+    if (type === "bottom") {
+      return variant === "wsl" ? wslBottomItems : rtlBottomItems;
+    }
+    return variant === "wsl" ? wslItems : rtlItems;
+  };
+  
+  const items = getItems();
   const borderColor = variant === "wsl" ? "border-l-orange-500" : "border-l-pink-500";
   
   return (
